@@ -1,5 +1,6 @@
 package dawan.meepleTown;
 
+import dawan.meepleTown.group.*;
 
 public class GroupPlay extends Play{
 	private Groupe groupe;

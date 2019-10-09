@@ -1,5 +1,10 @@
 package dawan.meepleTown;
 
+import java.util.*;
+import javax.swing.*;
+
+import dawan.meepleTown.group.*;
+
 public class User {
 
   //Attributs Initialisation
