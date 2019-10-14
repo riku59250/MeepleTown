@@ -1,9 +1,9 @@
-package dawan.meepleTown;
+package dawan.meepletown;
 
 import java.util.*;
 import javax.swing.*;
 
-import dawan.meepleTown.group.*;
+import dawan.meepletown.group.*;
 
 public class User {
 

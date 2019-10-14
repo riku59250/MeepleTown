@@ -1,4 +1,4 @@
-package dawan.meepleTown;
+package dawan.meepletown;
 
 
 public enum SessionType {
@@ -11,6 +11,7 @@ public enum SessionType {
 	    this.name = name;
 	  }
 	   
+	  @Override
 	  public String toString(){
 	    return name;
 	  }

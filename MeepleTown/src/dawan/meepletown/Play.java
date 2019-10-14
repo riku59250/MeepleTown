@@ -1,4 +1,4 @@
-package dawan.meepleTown;
+package dawan.meepletown;
 
 import java.util.Date;
 import java.util.List;
