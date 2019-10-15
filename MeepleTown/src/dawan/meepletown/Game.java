@@ -3,13 +3,13 @@ package dawan.meepletown;
 public class Game {
 	private int id;
 	private String name;
-	private TypesGames type;
+	private TypeGame type;
 	private String description;
 	private int nbrMinJoueur;
 	private int nbrMaxJoueur;
 	
 	
-	public Game(int id, String name, TypesGames type, String description, int nbrMinJoueur, int nbrMaxJoueur) {
+	public Game(int id, String name, TypeGame type, String description, int nbrMinJoueur, int nbrMaxJoueur) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -32,10 +32,10 @@ public class Game {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public TypesGames getType() {
+	public TypeGame getType() {
 		return type;
 	}
-	public void setType(TypesGames type) {
+	public void setType(TypeGame type) {
 		this.type = type;
 	}
 	public String getDescription() {
