@@ -1,60 +1,73 @@
 package fr.dawan.meepletown;
 
-public class Game {
-	private int id;
-	private String name;
-	private TypeGame type;
-	private String description;
-	private int nbrMinJoueur;
-	private int nbrMaxJoueur;
+import java.util.Date;
+import java.util.List;
+
+public class Play {
+
+	private String title;
+	private String place;
+	private SessionType sessionType;
+	private int nbMaxPlayers;
+	private List<User> playersList;
+	private List<Game> gamesList;
+	private Date startDate;
+	private Date endDate;
+	
+	public Play() {}
+	public Play(String title) {
+		this.setTitle(title);
+	}
 	
 	
-	public Game(int id, String name, TypeGame type, String description, int nbrMinJoueur, int nbrMaxJoueur) {
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.description = description;
-		this.nbrMinJoueur = nbrMinJoueur;
-		this.nbrMaxJoueur = nbrMaxJoueur;
+	public String getTitle() {
+		return title;
 	}
-	public Game() {
-		
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public int getId() {
-		return id;
+	public String getPlace() {
+		return place;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setPlace(String place) {
+		this.place = place;
 	}
-	public String getName() {
-		return name;
+	public SessionType getSessionType() {
+		return sessionType;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setSessionType(SessionType sessionType) {
+		this.sessionType = sessionType;
 	}
-	public TypeGame getType() {
-		return type;
+	public int getNbMaxPlayers() {
+		return nbMaxPlayers;
 	}
-	public void setType(TypeGame type) {
-		this.type = type;
+	public void setNbMaxPlayers(int nbMaxPlayers) {
+		this.nbMaxPlayers = nbMaxPlayers;
 	}
-	public String getDescription() {
-		return description;
+	public List<User> getPlayersList() {
+		return playersList;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setPlayersList(List<User> playersList) {
+		this.playersList = playersList;
 	}
-	public int getNbrMinJoueur() {
-		return nbrMinJoueur;
+	public List<Game> getGamesList() {
+		return gamesList;
 	}
-	public void setNbrMinJoueur(int nbrMinJoueur) {
-		this.nbrMinJoueur = nbrMinJoueur;
+	public void setGamesList(List<Game> gamesList) {
+		this.gamesList = gamesList;
 	}
-	public int getNbrMaxJoueur() {
-		return nbrMaxJoueur;
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setNbrMaxJoueur(int nbrMaxJoueur) {
-		this.nbrMaxJoueur = nbrMaxJoueur;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	
 	
 }
