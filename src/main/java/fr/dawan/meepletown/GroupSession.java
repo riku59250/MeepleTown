@@ -1,14 +1,14 @@
 package fr.dawan.meepletown;
 
-import fr.dawan.meepletown.group.*;
 
-public class GroupPlay extends Play{
+
+public class GroupSession extends Session{
 	private Groupe groupe;
 	
-	public GroupPlay() {
+	public GroupSession() {
 		super();
 	}
-	public GroupPlay(String title, Groupe groupe) {
+	public GroupSession(String title, Groupe groupe) {
 		super(title);
 		this.groupe = groupe;
 	}

@@ -1,15 +1,15 @@
-package fr.dawan.meepletown.group; 
+package fr.dawan.meepletown; 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import fr.dawan.meepletown.*;
 import javafx.scene.image.Image;
 
 public class Groupe {
 
 	private int id;
 	private String name;
-	private Type type;
+	private GroupType type;
 	
 	private List<User> membersList = null;
 	private List<Game> gamesList = null;
@@ -18,7 +18,7 @@ public class Groupe {
 	
 	private Image avatar = null;
 	
-	public Groupe(int id, String name, Type type, String description, Image avatar) {
+	public Groupe(int id, String name, GroupType type, String description, Image avatar) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -47,11 +47,11 @@ public class Groupe {
 		this.name = name;
 	}
 
-	public Type getType() {
+	public GroupType getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
+	public void setType(GroupType type) {
 		this.type = type;
 	}
 

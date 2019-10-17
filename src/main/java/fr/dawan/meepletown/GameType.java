@@ -1,5 +1,5 @@
 package fr.dawan.meepletown;
 
-public enum TypeGame {
+public enum GameType {
 	ROLE,STRATEGIE,GESTION;
 }

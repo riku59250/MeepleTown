@@ -3,7 +3,7 @@ package fr.dawan.meepletown;
 import java.util.Date;
 import java.util.List;
 
-public class Play {
+public class Session {
 
 	private String title;
 	private String place;
@@ -14,8 +14,8 @@ public class Play {
 	private Date startDate;
 	private Date endDate;
 	
-	public Play() {}
-	public Play(String title) {
+	public Session() {}
+	public Session(String title) {
 		this.setTitle(title);
 	}
 	

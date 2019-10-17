@@ -3,7 +3,7 @@ package fr.dawan.meepletown;
 import java.util.*;
 import javax.swing.*;
 
-import fr.dawan.meepletown.group.*;
+
 
 public class User {
 
