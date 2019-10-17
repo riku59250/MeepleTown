@@ -1,6 +1,6 @@
 Product Owner : Gauthier
 
-Srum Master : Vanessa
+Scrum Master : Vanessa
 
 Git Master : Leon
 
