@@ -25,9 +25,9 @@ public class Groupe {
 		this.description = description;
 		this.avatar = avatar;
 		
-		this.membersList = new ArrayList<>();
+		this.membersList = new ArrayList<User>();
 		
-		this.gamesList = new ArrayList<>();
+		this.gamesList = new ArrayList<Game>();
 		
 	}
 
