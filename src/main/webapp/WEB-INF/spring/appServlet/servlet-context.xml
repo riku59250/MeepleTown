@@ -22,6 +22,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="fr.dawan.meepletown.beans" />
+
 	
 	
 	
