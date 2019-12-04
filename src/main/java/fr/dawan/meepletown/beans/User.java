@@ -1,8 +1,10 @@
 package fr.dawan.meepletown.beans;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.swing.ImageIcon;
 
@@ -19,19 +21,19 @@ public class User extends DbObject{
 	private String city;
 	private ImageIcon avatar;
 	
-	@ManyToMany
-	private List<Game> listGame;
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Set<Game> listGame;
 	
-	@ManyToMany(mappedBy= "membersList")
-	private List<Groupe> listGroup;
+	@ManyToMany(mappedBy= "membersList", fetch =  FetchType.EAGER)
+	private Set<Groupe> listGroup;
 	
-	@ManyToMany(mappedBy= "playersList")
-	private List<Session> listSession;
+	@ManyToMany(mappedBy= "playersList", fetch =  FetchType.EAGER)
+	private Set<Session> listSession;
 	
 	
 	//Create constructor
 	public User(int idUser, String pseudo, String mail, String password, int numDept, String city, ImageIcon avatar,
-			List listGroup, List listGame) {
+			Set<Groupe> listGroup, Set<Game> listGame) {
 		this.idUser = idUser;
 		this.pseudo = pseudo;
 		this.mail = mail;
@@ -50,12 +52,12 @@ public class User extends DbObject{
 	
 	
 	
-	public List<Session> getListSession() {
+	public Set<Session> getListSession() {
 		return listSession;
 	}
 
 
-	public void setListSession(List<Session> listSession) {
+	public void setListSession(Set<Session> listSession) {
 		this.listSession = listSession;
 	}
 
@@ -89,11 +91,11 @@ public class User extends DbObject{
 		return avatar;
 	}
 
-	public List getListGroup() {
+	public Set<Groupe> getListGroup() {
 		return listGroup;
 	}
 
-	public List getListGame() {
+	public Set<Game> getListGame() {
 		return listGame;
 	}
 
@@ -126,11 +128,11 @@ public class User extends DbObject{
 		this.avatar = avatar;
 	}
 
-	public void setListGroup(List listGroup) {
+	public void setListGroup(Set<Groupe> listGroup) {
 		this.listGroup = listGroup;
 	}
 
-	public void setListGame(List listGame) {
+	public void setListGame(Set<Game> listGame) {
 		this.listGame = listGame;
 	}
 

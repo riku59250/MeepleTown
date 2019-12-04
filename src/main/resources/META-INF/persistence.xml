@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="meepletown"
+		transaction-type="RESOURCE_LOCAL">
+		
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>fr.dawan.meepletown.beans.User</class>
+		<class>fr.dawan.meepletown.beans.Game</class>
+		<class>fr.dawan.meepletown.beans.Groupe</class>
+		<class>fr.dawan.meepletown.beans.Session</class>
+<!-- 		<class>fr.dawan.meepletown.beans.GroupSession</class> -->
+	
+		<properties>
+			<!-- PROPRIETES JDBC -->
+			<!-- URL De votre base de données -->
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/meepletown" />
+			<!-- Driver -->
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<!-- Login -->
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<!-- password -->
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<!-- PROPRIETES HIBERNATE -->
+			<!-- Valeurs possibles : validate: validate the schema, makes no changes 
+				to the database. update: update the schema. create: creates the schema, destroying 
+				previous data. create-drop: drop the schema when the SessionFactory is closed 
+				explicitly, typically when the application is stopped. -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<!-- Le langage SQL que va utiliser Hibernate -->
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+				
+			<!-- Permet d'afficher le HQL dans la console -->
+			<property name="hibernate.show_sql" value="true"/>
+			<!-- Permet de formater la sortie SQL -->
+			<property name="hibernate.format_sql" value="false"/>
+
+		</properties>
+
+	</persistence-unit>
+</persistence>
