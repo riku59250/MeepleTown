@@ -2,13 +2,13 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title> Meeple Town</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	Page d'accueil de Meeple Town
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P> Bonjour et bienvenue sur ce site cool. Pour le moment il est en construction.  </P>
 </body>
 </html>

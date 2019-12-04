@@ -4,14 +4,19 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.dawan.meepletown.beans.DbObject;
 
 public class GenericDao {
+	@PersistenceContext
+	EntityManager em;
 	
 	
-	public<T extends DbObject> void create(T elm, EntityManager em, boolean closeConnection) throws Exception {
+	public<T extends DbObject> void create(T elm, boolean closeConnection) throws Exception {
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
@@ -32,7 +37,7 @@ public class GenericDao {
 		}
 	}
 
-	public<T extends DbObject> void remove(T elm, EntityManager em, boolean closeConnection) throws Exception {
+	public<T extends DbObject> void remove(T elm, boolean closeConnection) throws Exception {
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
@@ -53,7 +58,7 @@ public class GenericDao {
 			}
 		}
 	
-	public<T extends DbObject>  T find(Class<T> clazz, int id, EntityManager em, boolean closeConnection)  {
+	public<T extends DbObject>  T find(Class<T> clazz, int id, boolean closeConnection)  {
 		T elm = em.find(clazz, id);
 		if(closeConnection) {
 			em.close();
@@ -61,7 +66,7 @@ public class GenericDao {
 		return elm;
 	}
 	
-	public<T extends DbObject> List<T> findAll(Class<T> clazz, EntityManager em, boolean closeConnection)   {
+	public<T extends DbObject> List<T> findAll(Class<T> clazz, boolean closeConnection)   {
 		TypedQuery<T> query = em.createQuery("SELECT * FROM " + clazz.getName() + " ENTITY", clazz);
 		List<T> result = query.getResultList();
 		if(closeConnection) {
