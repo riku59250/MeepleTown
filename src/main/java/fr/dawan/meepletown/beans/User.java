@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.swing.ImageIcon;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class User extends DbObject{
