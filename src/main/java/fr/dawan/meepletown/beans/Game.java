@@ -1,9 +1,10 @@
 package fr.dawan.meepletown.beans;
 
-import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
 import fr.dawan.meepletown.enums.GameType;
@@ -17,14 +18,14 @@ public class Game extends DbObject{
 	private int nbrMinJoueur;
 	private int nbrMaxJoueur;
 	
-	@ManyToMany(mappedBy= "gamesList")
-	private List<Groupe> listGroup;
+	@ManyToMany(mappedBy= "gamesList", fetch =  FetchType.EAGER)
+	private Set<Groupe> listGroup;
 	
-	@ManyToMany(mappedBy= "gamesListSession")
-	private List<Session> listSession;
+	@ManyToMany(mappedBy= "gamesListSession", fetch =  FetchType.EAGER)
+	private Set<Session> listSession;
 	
-	@ManyToMany(mappedBy= "listGame")
-	private List<User> listUsers;
+	@ManyToMany(mappedBy= "listGame", fetch =  FetchType.EAGER)
+	private Set<User> listUsers;
 	
 	
 	public Game(int id, String name, GameType type, String description, int nbrMinJoueur, int nbrMaxJoueur) {
@@ -41,22 +42,22 @@ public class Game extends DbObject{
 	
 	
 	
-	public List<User> getListUsers() {
+	public Set<User> getListUsers() {
 		return listUsers;
 	}
-	public void setListUsers(List<User> listUsers) {
+	public void setListUsers(Set<User> listUsers) {
 		this.listUsers = listUsers;
 	}
-	public List<Session> getListSession() {
+	public Set<Session> getListSession() {
 		return listSession;
 	}
-	public void setListSession(List<Session> listSession) {
+	public void setListSession(Set<Session> listSession) {
 		this.listSession = listSession;
 	}
-	public List<Groupe> getListGroup() {
+	public Set<Groupe> getListGroup() {
 		return listGroup;
 	}
-	public void setListGroup(List<Groupe> listGroup) {
+	public void setListGroup(Set<Groupe> listGroup) {
 		this.listGroup = listGroup;
 	}
 	public String getName() {

@@ -2,12 +2,13 @@ package fr.dawan.meepletown.beans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
 import fr.dawan.meepletown.enums.GroupType;
-import javafx.scene.image.Image;
 
 @Entity
 public class Groupe extends DbObject{
@@ -17,10 +18,10 @@ public class Groupe extends DbObject{
 	private String description = "";
 	private String avatar = null;
 	
-	@ManyToMany
-	private List<User> membersList;
-	@ManyToMany
-	private List<Game> gamesList;
+	@ManyToMany( fetch =  FetchType.EAGER)
+	private Set<User> membersList;
+	@ManyToMany( fetch =  FetchType.EAGER)
+	private Set<Game> gamesList;
 	
 	public Groupe() {}
 	
@@ -30,11 +31,6 @@ public class Groupe extends DbObject{
 		this.type = type;
 		this.description = description;
 		this.avatar = avatar;
-		
-		this.membersList = new ArrayList<>();
-		
-		this.gamesList = new ArrayList<>();
-		
 	}
 
 	public String getName() {
@@ -53,19 +49,19 @@ public class Groupe extends DbObject{
 		this.type = type;
 	}
 
-	public List<User> getMembersList() {
+	public Set<User> getMembersList() {
 		return membersList;
 	}
 
-	public void setMembersList(List<User> membersList) {
+	public void setMembersList(Set<User> membersList) {
 		this.membersList = membersList;
 	}
 
-	public List<Game> getGamesList() {
+	public Set<Game> getGamesList() {
 		return gamesList;
 	}
 
-	public void setGamesList(List<Game> gamesList) {
+	public void setGamesList(Set<Game> gamesList) {
 		this.gamesList = gamesList;
 	}
 

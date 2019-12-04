@@ -2,6 +2,7 @@ package fr.dawan.meepletown.dao;
 
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -103,8 +104,8 @@ public class GenericDao<T extends DbObject> {
 		}
 	}
 
-	public List<T> findAll(Class<T> clazz) {
-		List<T> resultat = null;
+	public Set<T> findAll(Class<T> clazz) {
+		Set<T> resultat = null;
 
 		EntityManager em = createEntityManager();
 
@@ -112,7 +113,9 @@ public class GenericDao<T extends DbObject> {
 		TypedQuery<T> query = em.createQuery("SELECT entity FROM " + clazz.getName() + " entity", clazz);
 
 		// on exécute la requête et on récupère le résultat
-		resultat = query.getResultList();
+		//TODO faut le transformer en SET maintenant
+		//resultat = query.getResultList();
+		
 
 		em.close();
 

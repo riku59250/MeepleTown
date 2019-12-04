@@ -1,10 +1,11 @@
 package fr.dawan.meepletown.beans;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
 import fr.dawan.meepletown.enums.SessionType;
@@ -19,10 +20,10 @@ public class Session extends DbObject {
 	private Date startDate;
 	private Date endDate;
 	
-	@ManyToMany
-	private List<User> playersList;
-	@ManyToMany
-	private List<Game> gamesListSession;
+	@ManyToMany( fetch =  FetchType.EAGER)
+	private Set<User> playersList;
+	@ManyToMany( fetch =  FetchType.EAGER)
+	private Set<Game> gamesListSession;
 	
 	
 	public Session() {}
@@ -55,16 +56,16 @@ public class Session extends DbObject {
 	public void setNbMaxPlayers(int nbMaxPlayers) {
 		this.nbMaxPlayers = nbMaxPlayers;
 	}
-	public List<User> getPlayersList() {
+	public Set<User> getPlayersList() {
 		return playersList;
 	}
-	public void setPlayersList(List<User> playersList) {
+	public void setPlayersList(Set<User> playersList) {
 		this.playersList = playersList;
 	}
-	public List<Game> getGamesList() {
+	public Set<Game> getGamesList() {
 		return gamesListSession;
 	}
-	public void setGamesList(List<Game> gamesList) {
+	public void setGamesList(Set<Game> gamesList) {
 		this.gamesListSession = gamesList;
 	}
 	public Date getStartDate() {
