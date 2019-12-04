@@ -1,24 +1,30 @@
 package fr.dawan.meepletown.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 import fr.dawan.meepletown.enums.GameType;
 
 @Entity
-public class Game extends DbObject implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Game extends DbObject{
 	
 	private String name;
 	private GameType type;
 	private String description;
 	private int nbrMinJoueur;
 	private int nbrMaxJoueur;
+	
+	@ManyToMany(mappedBy= "gamesList")
+	private List<Groupe> listGroup;
+	
+	@ManyToMany(mappedBy= "gamesListSession")
+	private List<Session> listSession;
+	
+	@ManyToMany(mappedBy= "listGame")
+	private List<User> listUsers;
 	
 	
 	public Game(int id, String name, GameType type, String description, int nbrMinJoueur, int nbrMaxJoueur) {
@@ -33,6 +39,26 @@ public class Game extends DbObject implements Serializable{
 		super();
 	}
 	
+	
+	
+	public List<User> getListUsers() {
+		return listUsers;
+	}
+	public void setListUsers(List<User> listUsers) {
+		this.listUsers = listUsers;
+	}
+	public List<Session> getListSession() {
+		return listSession;
+	}
+	public void setListSession(List<Session> listSession) {
+		this.listSession = listSession;
+	}
+	public List<Groupe> getListGroup() {
+		return listGroup;
+	}
+	public void setListGroup(List<Groupe> listGroup) {
+		this.listGroup = listGroup;
+	}
 	public String getName() {
 		return name;
 	}

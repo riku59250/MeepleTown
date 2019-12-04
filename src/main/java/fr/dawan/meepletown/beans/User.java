@@ -1,17 +1,14 @@
 package fr.dawan.meepletown.beans;
 
-import java.io.Serializable;
-import java.util.*;
-import javax.swing.*;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.swing.ImageIcon;
 
 
-
-public class User extends DbObject implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity
+public class User extends DbObject{
 
   //Attributs Initialisation
 	private int idUser;
@@ -21,8 +18,15 @@ public class User extends DbObject implements Serializable{
 	private int numDept;
 	private String city;
 	private ImageIcon avatar;
-	private List listGroup;
-	private List listGame;
+	
+	@ManyToMany
+	private List<Game> listGame;
+	
+	@ManyToMany(mappedBy= "membersList")
+	private List<Groupe> listGroup;
+	
+	@ManyToMany(mappedBy= "playersList")
+	private List<Session> listSession;
 	
 	
 	//Create constructor
@@ -45,6 +49,17 @@ public class User extends DbObject implements Serializable{
 	}
 	
 	
+	
+	public List<Session> getListSession() {
+		return listSession;
+	}
+
+
+	public void setListSession(List<Session> listSession) {
+		this.listSession = listSession;
+	}
+
+
 	//Getters
 	public int getIdUser() {
 		return idUser;
@@ -118,5 +133,15 @@ public class User extends DbObject implements Serializable{
 	public void setListGame(List listGame) {
 		this.listGame = listGame;
 	}
+
+
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", pseudo=" + pseudo + ", mail=" + mail + ", password=" + password
+				+ ", numDept=" + numDept + ", city=" + city + ", avatar=" + avatar + ", listGame=" + listGame
+				+ ", listGroup=" + listGroup + ", listSession=" + listSession + "]";
+	}
+	
+	
   
 }

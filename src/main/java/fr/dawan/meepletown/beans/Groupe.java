@@ -1,30 +1,30 @@
 package fr.dawan.meepletown.beans; 
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 import fr.dawan.meepletown.enums.GroupType;
 import javafx.scene.image.Image;
 
-public class Groupe extends DbObject implements Serializable{
+@Entity
+public class Groupe extends DbObject{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	private String name;
 	private GroupType type;
-	
-	private List<User> membersList = null;
-	private List<Game> gamesList = null;
-	
 	private String description = "";
+	private String avatar = null;
 	
-	private Image avatar = null;
+	@ManyToMany
+	private List<User> membersList;
+	@ManyToMany
+	private List<Game> gamesList;
 	
-	public Groupe(int id, String name, GroupType type, String description, Image avatar) {
+	public Groupe() {}
+	
+	public Groupe(int id, String name, GroupType type, String description, String avatar) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -77,12 +77,18 @@ public class Groupe extends DbObject implements Serializable{
 		this.description = description;
 	}
 
-	public Image getAvatar() {
+	public String getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(Image avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+
+	@Override
+	public String toString() {
+		return "Groupe [name=" + name + ", type=" + type + ", description=" + description + ", avatar=" + avatar
+				+ ", membersList=" + membersList + ", gamesList=" + gamesList + "]";
 	}
 	
 	

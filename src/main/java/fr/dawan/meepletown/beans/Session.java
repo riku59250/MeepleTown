@@ -4,23 +4,26 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
 import fr.dawan.meepletown.enums.SessionType;
 
-public class Session extends DbObject implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity
+public class Session extends DbObject {
 
 	private String title;
 	private String place;
 	private SessionType sessionType;
 	private int nbMaxPlayers;
-	private List<User> playersList;
-	private List<Game> gamesList;
 	private Date startDate;
 	private Date endDate;
+	
+	@ManyToMany
+	private List<User> playersList;
+	@ManyToMany
+	private List<Game> gamesListSession;
+	
 	
 	public Session() {}
 	public Session(String title) {
@@ -59,10 +62,10 @@ public class Session extends DbObject implements Serializable{
 		this.playersList = playersList;
 	}
 	public List<Game> getGamesList() {
-		return gamesList;
+		return gamesListSession;
 	}
 	public void setGamesList(List<Game> gamesList) {
-		this.gamesList = gamesList;
+		this.gamesListSession = gamesList;
 	}
 	public Date getStartDate() {
 		return startDate;
@@ -75,6 +78,12 @@ public class Session extends DbObject implements Serializable{
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	@Override
+	public String toString() {
+		return "Session [title=" + title + ", place=" + place + ", sessionType=" + sessionType + ", nbMaxPlayers="
+				+ nbMaxPlayers + ", startDate=" + startDate + ", endDate=" + endDate + ", playersList=" + playersList
+				+ ", gamesListSession=" + gamesListSession + "]";
 	}
 	
 	
