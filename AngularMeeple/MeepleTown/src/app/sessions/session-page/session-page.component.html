@@ -1,0 +1,16 @@
+<p *ngIf="!id; else information">
+    Pour connaître leurs secrets, tapez sur leur nom.
+</p>
+
+
+<h1>{{session.title}}</h1>
+<div class="col-md-8 ">
+<p >Lieu : {{session.place}}</p>
+<p >Date de début : {{session.startDate | date : 'medium'}} </p>
+<p >Date de fin : {{session.endDate | date : 'medium'}} </p>
+<p >Jeu </p>
+<p>Nombre min de joueurs : {{session.nbMinPlayers}}</p>
+<p >Nombre max de joueurs : {{session.nbMaxPlayers}} </p>
+<p >Publique ? {{session.isPrivate}}</p>
+</div>
+

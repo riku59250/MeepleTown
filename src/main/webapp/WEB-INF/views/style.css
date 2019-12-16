@@ -1,0 +1,25 @@
+body{
+	
+	background-color:#a1cced;
+	
+	
+}
+
+button{
+	background-color:#255C99 !important;
+	color:white !important;
+	border:none !important;
+}
+
+a {
+	color:white;
+}
+
+.list-group a {
+	border: 1px solid #343a40 !important;
+}
+
+.material-icons{
+	color:#ffd700;
+	padding:0px;
+}

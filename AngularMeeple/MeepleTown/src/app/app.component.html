@@ -1,4 +1,20 @@
-<h1>Accueil</h1>
-<div>
- <router-outlet></router-outlet>
-</div>
+<main class="container">
+ <header>
+  <h1> Meeple Town</h1>
+ </header>
+
+ <nav class="mb-3">
+ <ul class="nav justify-content-center">
+  <li class="nav-item">
+   <a class="nav-link" routerLink="/createSession" routerLinkActive="active">Créer une partie</a>
+  </li>
+  <li class="nav-item">
+   <a class="nav-link" routerLink="/listSessions" routerLinkActive="active">Liste des parties</a>
+  </li>
+  <li class="nav-item">
+   <a class="nav-link" routerLink="/sessionPage" routerLinkActive="active">Page d'une partie (fictive)</a>
+  </li>
+ </ul>
+</nav>
+<router-outlet></router-outlet>
+</main>

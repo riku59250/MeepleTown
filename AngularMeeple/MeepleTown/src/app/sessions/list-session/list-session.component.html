@@ -1,0 +1,22 @@
+<h1>Liste des parties </h1>
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Lieu</th>
+            <th scope="col">Date</th>
+            <th scope="col">Nombre de joueurs</th>
+            <th scope="col">Publique ?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let session of listSessions">
+            <th scope="row"> <a class="nav-link" [routerLink]="['/sessionPage', session.id]" > {{session.title}} </a></th>
+            <td>{{session.place}}</td>
+            <td> du {{session.startDate | date: 'medium'}} au {{session.endDate | date: 'medium'}}</td>
+            <td>{{session.nbMinPlayers}} à {{session.nbMaxPlayers}}</td>
+            <td>{{session.isPrivate}}</td>
+        </tr>
+        </tbody>
+    </table>

@@ -16,9 +16,12 @@ public class Session extends DbObject {
 	private String title;
 	private String place;
 	private SessionType sessionType;
+	private String description;
 	private int nbMaxPlayers;
+	private int nbMinPlayers;
 	private Date startDate;
 	private Date endDate;
+	private boolean isPrivate;
 	
 	@ManyToMany( fetch =  FetchType.EAGER)
 	private Set<User> playersList;
@@ -56,6 +59,12 @@ public class Session extends DbObject {
 	public void setNbMaxPlayers(int nbMaxPlayers) {
 		this.nbMaxPlayers = nbMaxPlayers;
 	}
+	public int getNbMinPlayers() {
+		return nbMinPlayers;
+	}
+	public void setNbMinPlayers(int nbMinPlayers) {
+		this.nbMinPlayers = nbMinPlayers;
+	}
 	public Set<User> getPlayersList() {
 		return playersList;
 	}
@@ -79,6 +88,19 @@ public class Session extends DbObject {
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public boolean isPrivate() {
+		return isPrivate;
+	}
+	public void setPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
 	}
 	@Override
 	public String toString() {

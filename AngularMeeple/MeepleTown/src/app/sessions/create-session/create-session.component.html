@@ -1,0 +1,75 @@
+<h1>Créer sa partie </h1>
+
+<form [formGroup]="form" (submit)="createSession()">
+    <div class="form-row">
+        <div class="col-md-8 mb-3">
+            <label for="title">Titre*</label>
+            <input type="text" formControlName="title" class="form-control" id="title" required>
+            <p class="text-danger" *ngIf="controlTitle(); let message">{{message}}</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="location">Lieu*</label>
+            <input type="text" formControlName="place" class="form-control" id="location" required>
+            <p class="text-danger" *ngIf="controlPlace(); let message">{{message}}</p>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-12 mb-3">
+            <label for="desc">Description</label>
+            <input type="text" formControlName="description" class="form-control" id="desc">
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="date">Date*</label>
+            <input type="date" class="form-control" id="date" formControlName="date" required>
+            <p class="text-danger" *ngIf="controlDate(); let message">{{message}}</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="begin">Heure de début*</label>
+            <input type="time" class="form-control" id="begin"  formControlName="startDate" required>
+            <p class="text-danger" *ngIf="controlStartTime(); let message">{{message}}</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="end">Heure de fin*</label>
+            <input type="time" class="form-control" id="end" formControlName="endDate" required>
+            <p class="text-danger" *ngIf="controlEndTime(); let message">{{message}}</p>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-8 mb-3">
+            <label for="game">Jeu*</label>
+            <select class="custom-select" id="game" required>
+                <option selected disabled value="">Choose...</option>
+                <option>Jeu 1</option>
+                <option>Jeu 2</option>
+                <option>Jeu 3</option>
+            </select>
+        </div>
+        <div class="col-md-2 mb-3">
+            <label for="min">Joueurs minimun*</label>
+            <input type="number" formControlName="nbMinPlayers" class="form-control" id="min" required>
+            <p class="text-danger" *ngIf="controlMinPlayers(); let message">{{message}}</p>
+        </div>
+        <div class="col-md-2 mb-3">
+            <label for="max">Joueurs maximum*</label>
+            <input type="number" formControlName="nbMaxPlayers" class="form-control" id="max" required>
+            <p class="text-danger" *ngIf="controlMaxPlayers(); let message">{{message}}</p>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" formControlName="isPrivate" type="checkbox" value="false" id="public">
+            <label class="form-check-label" for="public">Partie privée</label>
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Créer la partie" />
+</form>
