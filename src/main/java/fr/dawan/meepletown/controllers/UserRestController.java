@@ -1,6 +1,7 @@
 package fr.dawan.meepletown.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +18,9 @@ public class UserRestController {
 	@Autowired
 	GenericDao<User> dao;
 	
-	@GetMapping("test")
+	@GetMapping("test")	
 	public List<User> getUser() {
 		return (List<User>) dao.findAll(User.class);
 	}
-}
+	}
+
