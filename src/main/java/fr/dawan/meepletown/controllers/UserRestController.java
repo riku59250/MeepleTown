@@ -19,8 +19,6 @@ public class UserRestController {
 	
 	@GetMapping("test")
 	public List<User> getUser() {
-		
-		return dao.findAll(User.class);
-		
+		return (List<User>) dao.findAll(User.class);
 	}
 }
