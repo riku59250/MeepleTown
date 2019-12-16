@@ -7,12 +7,14 @@ import { SignupComponent } from './users/signup/signup.component';
 import { SigninComponent } from './users/signin/signin.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ListGamesComponent } from './games/list-games/list-games.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ListGamesComponent
   ],
   imports: [
     BrowserModule,

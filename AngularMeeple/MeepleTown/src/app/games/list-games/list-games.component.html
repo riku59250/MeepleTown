@@ -1,0 +1,21 @@
+
+<input name="recherche" placeholder="7 Wonders ....">
+<button class="btn btn-success">Recherche</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Noms</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Nombre de Joueurs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let game of games ">
+            <td>{{game.name}}</td>
+            <td>{{game.type}}</td>
+            <td>{{game.description}}</td>
+            <td>{{game.nbrMinJoueur}}-{{game.nbrMaxJoueur}}</td>
+        </tr>
+    </tbody>
+</table>
