@@ -29,7 +29,7 @@ public class SessionController {
 		return dao.findById(Session.class, postalCode);
 	}
 	
-	
+	@GetMapping("/")
 	public Set<Session> findAll(){
 		return (Set<Session>) dao.findAll(Session.class);
 	}

@@ -7,7 +7,7 @@ import {Session} from '../../classes/session';
   providedIn: 'root'
 })
 export class SessionServiceService {
-  private url = '';
+  private url = 'http://localhost:8080/meepletown/session/';
   session: Session = new Session();
   sessions: Session[] = [];
 
@@ -23,9 +23,8 @@ export class SessionServiceService {
     this.sessions.push(this.session);
   }
 
-  public getAllSessions() { // : Observable<Session[]> {
-    return this.sessions;
-   // return this.http.get<Session[]>(this.url);
+  public getAllSessions(): Observable<Session[]> {
+    return this.http.get<Session[]>(this.url);
   }
 
   public getSessionById(id: number) { // : Observable<Session> {

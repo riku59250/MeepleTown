@@ -13,7 +13,9 @@ export class ListSessionComponent implements OnInit {
   constructor(private sessionService: SessionServiceService) { }
 
   ngOnInit() {
-    this.listSessions = this.sessionService.getAllSessions();
+    this.sessionService.getAllSessions().subscribe( (sessions) => {
+      this.listSessions = sessions;
+    });
     // TO DO récuperer les sessions de la DB
   }
 
