@@ -1,6 +1,7 @@
 package fr.dawan.meepletown.dao;
 
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -115,6 +116,7 @@ public class GenericDao<T extends DbObject> {
 		// on exécute la requête et on récupère le résultat
 		//TODO faut le transformer en SET maintenant
 		//resultat = query.getResultList();
+		resultat = new HashSet<T>(query.getResultList());
 		
 
 		em.close();

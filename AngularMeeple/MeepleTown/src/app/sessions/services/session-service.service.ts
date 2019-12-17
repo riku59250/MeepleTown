@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Session} from '../../classes/session';
 
@@ -24,18 +24,19 @@ export class SessionServiceService {
   }
 
   public getAllSessions(): Observable<Session[]> {
+    console.log('get all session angular');
+    console.log(this.url);
     return this.http.get<Session[]>(this.url);
   }
 
-  public getSessionById(id: number) { // : Observable<Session> {
-   // const url2 = this.url + '/' + id;
-   // return this.http.get<Session>(this.url);
-
-    return this.session;
+  public getSessionById(id: number): Observable<Session> {
+    const url2 = this.url + '/' + id;
+    return this.http.get<Session>(this.url);
   }
 
   public addSession(session: Session) {
     return this.http.post(this.url, session);
+
   }
 
   public deleteSession(id: number) {

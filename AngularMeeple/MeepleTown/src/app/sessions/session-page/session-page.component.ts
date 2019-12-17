@@ -14,7 +14,9 @@ export class SessionPageComponent implements OnInit {
   constructor(private sessionService: SessionServiceService) { }
 
   ngOnInit() {
-    this.session = this.sessionService.getSessionById(Number.parseInt(this.id, 10));
+    this.sessionService.getSessionById(Number.parseInt(this.id, 10)).subscribe( (session) => {
+      this.session = session;
+    });
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Session} from '../../classes/session';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SessionValidators} from '../../validators/session-validators';
+import {SessionServiceService} from "../services/session-service.service";
 
 @Component({
   selector: 'app-create-session',
@@ -9,7 +10,6 @@ import {SessionValidators} from '../../validators/session-validators';
   styleUrls: ['./create-session.component.scss']
 })
 export class CreateSessionComponent implements OnInit {
-  listSessions: Session[] = [];
   form: FormGroup;
   title: FormControl;
   place: FormControl;
@@ -22,7 +22,7 @@ export class CreateSessionComponent implements OnInit {
   isPrivate: FormControl;
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private sessionService: SessionServiceService) { }
 
   ngOnInit() {
     this.title = new FormControl(null, [Validators.required]);
@@ -62,7 +62,6 @@ export class CreateSessionComponent implements OnInit {
         session.startDate = this.createDateFromForm(this.date.value, this.startDate.value);
         session.endDate = this.createDateFromForm(this.date.value, this.endDate.value);
         if (this.isPrivate.value == null) {
-          console.log('nul !!!');
           session.isPrivate = false;
         } else {
           session.isPrivate = this.isPrivate.value;
@@ -70,8 +69,7 @@ export class CreateSessionComponent implements OnInit {
 
 
       // TODO add to DataBase
-        this.listSessions.push(session);
-
+        this.sessionService.addSession(session).subscribe();
         this.form.reset();
       }
     }

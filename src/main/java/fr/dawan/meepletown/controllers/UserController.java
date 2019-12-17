@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +16,8 @@ import fr.dawan.meepletown.beans.User;
 import fr.dawan.meepletown.dao.GenericDao;
 
 @RestController
-@RequestMapping("/User")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired

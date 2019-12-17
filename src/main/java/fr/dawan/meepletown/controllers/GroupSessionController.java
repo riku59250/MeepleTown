@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +16,8 @@ import fr.dawan.meepletown.beans.GroupSession;
 import fr.dawan.meepletown.dao.GenericDao;
 
 @RestController
-@RequestMapping("GroupSession")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/groupsession")
 public class GroupSessionController {
 	
 	@Autowired

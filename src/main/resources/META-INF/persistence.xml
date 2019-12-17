@@ -17,7 +17,7 @@
 			<!-- PROPRIETES JDBC -->
 			<!-- URL De votre base de données -->
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/meepletown" />
+				value="jdbc:mysql://localhost:3306/meepletown?useSSL=false" />
 			<!-- Driver -->
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />

@@ -16,7 +16,6 @@ export class ListSessionComponent implements OnInit {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
     });
-    // TO DO récuperer les sessions de la DB
   }
 
 }

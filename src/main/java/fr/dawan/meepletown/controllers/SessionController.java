@@ -2,9 +2,12 @@ package fr.dawan.meepletown.controllers;
 
 import java.util.Set;
 
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +19,7 @@ import fr.dawan.meepletown.beans.Session;
 import fr.dawan.meepletown.dao.GenericDao;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/session")
 public class SessionController {
 
@@ -38,6 +42,7 @@ public class SessionController {
 	public void createOrUpdate(@RequestBody Session session) {
 		dao.create(session);
 	}
+	
 	
 	@DeleteMapping("/delete/{postalCode}")
 	public void delete(@PathParam(value = "postalCode") long postalCode) {
