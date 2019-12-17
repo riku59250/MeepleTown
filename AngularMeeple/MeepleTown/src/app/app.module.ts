@@ -11,6 +11,7 @@ import { CreateSessionComponent } from './sessions/create-session/create-session
 import { ListSessionComponent } from './sessions/list-session/list-session.component';
 import { SessionPageComponent } from './sessions/session-page/session-page.component';
 import { ListGamesComponent } from './games/list-games/list-games.component';
+import { SearchFilterPipe } from './filters/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListGamesComponent } from './games/list-games/list-games.component';
     CreateSessionComponent,
     ListSessionComponent,
     SessionPageComponent,
-    ListGamesComponent
+    ListGamesComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,9 @@ import { ListGamesComponent } from './games/list-games/list-games.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule
+  ],
+  exports: [
+    SearchFilterPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,7 +10,8 @@ import {User} from '../../users/class/user';
 })
 export class ListSessionComponent implements OnInit {
   listSessions: Session[] = [];
-
+  searchString: string;
+  isComplete = false ;
 
   constructor(private sessionService: SessionServiceService) { }
 
@@ -30,10 +31,17 @@ export class ListSessionComponent implements OnInit {
     });
   }
 
- /* addPlayer(id: number) {
+  addPlayer(id: number) {
     this.sessionService.getSessionById(id).subscribe( (session) => {
-      this.sessionService.addSession(session).subscribe();
+     if (session.playersList.length < session.nbMaxPlayers) {
+       console.log('ok');
+       this.isComplete = false;
+       // this.sessionService.addSession(session).subscribe();
+     } else {
+       this.isComplete = true;
+       console.log('pas possible');
+     }
     });
-  }*/
+  }
 
 }

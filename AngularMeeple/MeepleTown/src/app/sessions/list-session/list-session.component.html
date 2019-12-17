@@ -1,5 +1,13 @@
 <h1>Liste des parties </h1>
 
+<nav class="navbar navbar-light bg-light float-right col-12">
+    <form class="form-inline col-12">
+        <input class="form-control col-12" type="search" name="searchString" [(ngModel)]="searchString" autocomplete="off" placeholder="Entrez un lieu pour filter les résultats.">
+    </form>
+</nav>
+
+<p *ngIf="isComplete" class="alert-danger"> La partie que vous souhaitez rejoindre est complète.</p>
+
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -12,10 +20,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let session of listSessions">
+        <tr *ngFor="let session of listSessions | searchFilter : 'place' : searchString">
             <th scope="row"> <a class="nav-link" [routerLink]="['/sessionPage', session.id]" > {{session.title}} </a></th>
             <td>{{session.place}}</td>
-            <td> du {{session.startDate | date: 'medium'}} au {{session.endDate | date: 'medium'}}</td>
+            <td> du {{session.startDate | date: 'dd/MM/yyy hh:mm'}} au {{session.endDate | date: 'dd/MM/yyy hh:mm'}}</td>
             <td>{{session.nbMinPlayers}} à {{session.nbMaxPlayers}}</td>
             <td>{{session.isPrivate? 'non': 'oui'}}</td>
             <td> <button class="btn btn-secondary" (click)="addPlayer(session.id)">Rejoindre</button> <button class="btn btn-danger" (click)="deleteSession(session.id)">X</button> </td>

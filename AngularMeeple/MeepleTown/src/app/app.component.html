@@ -1,17 +1,21 @@
-<main class="container">
- <header>
-  <h1> Meeple Town</h1>
- </header>
+<main class="container-fluid">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Meeple Town</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+   <ul class="navbar-nav">
+    <li class="nav-item active">
+     <a class="nav-link" routerLink="/createSession" routerLinkActive="active">Créer une partie</a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" routerLink="/listSessions" routerLinkActive="active">Liste des parties</a>
+    </li>
+   </ul>
+  </div>
+ </nav>
 
- <nav class="mb-3">
- <ul class="nav justify-content-center">
-  <li class="nav-item">
-   <a class="nav-link" routerLink="/createSession" routerLinkActive="active">Créer une partie</a>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" routerLink="/listSessions" routerLinkActive="active">Liste des parties</a>
-  </li>
- </ul>
-</nav>
+<body class="container">
 <router-outlet></router-outlet>
+</body>
+
+
 </main>
