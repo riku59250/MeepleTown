@@ -1,7 +1,3 @@
-<p *ngIf="!id; else information">
-    Pour connaître leurs secrets, tapez sur leur nom.
-</p>
-
 
 <h1>{{session.title}}</h1>
 <div class="col-md-8 ">
@@ -13,4 +9,21 @@
 <p >Nombre max de joueurs : {{session.nbMaxPlayers}} </p>
 <p >Publique ? {{session.isPrivate}}</p>
 </div>
+
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Pseudo</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Actions possibles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of session.playersList">
+        <td>{{user.pseudo}}}</td>
+        <td>{{user.mail}}}</td>
+        <td><button class="btn btn-secondary"> Supprimer de la partie</button></td>
+    </tr>
+    </tbody>
+</table>
 

@@ -1,3 +1,5 @@
+import {User} from '../../users/class/user';
+
 export class Session {
     id: number;
     title: string;
@@ -7,8 +9,8 @@ export class Session {
     nbMinPlayers: number;
     startDate: Date;
     endDate: Date;
-    isPrivate = false;
-    // playersList;
+    isPrivate: boolean;
+    sessionType: string;
+    playersList: User[];
     // gamesListSession;
-    // private SessionType sessionType;
 }

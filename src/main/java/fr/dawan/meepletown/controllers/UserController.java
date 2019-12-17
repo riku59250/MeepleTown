@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.PathVariable;
+>>>>>>> 6310b7271b1bc93bcac64f7561f35df8fe5b1086
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +34,7 @@ public class UserController {
 	
 	
 	@RequestMapping("/{idUser}")
-	public User findBy(@PathParam(value = "idUser") long id) {
+	public User findBy(@PathVariable(value = "idUser") long id) {
 		System.out.println(id);
 		return dao.findById(User.class, id);
 	}
@@ -47,7 +51,7 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/delete/{iduser}")
-	public void delete(@PathParam( value = "idUser") long id) {
+	public void delete(@PathVariable( value = "idUser") long id) {
 		dao.delete(User.class, id);
 		
 	}

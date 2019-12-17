@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,27 +27,36 @@ public class SessionController {
 	@Autowired
 	GenericDao<Session> dao;
 	
-	//recherche par lieu
-	@GetMapping("/{postalCode}")
-	public Session findBy(@PathParam(value = "postalCode") long postalCode) {
-		System.out.println(postalCode);
-		return dao.findById(Session.class, postalCode);
-	}
-	
+
 	@GetMapping("/")
 	public Set<Session> findAll(){
 		return (Set<Session>) dao.findAll(Session.class);
 	}
 	
-	@PostMapping("/")
-	public void createOrUpdate(@RequestBody Session session) {
-		dao.create(session);
+	@GetMapping("/{id}")
+	public Session findBy(@PathVariable(value = "id")  long id) {
+		return dao.findById(Session.class, id);
 	}
 	
 	
-	@DeleteMapping("/delete/{postalCode}")
-	public void delete(@PathParam(value = "postalCode") long postalCode) {
-		dao.delete(Session.class, postalCode);
+//	//recherche par lieu
+//	@GetMapping("/{postalCode}")
+//	public Session findBy(@PathParam(value = "postalCode") long postalCode) {
+//		System.out.println(postalCode);
+//		return dao.findById(Session.class, postalCode);
+//	}
+	
+	
+	
+	@PostMapping("/")
+	public void createOrUpdate(@RequestBody Session session) {
+		System.out.println(session);
+		dao.create(session);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable(value = "id") long id) {
+		dao.delete(Session.class, id);
 	}
 	
 }

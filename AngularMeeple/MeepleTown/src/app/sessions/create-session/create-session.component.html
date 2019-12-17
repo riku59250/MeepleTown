@@ -2,7 +2,7 @@
 
 <form [formGroup]="form" (submit)="createSession()">
     <div class="form-row">
-        <div class="col-md-8 mb-3">
+        <div class="col-md-6 mb-3">
             <label for="title">Titre*</label>
             <input type="text" formControlName="title" class="form-control" id="title" required>
             <p class="text-danger" *ngIf="controlTitle(); let message">{{message}}</p>
@@ -11,6 +11,12 @@
             <label for="location">Lieu*</label>
             <input type="text" formControlName="place" class="form-control" id="location" required>
             <p class="text-danger" *ngIf="controlPlace(); let message">{{message}}</p>
+        </div>
+        <div class="col-md-2 mb-3">
+            <label for="type">Type de partie</label>
+            <select class="custom-select" id="type" formControlName="type">
+                <option *ngFor=" let type of sessionTypes; let i = index" value="{{i}}">{{type.valueOf()}}</option>
+            </select>
         </div>
 
     </div>

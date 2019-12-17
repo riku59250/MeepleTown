@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {Session} from '../../classes/session';
+import {Component, OnInit} from '@angular/core';
+import {Session} from '../class/session';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SessionValidators} from '../../validators/session-validators';
-import {SessionServiceService} from "../services/session-service.service";
+import {SessionServiceService} from '../services/session-service.service';
+import {SessionType} from '../../enums/session-type.enum';
+
 
 @Component({
   selector: 'app-create-session',
@@ -19,8 +21,12 @@ export class CreateSessionComponent implements OnInit {
   date: FormControl;
   startDate: FormControl;
   endDate: FormControl;
+  // TODO vérifier le boolean car il n'est pas recu en java
   isPrivate: FormControl;
-
+  type: FormControl;
+  // TODO changer pour que ça apparaisse avec du texte dans le html
+  sessionTypes: SessionType[] = [SessionType.JDP, SessionType.JDR, SessionType.FIG, SessionType.GN]
+  // TODO implémenter la liste de jeux
 
   constructor(private fb: FormBuilder, private sessionService: SessionServiceService) { }
 
@@ -34,6 +40,7 @@ export class CreateSessionComponent implements OnInit {
     this.startDate = new FormControl(null, [Validators.required]);
     this.endDate = new FormControl(null, [Validators.required]);
     this.isPrivate = new FormControl();
+    this.type = new FormControl();
     this.form = this.fb.group({
       title: this.title,
       place: this.place,
@@ -43,7 +50,8 @@ export class CreateSessionComponent implements OnInit {
       date: this.date,
       startDate: this.startDate,
       endDate: this.endDate,
-      isPrivate: this.isPrivate
+      isPrivate: this.isPrivate,
+      type: this.type
     }, {
       validators: [ SessionValidators.endDate(), SessionValidators.maxPlayers() ]
     });
@@ -52,25 +60,22 @@ export class CreateSessionComponent implements OnInit {
 
   createSession() {
     if (this.form.valid) {
-        console.log(this.form.value);
-        const session: Session = new Session();
-        session.title = this.title.value;
-        session.place = this.place.value;
-        session.description = this.description.value;
-        session.nbMaxPlayers = this.nbMaxPlayers.value;
-        session.nbMinPlayers = this.nbMinPlayers.value;
-        session.startDate = this.createDateFromForm(this.date.value, this.startDate.value);
-        session.endDate = this.createDateFromForm(this.date.value, this.endDate.value);
-        if (this.isPrivate.value == null) {
-          session.isPrivate = false;
-        } else {
-          session.isPrivate = this.isPrivate.value;
-        }
-
-
-      // TODO add to DataBase
-        this.sessionService.addSession(session).subscribe();
-        this.form.reset();
+      const session: Session = new Session();
+      session.title = this.title.value;
+      session.place = this.place.value;
+      session.description = this.description.value;
+      session.nbMaxPlayers = this.nbMaxPlayers.value;
+      session.nbMinPlayers = this.nbMinPlayers.value;
+      session.startDate = this.createDateFromForm(this.date.value, this.startDate.value);
+      session.endDate = this.createDateFromForm(this.date.value, this.endDate.value);
+      if (this.isPrivate.value == null) {
+        session.isPrivate = false;
+      } else {
+        session.isPrivate = this.isPrivate.value;
+      }
+      session.sessionType = SessionType[this.type.value];
+      this.sessionService.addSession(session).subscribe();
+      this.form.reset();
       }
     }
 

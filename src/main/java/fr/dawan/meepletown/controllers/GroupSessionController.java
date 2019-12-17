@@ -7,6 +7,8 @@ import javax.ws.rs.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +25,12 @@ public class GroupSessionController {
 	@Autowired
 	GenericDao<GroupSession> dao;
 	
-	//recherche session de groupe par code postal
-	@RequestMapping("/{codePostal")
-		public GroupSession findBy(@PathParam(value = "codePostal") long codePostal) {
-		System.out.println(codePostal);
-		return dao.findById(GroupSession.class, codePostal);
+	@RequestMapping("/{id}")
+		public GroupSession findBy(@PathVariable(value = "id") long id) {
+		return dao.findById(GroupSession.class, id);
 	}
 
+	@GetMapping("/")
 	public Set<GroupSession> findAll(){
 		return (Set<GroupSession>) dao.findAll(GroupSession.class);
 	}
@@ -39,8 +40,8 @@ public class GroupSessionController {
 		dao.create(GroupSession);
 	}
 	
-	@DeleteMapping("/delete/{codePostal}")
-	public void delete(@PathParam( value = "codePostal") long codePostal) {
-		 dao.delete(GroupSession.class, codePostal);
+	@DeleteMapping("/delete/{id}")
+	public void delete(@PathVariable( value = "id") long id) {
+		 dao.delete(GroupSession.class, id);
 	}
 }
