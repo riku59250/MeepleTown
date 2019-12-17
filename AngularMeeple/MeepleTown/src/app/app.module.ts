@@ -11,6 +11,7 @@ import { CreateSessionComponent } from './sessions/create-session/create-session
 import { ListSessionComponent } from './sessions/list-session/list-session.component';
 import { SessionPageComponent } from './sessions/session-page/session-page.component';
 import { ListGamesComponent } from './games/list-games/list-games.component';
+import { UserHeaderComponent } from './header/user-header/user-header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListGamesComponent } from './games/list-games/list-games.component';
     CreateSessionComponent,
     ListSessionComponent,
     SessionPageComponent,
-    ListGamesComponent
+    ListGamesComponent,
+    UserHeaderComponent
   ],
   imports: [
     BrowserModule,

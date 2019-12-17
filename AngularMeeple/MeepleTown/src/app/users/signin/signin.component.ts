@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserServicesService} from "../services/user-services.service";
+import {LoginService} from "../../login/services/login.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -9,11 +12,13 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class SigninComponent implements OnInit {
 
+
+  error = false;
   email: FormControl;
   password: FormControl;
 
   form: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private service: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     this.email = new FormControl(null, [Validators.required]);
@@ -22,17 +27,27 @@ export class SigninComponent implements OnInit {
       email: this.email,
       password: this.password
     });
+
   }
 
   public signin(): void {
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.service.login(this.form.value.email, this.form.value.password);
+      this.service.log().subscribe((value) => {
+        if ( value === null) {
+          this.error = true;
+        } else {
+          this.error = false;
+          this.router.navigateByUrl('/createSession');
+        }
+      });
+
       this.form.reset();
     }
   }
   public controlEmail(): string {
-    if (this.email.touched){
-      if (this.email.hasError('required')){
+    if (this.email.touched) {
+      if (this.email.hasError('required')) {
         return  `L'email est requis pour pouvoir ce connecter`;
       }
     }
@@ -43,6 +58,12 @@ export class SigninComponent implements OnInit {
       if (this.password.hasError('required')) {
         return `Le mot de passe est requis pour pouvoir ce connecter`;
       }
+    }
+    return null;
+  }
+  public messageError(): string{
+    if (this.error) {
+      return "Le mot de passe ou l'address email est invalide !";
     }
     return null;
   }

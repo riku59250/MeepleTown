@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomValidator} from "../../validators/custom-validator";
+import {UserServicesService} from "../services/user-services.service";
+import {User} from "../class/user";
+import {LoginService} from "../../login/services/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +23,7 @@ export class SignupComponent implements OnInit {
   passwordLength = 8;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userServices: UserServicesService, private log: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.pseudo = new FormControl(null, [Validators.required]);
@@ -41,11 +45,22 @@ export class SignupComponent implements OnInit {
     },{
       validators : CustomValidator.match_password()
     });
+
+    this.log.log().subscribe((value) => {
+      if ( value !== null) {
+        this.router.navigateByUrl('/createSession');
+      }
+    });
   }
 
   public signup() {
     if ( this.form.valid) {
       console.log(this.form.value);
+      let user = new User(this.form.value.pseudo, this.form.value.email, this.form.value.password, this.form.value.departement, this.form.value.city);
+      console.log(user);
+      this.userServices.createUser(user).subscribe(() => {
+        this.log.login(user.mail, user.password);
+      });
       this.form.reset();
     } else {
       console.log(this.form.invalid);

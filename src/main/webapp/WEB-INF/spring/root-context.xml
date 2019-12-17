@@ -39,6 +39,8 @@
 
     <!-- Root Context: defines shared resources visible to all other web components -->
     <bean id="genericdao" class="fr.dawan.meepletown.dao.GenericDao">
+    
     </bean> 
+    <bean id="userdao" class="fr.dawan.meepletown.dao.userDao"></bean>
 
 </beans>
