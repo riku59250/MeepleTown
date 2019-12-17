@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Session} from '../../classes/session';
-import {SessionServiceService} from "../services/session-service.service";
+import {SessionServiceService} from '../services/session-service.service';
 
 @Component({
   selector: 'app-list-session',

@@ -14,7 +14,6 @@ const routes: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'createSession', component: CreateSessionComponent},
   {path: 'listSessions', component: ListSessionComponent},
-  {path: 'sessionPage', component: SessionPageComponent},
   {path: 'sessionPage/:id', component: SessionPageComponent},
   {path: 'listGame', component: ListGamesComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}

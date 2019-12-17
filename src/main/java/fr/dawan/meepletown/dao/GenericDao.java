@@ -43,7 +43,6 @@ public class GenericDao<T extends DbObject> {
 	}
 
 	public T findById(Class<T> clazz, long id) {
-
 		EntityManager entityManager = createEntityManager();
 		T entity = null;
 

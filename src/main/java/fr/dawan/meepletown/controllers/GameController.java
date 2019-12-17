@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +25,11 @@ public class GameController {
 	GenericDao<Game> dao;
 
 	@GetMapping("/{id}")
-	public Game findById(@PathParam(value = "id") long id) {
-		System.out.println(id);
+	public Game findById(@PathVariable(value = "id") long id) {
 		return dao.findById(Game.class, id);
 	}
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public Set<Game> findAll(){
 		return (Set<Game>) dao.findAll(Game.class);
 	}
@@ -40,7 +40,7 @@ public class GameController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public void delete(@PathParam(value = "id") long id) {
+	public void delete(@PathVariable(value = "id") long id) {
 		dao.delete(Game.class, id);
 	}
 	

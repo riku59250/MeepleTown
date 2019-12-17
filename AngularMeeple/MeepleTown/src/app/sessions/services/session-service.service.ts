@@ -24,19 +24,18 @@ export class SessionServiceService {
   }
 
   public getAllSessions(): Observable<Session[]> {
-    console.log('get all session angular');
-    console.log(this.url);
     return this.http.get<Session[]>(this.url);
   }
 
   public getSessionById(id: number): Observable<Session> {
-    const url2 = this.url + '/' + id;
-    return this.http.get<Session>(this.url);
+    console.log('get by id ');
+    const url2 = this.url + id;
+    console.log(url2)
+    return this.http.get<Session>(url2);
   }
 
   public addSession(session: Session) {
     return this.http.post(this.url, session);
-
   }
 
   public deleteSession(id: number) {

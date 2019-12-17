@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Session} from '../../classes/session';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SessionValidators} from '../../validators/session-validators';
-import {SessionServiceService} from "../services/session-service.service";
+import {SessionServiceService} from '../services/session-service.service';
 
 @Component({
   selector: 'app-create-session',
