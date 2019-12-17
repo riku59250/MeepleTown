@@ -13,6 +13,7 @@ import fr.dawan.meepletown.enums.GroupType;
 @Entity
 public class Groupe extends DbObject{
 	
+	private int idGroupe;
 	private String name;
 	private GroupType type;
 	private String description = "";
@@ -33,6 +34,14 @@ public class Groupe extends DbObject{
 		this.avatar = avatar;
 	}
 
+	public int getIdGroupe() {
+		return idGroupe;
+	}
+
+	public void setIdGroup(int idGroupe) {
+		this.idGroupe = idGroupe;
+	}
+	
 	public String getName() {
 		return name;
 	}

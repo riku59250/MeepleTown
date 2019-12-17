@@ -16,6 +16,15 @@
 	</properties>
 
 	<dependencies>
+	
+	
+	<!--  Javax -->
+	<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
+	
 		<!-- Bootstrap -->
 		<dependency>
 			<groupId>org.webjars</groupId>
