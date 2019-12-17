@@ -27,10 +27,17 @@ public class SessionController {
 	@Autowired
 	GenericDao<Session> dao;
 	
+
+	@GetMapping("/")
+	public Set<Session> findAll(){
+		return (Set<Session>) dao.findAll(Session.class);
+	}
+	
 	@GetMapping("/{id}")
 	public Session findBy(@PathVariable(value = "id")  long id) {
 		return dao.findById(Session.class, id);
 	}
+	
 	
 //	//recherche par lieu
 //	@GetMapping("/{postalCode}")
@@ -39,18 +46,15 @@ public class SessionController {
 //		return dao.findById(Session.class, postalCode);
 //	}
 	
-	@GetMapping("/")
-	public Set<Session> findAll(){
-		return (Set<Session>) dao.findAll(Session.class);
-	}
+	
 	
 	@PostMapping("/")
 	public void createOrUpdate(@RequestBody Session session) {
+		System.out.println(session);
 		dao.create(session);
 	}
 	
-	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable(value = "id") long id) {
 		dao.delete(Session.class, id);
 	}

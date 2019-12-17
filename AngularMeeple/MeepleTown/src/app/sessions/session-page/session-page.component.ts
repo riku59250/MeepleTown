@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Session} from '../../classes/session';
+import {Session} from '../class/session';
 import {SessionServiceService} from '../services/session-service.service';
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-session-page',

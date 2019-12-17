@@ -96,7 +96,7 @@ public class Session extends DbObject {
 		this.description = description;
 	}
 	
-	public boolean isPrivate() {
+	public boolean getIsPrivate() {
 		return isPrivate;
 	}
 	public void setPrivate(boolean isPrivate) {
@@ -104,10 +104,13 @@ public class Session extends DbObject {
 	}
 	@Override
 	public String toString() {
-		return "Session [title=" + title + ", place=" + place + ", sessionType=" + sessionType + ", nbMaxPlayers="
-				+ nbMaxPlayers + ", startDate=" + startDate + ", endDate=" + endDate + ", playersList=" + playersList
+		return "Session [title=" + title + ", place=" + place + ", sessionType=" + sessionType + ", description="
+				+ description + ", nbMaxPlayers=" + nbMaxPlayers + ", nbMinPlayers=" + nbMinPlayers + ", startDate="
+				+ startDate + ", endDate=" + endDate + ", isPrivate=" + isPrivate + ", playersList=" + playersList
 				+ ", gamesListSession=" + gamesListSession + "]";
 	}
+
+	
 	
 	
 }
