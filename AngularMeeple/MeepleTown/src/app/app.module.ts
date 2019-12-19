@@ -28,7 +28,8 @@ import {UserPageComponent} from "./users/user-page/user-page.component";
     ListGamesComponent,
     UserHeaderComponent,
     SearchFilterPipe,
-    UserPageComponent
+    UserPageComponent,
+    SearchFilterPipe
 
   ],
   imports: [
