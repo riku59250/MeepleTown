@@ -6,6 +6,7 @@ import {CreateSessionComponent} from './sessions/create-session/create-session.c
 import {ListSessionComponent} from "./sessions/list-session/list-session.component";
 import {SessionPageComponent} from "./sessions/session-page/session-page.component";
 import {ListGamesComponent} from "./games/list-games/list-games.component";
+import {UserPageComponent} from "./users/user-page/user-page.component";
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'listSessions', component: ListSessionComponent},
   {path: 'sessionPage/:id', component: SessionPageComponent},
   {path: 'listGame', component: ListGamesComponent},
+  {path: 'user', component: UserPageComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];
 

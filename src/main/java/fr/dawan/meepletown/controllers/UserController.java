@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.PathVariable;
->>>>>>> 6310b7271b1bc93bcac64f7561f35df8fe5b1086
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +33,6 @@ public class UserController {
 	
 	@RequestMapping("/{idUser}")
 	public User findBy(@PathVariable(value = "idUser") long id) {
-		System.out.println(id);
 		return dao.findById(User.class, id);
 	}
 	
@@ -45,8 +42,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/")
-	public void createOrUpdate(@RequestBody User user) {
-		System.out.println(user);
+	public void create(@RequestBody User user) {
 		dao.create(user);
 	}
 	
@@ -63,5 +59,11 @@ public class UserController {
 		return userDao.findByEmailAndPassword(email, password);
 	}
 	
+	@PutMapping("/")
+	public void Update(@RequestBody User user) {
+		System.out.println("put"+user);
+		System.out.println(user.getId());
+		dao.update(user);
+	}
 
 }

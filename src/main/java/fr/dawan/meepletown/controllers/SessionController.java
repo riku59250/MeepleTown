@@ -30,6 +30,7 @@ public class SessionController {
 
 	@GetMapping("/")
 	public Set<Session> findAll(){
+		System.out.println(dao.findAll(Session.class));
 		return (Set<Session>) dao.findAll(Session.class);
 	}
 	
