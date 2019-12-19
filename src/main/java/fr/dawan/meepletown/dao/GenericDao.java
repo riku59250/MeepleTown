@@ -112,6 +112,7 @@ public class GenericDao<T extends DbObject> {
 		// on crée la requête
 		TypedQuery<T> query = em.createQuery("SELECT entity FROM " + clazz.getName() + " entity", clazz);
 
+		
 		// on exécute la requête et on récupère le résultat
 		//TODO faut le transformer en SET maintenant
 		//resultat = query.getResultList();

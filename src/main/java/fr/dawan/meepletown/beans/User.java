@@ -6,9 +6,12 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.swing.ImageIcon;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -32,6 +35,9 @@ public class User extends DbObject{
 	@ManyToMany(mappedBy= "playersList", fetch =  FetchType.EAGER)
 	private Set<Session> listSession;
 	
+	@OneToMany(mappedBy= "author", fetch = FetchType.EAGER)
+	@JsonManagedReference
+	private Set<Session> session;
 	
 	//Create constructor
 	public User(int idUser, String pseudo, String mail, String password, int numDept, String city, ImageIcon avatar,

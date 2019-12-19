@@ -14,7 +14,11 @@ export class ListGamesComponent implements OnInit {
   constructor(private gameService: GamesServicesService) { }
 
   ngOnInit() {
-    this.games = this.gameService.getGames();
+   this.gameService.getGames().subscribe((data) => {
+     this.games = data;
+   }, (error) => {
+     console.log(error);
+   });
   }
 
 }

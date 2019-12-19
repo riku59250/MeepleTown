@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import fr.dawan.meepletown.enums.SessionType;
 
@@ -28,6 +30,8 @@ public class Session extends DbObject {
 	@ManyToMany( fetch =  FetchType.EAGER)
 	private Set<Game> gamesListSession;
 	
+	@ManyToOne
+	private User author;
 	
 	public Session() {}
 	public Session(String title) {
@@ -35,6 +39,18 @@ public class Session extends DbObject {
 	}
 	
 	
+	public Set<Game> getGamesListSession() {
+		return gamesListSession;
+	}
+	public void setGamesListSession(Set<Game> gamesListSession) {
+		this.gamesListSession = gamesListSession;
+	}
+	public User getAuthor() {
+		return author;
+	}
+	public void setAuthor(User author) {
+		this.author = author;
+	}
 	public String getTitle() {
 		return title;
 	}

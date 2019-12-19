@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserServicesService} from "../services/user-services.service";
 import {LoginService} from "../../login/services/login.service";
 import {Router} from "@angular/router";
+import {User} from "../class/user";
+import {HttpErrorResponse} from "@angular/common/http";
 
 
 @Component({
@@ -32,16 +34,19 @@ export class SigninComponent implements OnInit {
 
   public signin(): void {
     if (this.form.valid) {
-      this.service.login(this.form.value.email, this.form.value.password);
-      this.service.log().subscribe((value) => {
-        if ( value === null) {
-          this.error = true;
-        } else {
-          this.error = false;
-          this.router.navigateByUrl('/createSession');
-        }
-      });
-
+      this.service.login(this.form.value.email, this.form.value.password).subscribe(
+          (data) => {
+            if (data !== null ) {
+              this.service.log().next(data);
+              this.error = false;
+              this.router.navigateByUrl('/createSession');
+            }
+          },
+          (error) => {
+            this.service.log().next(null);
+            this.error = true;
+          }
+      );
       this.form.reset();
     }
   }

@@ -3,6 +3,6 @@
     <a routerLink="/signin">Connexion</a>
 </div>
 <ng-template #connect>
-    <a>{{user.value.pseudo}}</a>
+    <a routerLink="/user">{{user.value.pseudo}}</a>
     <button class="btn btn-danger" (click)="logout()">Déconnexion</button>
 </ng-template>

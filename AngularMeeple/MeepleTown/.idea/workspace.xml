@@ -79,6 +79,11 @@
       <option name="presentableId" value="Default" />
       <updated>1576491442479</updated>
       <workItem from="1576491443611" duration="12300000" />
+      <workItem from="1576597324880" duration="314000" />
+      <workItem from="1576672209282" duration="471000" />
+      <workItem from="1576672904473" duration="10461000" />
+      <workItem from="1576748944360" duration="738000" />
+      <workItem from="1576753229474" duration="53000" />
     </task>
     <servers />
   </component>
@@ -103,7 +108,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/app-routing.module.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

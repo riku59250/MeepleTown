@@ -8,22 +8,12 @@ import {User} from "../../users/class/user";
 })
 export class LoginService {
 
-  private isLoginSubject = new BehaviorSubject<User>(null);
+  private isLoginSubject = new BehaviorSubject<User >(null);
 
   private url = 'http://localhost:8080/meepletown/user/';
-  constructor(private http: HttpClient) { }
-  login(email: string, password: string): void {
-    this.http.get<User>(this.url + '/connect?email=' + email + '&password=' + password ).subscribe(
-        (data) => {
-
-          if (data !== null ) {
-              this.isLoginSubject.next(data);
-          }
-        },
-        (error) => {
-          this.isLoginSubject.next(null);
-        }
-    );
+  constructor(private http: HttpClient) {}
+  login(email: string, password: string): Observable<User>   {
+   return  this.http.get<User>(this.url + '/connect?email=' + email + '&password=' + password )
   }
 
   log(): BehaviorSubject<User> {
@@ -31,5 +21,9 @@ export class LoginService {
   }
   logout(): void {
       this.isLoginSubject.next(null);
+  }
+
+  update(user: User): Observable<User> {
+        return this.http.put<User>(this.url , user);
   }
 }
