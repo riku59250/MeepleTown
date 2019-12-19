@@ -12,5 +12,6 @@ export class Session {
     isPrivate: boolean;
     sessionType: string;
     playersList: User[];
+    author: User;
     // gamesListSession;
 }

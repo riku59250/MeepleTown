@@ -10,6 +10,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import fr.dawan.meepletown.enums.SessionType;
 
 @Entity
@@ -26,11 +28,14 @@ public class Session extends DbObject {
 	private boolean isPrivate;
 	
 	@ManyToMany( fetch =  FetchType.EAGER)
+	@JsonManagedReference
 	private Set<User> playersList;
 	@ManyToMany( fetch =  FetchType.EAGER)
+	@JsonManagedReference
 	private Set<Game> gamesListSession;
 	
 	@ManyToOne
+	@JsonManagedReference
 	private User author;
 	
 	public Session() {}

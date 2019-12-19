@@ -4,6 +4,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SessionValidators} from '../../validators/session-validators';
 import {SessionServiceService} from '../services/session-service.service';
 import {SessionType} from '../../enums/session-type.enum';
+import {LoginService} from "../../login/services/login.service";
+import {BehaviorSubject} from "rxjs";
+import {User} from "../../users/class/user";
 
 
 @Component({
@@ -27,8 +30,9 @@ export class CreateSessionComponent implements OnInit {
   // TODO changer pour que ça apparaisse avec du texte dans le html
   sessionTypes: SessionType[] = [SessionType.JDP, SessionType.JDR, SessionType.FIG, SessionType.GN]
   // TODO implémenter la liste de jeux
+  user: BehaviorSubject<User>;
 
-  constructor(private fb: FormBuilder, private sessionService: SessionServiceService) { }
+  constructor(private fb: FormBuilder, private sessionService: SessionServiceService, private logService: LoginService) { }
 
   ngOnInit() {
     this.title = new FormControl(null, [Validators.required]);
@@ -73,6 +77,8 @@ export class CreateSessionComponent implements OnInit {
       } else {
         session.isPrivate = this.isPrivate.value;
       }
+      this.user = this.logService.log();
+      session.author = this.user.getValue();
       session.sessionType = SessionType[this.type.value];
       this.sessionService.addSession(session).subscribe();
       this.form.reset();

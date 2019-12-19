@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Session} from '../class/session';
 import {SessionServiceService} from '../services/session-service.service';
 import {User} from '../../users/class/user';
+import {LoginService} from '../../login/services/login.service';
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-list-session',
@@ -12,11 +14,13 @@ export class ListSessionComponent implements OnInit {
   listSessions: Session[] = [];
   searchString: string;
   isComplete = false ;
+  user: BehaviorSubject<User>;
 
-  constructor(private sessionService: SessionServiceService) { }
+  constructor(private sessionService: SessionServiceService, private logService: LoginService) { }
 
   ngOnInit() {
     this.getAllSession();
+    this.user = this.logService.log();
   }
 
   deleteSession(id: number) {

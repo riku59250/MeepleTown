@@ -27,12 +27,15 @@ public class User extends DbObject{
 	private ImageIcon avatar;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private Set<Game> listGame;
 	
 	@ManyToMany(mappedBy= "membersList", fetch =  FetchType.EAGER)
+	@JsonManagedReference
 	private Set<Groupe> listGroup;
 	
 	@ManyToMany(mappedBy= "playersList", fetch =  FetchType.EAGER)
+	@JsonManagedReference
 	private Set<Session> listSession;
 	
 	@OneToMany(mappedBy= "author", fetch = FetchType.EAGER)

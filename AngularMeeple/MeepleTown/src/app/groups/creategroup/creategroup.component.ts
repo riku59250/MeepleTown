@@ -10,14 +10,6 @@ import {Group} from '../group/group';
   styleUrls: ['./creategroup.component.scss']
 })
 export class CreategroupComponent implements OnInit {
-
-  /*
-     private nameGroup: string;
-     private city: string;
-     private nameDept: string;
-     private groupType: boolean;
-  */
-
   nameGroup: FormControl;
   nameGroupMinLength = 8;
   nameGroupMaxLength = 30;
@@ -28,13 +20,13 @@ export class CreategroupComponent implements OnInit {
   nameCityMaxLength = 45;
   groupForm: FormGroup;
 
-
-
   constructor(private formB: FormBuilder) { }
 
     onSubmit() {
-      console.log(this.groupForm.value);
-      this.groupForm.reset();
+      if (this.groupForm.valid) {
+        console.log(this.groupForm.value);
+        this.groupForm.reset();
+      }
     }
 
   ngOnInit() {
@@ -53,34 +45,24 @@ export class CreategroupComponent implements OnInit {
     });
   }
 
-/*
-  public createGroup(group: Group) {
-    if (this.groupForm.valid) {
-      console.log(this.groupForm.value);
-      // tslint:disable-next-line:max-line-length
-      group = new Group(this.groupForm.value.nameGroup, this.groupForm.value.groupType, this.groupForm.value.nameDept, this.groupForm.value.city);
-      console.log(group);
-      // tslint:disable-next-line:no-unused-expression
-      this.groupForm.reset();
-    }
-  }
- */
-
   public controlGroupName() {
     if (this.nameGroup.touched) {
       if (this.nameGroup.hasError('required')) {
         return 'Un nom de groupe est obligatoire';
       }
-
+      if (this.nameGroup.hasError('minlength')) {
+        return 'Le nom du groupe est trop court, il doit contenir au moins ' + this.nameGroupMinLength
+            + ' caractères maximum (actuellement ' + this.nameGroup.value.length + ')';
+      }
       if (this.nameGroup.hasError('maxlength')) {
         return 'Le nom du groupe est trop long, il doit contenir ' + this.nameGroupMaxLength
-          + ' caract�res maximum (actuellement ' + this.nameGroup.value.length + ')';
+          + ' caractères maximum (actuellement ' + this.nameGroup.value.length + ')';
       }
     }
   }
 
-  public controlGroupType(){
-    if(this.groupType.dirty) {
+  public controlGroupType() {
+    if (this.groupType.dirty) {
       if (this.groupType.hasError('required')) {
         return 'Veuillez choisir un type de groupe';
       }
@@ -107,7 +89,7 @@ export class CreategroupComponent implements OnInit {
   public controlNameDept() {
     if (this.nameDept.touched) {
       if (this.nameDept.hasError('required')) {
-        return 'Veuillez choisir un d�partement';
+        return 'Veuillez choisir un département';
       }
     }
   }
@@ -119,7 +101,7 @@ export class CreategroupComponent implements OnInit {
       }
       if (this.city.hasError('maxlength')) {
         return 'Le nom de la ville est trop long, il doit contenir ' + this.nameCityMaxLength
-            + ' caract�res maximum (actuellement ' + this.city.value.length + ')';
+            + ' caractères maximum (actuellement ' + this.city.value.length + ')';
       }
     }
   }

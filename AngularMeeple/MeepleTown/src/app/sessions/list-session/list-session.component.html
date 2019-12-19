@@ -15,7 +15,7 @@
             <th scope="col">Lieu</th>
             <th scope="col">Date</th>
             <th scope="col">Nombre de joueurs</th>
-            <th scope="col">Publique ?</th>
+            <th scope="col">Auteur</th>
             <th> Actions possibles</th>
         </tr>
         </thead>
@@ -25,7 +25,7 @@
             <td>{{session.place}}</td>
             <td> du {{session.startDate | date: 'dd/MM/yyy hh:mm'}} au {{session.endDate | date: 'dd/MM/yyy hh:mm'}}</td>
             <td>{{session.nbMinPlayers}} à {{session.nbMaxPlayers}}</td>
-            <td>{{session.isPrivate? 'non': 'oui'}}</td>
+            <td>{{session.author?.pseudo}}</td>
             <td> <button class="btn btn-secondary" (click)="addPlayer(session.id)">Rejoindre</button> <button class="btn btn-danger" (click)="deleteSession(session.id)">X</button> </td>
         </tr>
         </tbody>

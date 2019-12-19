@@ -1,18 +1,18 @@
-<div>
-    <h3>Connexion</h3>
+
+    <h1>Connexion</h1>
+
     <form [formGroup]="form"  (submit)="signin()">
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Email:</label>
-            <div class="col-10">
-                <input type="text"  class="form-control" placeholder="Email ..." formControlName="email" />
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" placeholder="Email ..." formControlName="email" />
                 <p class="text-danger" *ngIf="controlEmail(); let message">{{message}}</p>
             </div>
         </div>
 
-
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Password:</label>
-            <div class="col-10" >
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="mdp">Mot de passe</label>
                 <input type="password"  class="form-control" placeholder="Password ..." formControlName="password" />
                 <p class="text-danger" *ngIf="controlPassword(); let message">{{message}}</p>
             </div>
@@ -25,4 +25,4 @@
         </div>
     </form>
     <p class="text-danger" *ngIf="messageError(); let message">{{message}}</p>
-</div>
+
