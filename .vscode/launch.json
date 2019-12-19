@@ -1,0 +1,32 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome 127.0.0.1",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9241,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://127.0.0.1:59311/p/MeepleTown/AngularMeeple/MeepleTown/src/app/group/creategroup/creategroup.component.html?_cmAuth\u003dwnldxkehta"
+    },
+    {
+      "name": "Launch Chrome 127.0.0.1 (1)",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9232,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://127.0.0.1:59311/p/MeepleTown/AngularMeeple/MeepleTown/src/app/users/signin/signin.component.html?_cmAuth\u003dwnldxkehta"
+    },
+    {
+      "name": "Launch Chrome 127.0.0.1 (2)",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9274,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://127.0.0.1:59311/p/MeepleTown/AngularMeeple/MeepleTown/src/app/groups/creategroup/creategroup.component.html?_cmAuth\u003dwnldxkehta"
+    }
+  ]
+}
