@@ -20,7 +20,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -55,6 +55,7 @@
       <workItem from="1576491746346" duration="15116000" />
       <workItem from="1576572440638" duration="18168000" />
       <workItem from="1576672222264" duration="336000" />
+      <workItem from="1576680997916" duration="15058000" />
     </task>
     <servers />
   </component>

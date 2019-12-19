@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {CustomValidator} from "../../validators/custom-validator";
-import {UserServicesService} from "../services/user-services.service";
-import {User} from "../class/user";
-import {LoginService} from "../../login/services/login.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {CustomValidator} from '../../validators/custom-validator';
+import {UserServicesService} from '../services/user-services.service';
+import {User} from '../class/user';
+import {LoginService} from '../../login/services/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',

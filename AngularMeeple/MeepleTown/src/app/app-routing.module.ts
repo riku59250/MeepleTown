@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import {SignupComponent} from './users/signup/signup.component';
 import {SigninComponent} from './users/signin/signin.component';
 import {CreateSessionComponent} from './sessions/create-session/create-session.component';
-import {ListSessionComponent} from "./sessions/list-session/list-session.component";
-import {SessionPageComponent} from "./sessions/session-page/session-page.component";
-import {ListGamesComponent} from "./games/list-games/list-games.component";
+import {ListSessionComponent} from './sessions/list-session/list-session.component';
+import {SessionPageComponent} from './sessions/session-page/session-page.component';
+import {ListGamesComponent} from './games/list-games/list-games.component';
+import {CreategroupComponent} from './groups/creategroup/creategroup.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'listSessions', component: ListSessionComponent},
   {path: 'sessionPage/:id', component: SessionPageComponent},
   {path: 'listGame', component: ListGamesComponent},
+  {path: 'createGroup' , component: CreategroupComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];
 

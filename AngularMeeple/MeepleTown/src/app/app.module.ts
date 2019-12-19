@@ -11,12 +11,12 @@ import { CreateSessionComponent } from './sessions/create-session/create-session
 import { ListSessionComponent } from './sessions/list-session/list-session.component';
 import { SessionPageComponent } from './sessions/session-page/session-page.component';
 import { ListGamesComponent } from './games/list-games/list-games.component';
-<<<<<<< HEAD
 import { UserHeaderComponent } from './header/user-header/user-header.component';
-=======
 import { SearchFilterPipe } from './filters/search-filter.pipe';
->>>>>>> 6310b7271b1bc93bcac64f7561f35df8fe5b1086
+import {ListGroupComponent} from "./groups/list-group/list-group.component";
+import {CreategroupComponent} from "./groups/creategroup/creategroup.component";
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,11 +26,10 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
     ListSessionComponent,
     SessionPageComponent,
     ListGamesComponent,
-<<<<<<< HEAD
-    UserHeaderComponent
-=======
-    SearchFilterPipe
->>>>>>> 6310b7271b1bc93bcac64f7561f35df8fe5b1086
+    UserHeaderComponent,
+    SearchFilterPipe,
+      ListGroupComponent,
+      CreategroupComponent
   ],
   imports: [
     BrowserModule,
