@@ -7,7 +7,7 @@ import {ListSessionComponent} from './sessions/list-session/list-session.compone
 import {SessionPageComponent} from './sessions/session-page/session-page.component';
 import {ListGamesComponent} from './games/list-games/list-games.component';
 import {CreategroupComponent} from './groups/creategroup/creategroup.component';
-import {UserPageComponent} from "./users/user-page/user-page.component";
+import {UserPageComponent} from './users/user-page/user-page.component';
 
 
 

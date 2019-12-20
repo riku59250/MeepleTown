@@ -77,5 +77,10 @@
             <label class="form-check-label" for="public">Partie privée</label>
         </div>
     </div>
-    <input class="btn btn-primary" type="submit" value="Créer la partie" />
+    <div class="form-group row">
+        <div class="col-5 offset-3">
+            <input type="submit" name="send" class="btn btn-outline-dark " value="Créer la partie"/> -
+            <input type="button" name="cancel" class="btn btn-dark"  value="Annuler" (click)="openDialogCancel()" />
+        </div>
+    </div>
 </form>

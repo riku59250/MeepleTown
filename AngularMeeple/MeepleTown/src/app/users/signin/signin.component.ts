@@ -53,7 +53,7 @@ export class SigninComponent implements OnInit {
   public controlEmail(): string {
     if (this.email.touched) {
       if (this.email.hasError('required')) {
-        return  `L'email est requis pour pouvoir ce connecter`;
+        return  `L'e-mail est requis pour pouvoir se connecter.`;
       }
     }
     return null;
@@ -61,14 +61,14 @@ export class SigninComponent implements OnInit {
   public controlPassword(): string {
     if (this.password.touched) {
       if (this.password.hasError('required')) {
-        return `Le mot de passe est requis pour pouvoir ce connecter`;
+        return `Le mot de passe est requis pour pouvoir se connecter.`;
       }
     }
     return null;
   }
   public messageError(): string{
     if (this.error) {
-      return "Le mot de passe ou l'address email est invalide !";
+      return `Le mot de passe ou l'addresse email est invalide !`;
     }
     return null;
   }

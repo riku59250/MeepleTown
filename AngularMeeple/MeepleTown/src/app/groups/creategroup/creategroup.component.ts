@@ -3,6 +3,8 @@ import { CheckboxControlValueAccessor, FormControl, FormBuilder, Validators, For
 import { NgForm } from '@angular/forms';
 import { GroupService} from '../services/group.service';
 import {Group} from '../group/group';
+import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-creategroup',
@@ -20,7 +22,7 @@ export class CreategroupComponent implements OnInit {
   nameCityMaxLength = 45;
   groupForm: FormGroup;
 
-  constructor(private formB: FormBuilder) { }
+  constructor(private dialog: MatDialog, private formB: FormBuilder) { }
 
     onSubmit() {
       if (this.groupForm.valid) {
@@ -48,15 +50,15 @@ export class CreategroupComponent implements OnInit {
   public controlGroupName() {
     if (this.nameGroup.touched) {
       if (this.nameGroup.hasError('required')) {
-        return 'Un nom de groupe est obligatoire';
+        return 'Un nom de groupe est obligatoire.';
       }
       if (this.nameGroup.hasError('minlength')) {
         return 'Le nom du groupe est trop court, il doit contenir au moins ' + this.nameGroupMinLength
-            + ' caractères maximum (actuellement ' + this.nameGroup.value.length + ')';
+            + ' caractères (actuellement ' + this.nameGroup.value.length + ').';
       }
       if (this.nameGroup.hasError('maxlength')) {
         return 'Le nom du groupe est trop long, il doit contenir ' + this.nameGroupMaxLength
-          + ' caractères maximum (actuellement ' + this.nameGroup.value.length + ')';
+          + ' caractères maximum (actuellement ' + this.nameGroup.value.length + ').';
       }
     }
   }
@@ -64,32 +66,16 @@ export class CreategroupComponent implements OnInit {
   public controlGroupType() {
     if (this.groupType.dirty) {
       if (this.groupType.hasError('required')) {
-        return 'Veuillez choisir un type de groupe';
+        return 'Le type de groupe est obligatoire.';
       }
     }
     return null;
   }
 
-
-/*
-  public controlGroupType() {
-    if (this.groupType.touched) {
-      if (this.groupType.hasError('required')) {
-        return 'Veuillez choisir un type de groupe';
-      }
-      if (this.groupType.value === true) {
-        console.log('Particulier');
-      }
-      if (this.groupType.value === false) {
-        console.log('Association');
-      }
-    }
-  }
-*/
   public controlNameDept() {
     if (this.nameDept.touched) {
       if (this.nameDept.hasError('required')) {
-        return 'Veuillez choisir un département';
+        return 'Le département est obligatoire';
       }
     }
   }
@@ -97,7 +83,7 @@ export class CreategroupComponent implements OnInit {
   public controlCity() {
     if (this.city.touched) {
       if (this.city.hasError('required')) {
-        return 'Un nom de ville est obligatoire';
+        return 'La ville est obligatoire';
       }
       if (this.city.hasError('maxlength')) {
         return 'Le nom de la ville est trop long, il doit contenir ' + this.nameCityMaxLength
@@ -106,7 +92,16 @@ export class CreategroupComponent implements OnInit {
     }
   }
 
-
+  openDialogCancel() {
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Annuler la création',
+        message: `Êtes-vous sûr de vouloir annuler la création de ce groupe ? Toutes les données vont être effacées du formulaire.`, close: true}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.groupForm.reset();
+      }
+    });
+  }
 
 
 

@@ -3,7 +3,7 @@
 
     <form [formGroup]="form"  (submit)="signup()">
         <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
                 <label for="pseudo">Pseudo*</label>
                 <input type="text" id="pseudo" class="form-control" placeholder="Pseudo ..." formControlName="pseudo" />
                 <p class="text-danger" *ngIf="controlPseudo(); let message">{{message}}</p>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
                 <label for="email">E-mail*</label>
                 <input type="text" id="email" class="form-control" placeholder="Email ..." formControlName="email" />
                 <p class="text-danger" *ngIf="controlEmail(); let message">{{message}}</p>
@@ -40,7 +40,7 @@
         </div>-->
 
         <div class="form-row">
-            <div class="col-md-3 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="departement">Département*</label>
                 <select class="form-control" id="departement"  formControlName="departement">
                     <option value="default">-- Choix du département --</option>
@@ -150,7 +150,7 @@
                 <p class="text-danger" *ngIf="controlDepartement(); let message">{{message}}</p>
             </div>
 
-            <div class="col-md-5 mb-3">
+            <div class="col-md-8 mb-3">
                 <label for="ville">Ville*</label>
                 <input type="text" id="ville" class="form-control" placeholder="Ville..." formControlName="city" />
                 <p class="text-danger" *ngIf="controlVille(); let message">{{message}}</p>
@@ -158,14 +158,14 @@
         </div>
 
         <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
                 <label for="mdp">Mot de passe*</label>
-                <input type="password" id="mdp" class="form-control" placeholder="Mot de pass ..." formControlName="password" />
+                <input type="password" id="mdp" class="form-control" placeholder="Mot de passe..." formControlName="password" />
                 <p class="text-danger" *ngIf="controlPassword(); let message">{{message}}</p>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
                 <label for="confirm">Confirmation*</label>
                 <input type="password" id="confirm" class="form-control" placeholder="Confirmation ..." formControlName="confirm" />
                 <p class="text-danger" *ngIf="controlConfirm(); let message">{{message}}</p>
@@ -174,7 +174,7 @@
 
         <div class="form-group row">
             <div class="col-5 offset-3">
-                <input type="submit" name="send" class="btn btn-primary " value="S'inscrire" />
+                <input type="submit" name="send" class="btn btn-outline-dark " value="S'inscrire" />
             </div>
         </div>
     </form>
