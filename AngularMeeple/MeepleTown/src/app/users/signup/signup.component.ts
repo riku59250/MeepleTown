@@ -5,6 +5,8 @@ import {UserServicesService} from '../services/user-services.service';
 import {User} from '../class/user';
 import {LoginService} from '../../login/services/login.service';
 import {Router} from '@angular/router';
+import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-signup',
@@ -23,11 +25,11 @@ export class SignupComponent implements OnInit {
   passwordLength = 8;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private userServices: UserServicesService, private log: LoginService, private router: Router) { }
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private userServices: UserServicesService, private log: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.pseudo = new FormControl(null, [Validators.required]);
-    this.genre = new FormControl(null, [Validators.required]);
+    this.genre = new FormControl();
     this.departement = new FormControl(null, [Validators.required]);
     this.city = new FormControl(null, [Validators.required]);
     this.confirm = new FormControl(null, [Validators.required]);
@@ -55,25 +57,33 @@ export class SignupComponent implements OnInit {
 
   public signup() {
     if ( this.form.valid) {
-      console.log(this.form.value);
       let user = new User(this.form.value.pseudo, this.form.value.email, this.form.value.password, this.form.value.departement, this.form.value.city);
-      console.log(user);
       this.userServices.createUser(user).subscribe(() => {
         this.log.login(user.mail, user.password);
+        // this.openDialogValid(user);
       });
-      this.form.reset();
-    } else {
-      console.log(this.form.invalid);
     }
+  }
+
+  openDialogValid(user: User) {
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Bravo !',
+        message: `Votre compte a été crée. Vous allez être connecté au site. `, close: true}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.form.reset();
+        this.log.login(user.mail, user.password);
+      }
+    });
   }
 
   public controlEmail(): string {
     if (this.email.touched) {
       if (this.email.hasError('required')) {
-        return `L'adresse email est obligatoire`;
+        return `L'adresse e-mail est obligatoire.`;
       }
       if (this.email.hasError('error_mail')) {
-        return `L'adresse email n'est pas bonne`;
+        return `L'adresse e-mail n'est pas correcte.`;
       }
 
     }
@@ -82,7 +92,7 @@ export class SignupComponent implements OnInit {
   public controlPseudo(): string {
     if (this.pseudo.touched) {
       if (this.pseudo.hasError('required')) {
-        return `Le pseudo est obligatoire`;
+        return `Le pseudo est obligatoire.`;
       }
     }
     return null;
@@ -90,7 +100,7 @@ export class SignupComponent implements OnInit {
   public controlDepartement(): string {
     if (this.departement.touched) {
       if (this.departement.hasError('required')) {
-        return `le departement est obligatoire`;
+        return `Le departement est obligatoire.`;
       }
     }
     return null;
@@ -98,7 +108,7 @@ export class SignupComponent implements OnInit {
   public controlVille(): string {
     if (this.city.touched) {
       if (this.city.hasError('required')) {
-        return `la ville est obligatoire`;
+        return `La ville est obligatoire.`;
       }
     }
     return null;
@@ -107,10 +117,10 @@ export class SignupComponent implements OnInit {
   public controlPassword(): string {
     if (this.password.touched) {
       if (this.password.hasError('required')) {
-        return `Le mot de passe est obligatoire`;
+        return `Le mot de passe est obligatoire.`;
       }
       if (this.password.hasError('minlength')) {
-        return `Le password doit contenir aux moins ${this.passwordLength} (actuellement ${this.password.value.length})`;
+        return `Le mot de passe doit contenir au moins ${this.passwordLength} caractères (actuellement ${this.password.value.length}).`;
       }
     }
     return null;
@@ -118,10 +128,10 @@ export class SignupComponent implements OnInit {
   public controlConfirm(): string {
     if (this.confirm.touched) {
       if (this.confirm.hasError('required')) {
-        return `Confirmé le mot de passe est obligatoire`;
+        return `La confirmation du mot de passe est obligatoire.`;
       }
       if (this.form.hasError('error_password')) {
-        return 'Les mot de passe doivent etre identique !';
+        return 'Les mots de passe doivent être identiques.';
       }
     }
     return null;
@@ -129,7 +139,7 @@ export class SignupComponent implements OnInit {
   public controlGenre(): string {
     if (this.genre.dirty) {
       if (this.genre.hasError('required')) {
-        return `N'oublier pas de selectionner votre sexe !`;
+        return `N'oubliez pas de selectionner votre sexe !`;
       }
     }
     return null;

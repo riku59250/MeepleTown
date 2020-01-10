@@ -4,6 +4,11 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SessionValidators} from '../../validators/session-validators';
 import {SessionServiceService} from '../services/session-service.service';
 import {SessionType} from '../../enums/session-type.enum';
+import {LoginService} from "../../login/services/login.service";
+import {BehaviorSubject} from "rxjs";
+import {User} from "../../users/class/user";
+import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -27,8 +32,9 @@ export class CreateSessionComponent implements OnInit {
   // TODO changer pour que ça apparaisse avec du texte dans le html
   sessionTypes: SessionType[] = [SessionType.JDP, SessionType.JDR, SessionType.FIG, SessionType.GN]
   // TODO implémenter la liste de jeux
+  user: BehaviorSubject<User>;
 
-  constructor(private fb: FormBuilder, private sessionService: SessionServiceService) { }
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private sessionService: SessionServiceService, private logService: LoginService) { }
 
   ngOnInit() {
     this.title = new FormControl(null, [Validators.required]);
@@ -73,6 +79,8 @@ export class CreateSessionComponent implements OnInit {
       } else {
         session.isPrivate = this.isPrivate.value;
       }
+      this.user = this.logService.log();
+      session.author = this.user.getValue();
       session.sessionType = SessionType[this.type.value];
       this.sessionService.addSession(session).subscribe();
       this.form.reset();
@@ -92,10 +100,10 @@ export class CreateSessionComponent implements OnInit {
   public controlEndTime(): string {
     if ( this.endDate.touched ) {
       if (this.endDate.hasError('required')) {
-        return `Le champ est obligatoire.`;
+        return `L'heure est obligatoire.`;
       }
       if (this.form.hasError('valid_end_date')) {
-        return `La date de fin doit être située après la date de début.`;
+        return `L'heure de fin doit être située après l'heure de début.`;
       }
     }
     return null;
@@ -104,10 +112,10 @@ export class CreateSessionComponent implements OnInit {
   public controlDate(): string {
     if ( this.date.touched ) {
       if (this.date.hasError('required')) {
-        return `Le champ est obligatoire.`;
+        return `La date est obligatoire.`;
       }
       if (this.date.hasError('valid_date')) {
-        return `La date de fin doit être située après la date d'aujourd'hui.`;
+        return `La date doit être située après la date d'aujourd'hui.`;
       }
     }
     return null;
@@ -116,7 +124,7 @@ export class CreateSessionComponent implements OnInit {
   public controlTitle(): string {
     if ( this.title.touched ) {
       if (this.title.hasError('required')) {
-        return `Le champ est obligatoire.`;
+        return `Le titre est obligatoire.`;
       }
     }
     return null;
@@ -124,7 +132,7 @@ export class CreateSessionComponent implements OnInit {
   public controlPlace(): string {
     if ( this.place.touched ) {
       if (this.place.hasError('required')) {
-        return `Le champ est obligatoire.`;
+        return `Le lieu est obligatoire.`;
       }
     }
     return null;
@@ -132,7 +140,7 @@ export class CreateSessionComponent implements OnInit {
   public controlStartTime(): string {
     if ( this.startDate.touched ) {
       if (this.startDate.hasError('required')) {
-        return `Le champ est obligatoire.`;
+        return `L'heure est obligatoire.`;
       }
     }
     return null;
@@ -140,7 +148,7 @@ export class CreateSessionComponent implements OnInit {
   public controlMaxPlayers(): string {
     if ( this.nbMaxPlayers.touched ) {
       if (this.nbMaxPlayers.hasError('required')) {
-        return `Le champ est obligatoire.`;
+        return `Le nombre de joueurs est obligatoire.`;
       }
       if (this.nbMaxPlayers.hasError('valid_nb')) {
         return `Le nombre de joueurs doit être positif. `;
@@ -154,13 +162,24 @@ export class CreateSessionComponent implements OnInit {
   public controlMinPlayers(): string {
     if ( this.nbMinPlayers.touched ) {
       if (this.nbMinPlayers.hasError('required')) {
-        return `Le champ est obligatoire.`;
+        return `Le nombre de joueurs est obligatoire.`;
       }
       if (this.nbMinPlayers.hasError('valid_nb')) {
         return `Le nombre de joueurs doit être positif. `;
       }
     }
     return null;
+  }
+
+  openDialogCancel() {
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Annuler la création',
+          message: `Êtes-vous sûr de vouloir annuler la création de cette partie ? Toutes les données vont être effacées du formulaire.`, close: true}
+      });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.form.reset();
+      }
+    });
   }
 
 }

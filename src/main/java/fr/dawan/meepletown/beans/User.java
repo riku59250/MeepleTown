@@ -1,24 +1,20 @@
 package fr.dawan.meepletown.beans;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.swing.ImageIcon;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
 public class User extends DbObject{
 
   //Attributs Initialisation
-	private int idUser;
 	private String pseudo;
 	private String mail;
 	private String password;
@@ -26,23 +22,25 @@ public class User extends DbObject{
 	private String city;
 	private ImageIcon avatar;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	private Set<Game> listGame;
+	@ManyToMany()
+	@JsonIgnore
+	private Set<Game> listGame; 
 	
-	@ManyToMany(mappedBy= "membersList", fetch =  FetchType.EAGER)
+	@ManyToMany(mappedBy= "membersList", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Groupe> listGroup;
 	
-	@ManyToMany(mappedBy= "playersList", fetch =  FetchType.EAGER)
+	@ManyToMany(mappedBy= "playersList", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Session> listSession;
 	
-	@OneToMany(mappedBy= "author", fetch = FetchType.EAGER)
-	@JsonManagedReference
+	@OneToMany(mappedBy= "author", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Session> session;
 	
 	//Create constructor
-	public User(int idUser, String pseudo, String mail, String password, int numDept, String city, ImageIcon avatar,
+	public User( String pseudo, String mail, String password, int numDept, String city, ImageIcon avatar,
 			Set<Groupe> listGroup, Set<Game> listGame) {
-		this.idUser = idUser;
 		this.pseudo = pseudo;
 		this.mail = mail;
 		this.password = password;
@@ -56,6 +54,8 @@ public class User extends DbObject{
 	
 	public User () {
 		super();
+		
+		
 	}
 	
 	
@@ -71,9 +71,7 @@ public class User extends DbObject{
 
 
 	//Getters
-	public int getIdUser() {
-		return idUser;
-	}
+	
 
 	public String getPseudo() {
 		return pseudo;
@@ -108,9 +106,6 @@ public class User extends DbObject{
 	}
 
 	//Seeters
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
 
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
@@ -147,10 +142,13 @@ public class User extends DbObject{
 
 	@Override
 	public String toString() {
-		return "User [idUser=" + idUser + ", pseudo=" + pseudo + ", mail=" + mail + ", password=" + password
-				+ ", numDept=" + numDept + ", city=" + city + ", avatar=" + avatar + ", listGame=" + listGame
-				+ ", listGroup=" + listGroup + ", listSession=" + listSession + "]";
+		return "User [pseudo=" + pseudo + ", mail=" + mail + ", password=" + password + ", numDept=" + numDept
+				+ ", city=" + city + ", avatar=" + avatar + "]";
 	}
+
+
+
+
 	
 	
   

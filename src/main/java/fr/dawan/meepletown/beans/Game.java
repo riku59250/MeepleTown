@@ -1,11 +1,11 @@
 package fr.dawan.meepletown.beans;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import fr.dawan.meepletown.enums.GameType;
 
@@ -18,13 +18,16 @@ public class Game extends DbObject{
 	private int nbrMinJoueur;
 	private int nbrMaxJoueur;
 	
-	@ManyToMany(mappedBy= "gamesList", fetch =  FetchType.EAGER)
+	@ManyToMany(mappedBy= "gamesList")
+	@JsonIgnore
 	private Set<Groupe> listGroup;
 	
-	@ManyToMany(mappedBy= "gamesListSession", fetch =  FetchType.EAGER)
+	@ManyToMany(mappedBy= "gamesListSession")
+	@JsonIgnore
 	private Set<Session> listSession;
 	
-	@ManyToMany(mappedBy= "listGame", fetch =  FetchType.EAGER)
+	@ManyToMany(mappedBy= "listGame")
+	@JsonIgnore
 	private Set<User> listUsers;
 	
 	
@@ -95,6 +98,8 @@ public class Game extends DbObject{
 		return "Game [name=" + name + ", type=" + type + ", description=" + description + ", nbrMinJoueur="
 				+ nbrMinJoueur + ", nbrMaxJoueur=" + nbrMaxJoueur + "]";
 	}
+	
+	
 	
 	
 }

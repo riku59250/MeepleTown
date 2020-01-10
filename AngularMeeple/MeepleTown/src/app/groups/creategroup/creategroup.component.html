@@ -1,34 +1,37 @@
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
+<h1>Créer un groupe </h1>
+
 <form [formGroup]='groupForm'  (submit)="onSubmit()">
-		<div class="form-group">
-		<label>Nom du groupe:</label>
-		<div class="col-10 offset-6">
-		<input type="text" class="form-control"  placeholder="Entrer un nom de groupe" formControlName="nameGroup" />
-			<p class="text-danger" *ngIf="controlGroupName(); let message">{{message}}</p> 
-		</div>
-		</div>
 
-		<div class="form-group">
-			<label>Choix type de groupe :</label>	
-			<div class="col-10 offset-6">
-				<div class="form-check">
-					<label class="form-check-label" for="Particulier">Particulier</label>
-						<input type="radio"  id="Particulier" value="Particulier"   class="form-control" name="groupType"  formControlName="groupType"/>
-					<p class="text-danger" *ngIf="controlGroupType(); let message">{{message}}</p>
-				</div>
-				<div class="form-check">
-					<label class="form-check-label" for="Association">Association</label>
-					<input type="radio"  id="Association" value="Association"   class="form-control" name="groupType"  formControlName="groupType"/>
-					<p class="text-danger" *ngIf="controlGroupType(); let message">{{message}}</p>
-				</div>
-		</div>
-		</div>
+	<div class="custom-control custom-radio custom-control-inline">
+		<input type="radio"  id="particulier" value="Particulier" class="custom-control-input" name="groupType"  formControlName="groupType" />
+		<label class="custom-control-label" for="particulier">Particulier</label>
+	</div>
+	<div class="custom-control custom-radio custom-control-inline">
+		<input type="radio"  id="association" value="Association" class="custom-control-input" name="groupType"  formControlName="groupType" />
+		<label class="custom-control-label" for="association">Association</label>
+	</div>
+	<div class="custom-control custom-radio custom-control-inline">
+		<input type="radio"  id="entreprise" value="Entreprise" class="custom-control-input" name="groupType"  formControlName="groupType" />
+		<label class="custom-control-label" for="entreprise">Entreprise</label>
+	</div>
+	<p class="text-danger" *ngIf="controlGroupType(); let message">{{message}}</p>
 
-		<div class="form-group ">
-			<label>D�partement</label>
-			<div class="col-10 offset-6">
-			<select class="form-control"   formControlName="nameDept">
+	<br /><br />
+
+
+	<div class="form-row">
+		<div class="col-md-12 mb-3">
+			<label for="group">Nom du groupe*</label>
+			<input type="text" id="group" class="form-control"  placeholder="Entrer un nom de groupe" formControlName="nameGroup" />
+			<p class="text-danger" *ngIf="controlGroupName(); let message">{{message}}</p>
+		</div>
+	</div>
+
+
+	<div class="form-row">
+		<div class="col-md-3 mb-3">
+			<label for="dep">Département*</label>
+			<select class="form-control" id="dep"  formControlName="nameDept">
 				<option value="default">-- Choix du département --</option>
 				<option value="01">01 - Ain </option>
 				<option value="02">02 - Aisne </option>
@@ -42,7 +45,7 @@
 				<option value="10">10 - Aube </option>
 				<option value="11">11 - Aude </option>
 				<option value="12">12 - Aveyron </option>
-				<option value="13">13 - Bouches du Rh�ne </option>
+				<option value="13">13 - Bouches du Rhône </option>
 				<option value="14">14 - Calvados </option>
 				<option value="15">15 - Cantal </option>
 				<option value="16">16 - Charente </option>
@@ -135,43 +138,18 @@
 			</select>
 			<p class="text-danger" *ngIf="controlNameDept(); let message">{{message}}</p>
 		</div>
-		</div>
-		<div class="form-group ">
-			<label >Ville</label>
-			<div class="col-10 offset-6">
-				<input type="text"  placeholder="Entrer une ville" class="form-control" formControlName="city" >
-				<p class="text-danger" *ngIf="controlCity(); let message">{{message}}</p>
-		</div>
-		</div>
 
-		<div class="form-group">
-			<div class="col-10 offset-6">
-			<label>Description du groupe :</label>
-			<input type="text" class="form-control" formControlName="description">
-				<p class="text-danger" *ngIf="controlDescription(); let message">{{message}}</p>
+		<div class="col-md-9 mb-3">
+			<label for="ville">Ville*</label>
+			<input type="text" id="ville" placeholder="Entrer une ville" class="form-control" formControlName="city" >
+			<p class="text-danger" *ngIf="controlCity(); let message">{{message}}</p>
 		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-5 offset-3">
+			<input type="submit" name="send" class="btn btn-outline-dark " value="Créer le groupe "/> -
+			<input type="button" name="cancel" class="btn btn-dark"  value="Annuler" (click)="openDialogCancel()" />
 		</div>
-
-		<div class="form-group">
-			<div class="col-10 offset-6">
-				<label>Choisir l'image du groupe : </label><br/>
-				<input type="file"  formControlName="file"/>
-				<input type="submit" value="Confirmer l'image"/>
-			</div>
-		</div>
-
-
-		<div class="form-group row">
-			<div class="col-10 offset-6">
-				<input type="submit" name="send" class="btn btn-outline-dark " value="Confirmer" />
-			
-				<input type="button" name="cancel" class="button btn-primary danger"  value="Annuler" (click)="groupForm.reset()" />
-			</div>	
-		</div>
-
+	</div>
 </form>
-</div>
-</div>
-
-
-

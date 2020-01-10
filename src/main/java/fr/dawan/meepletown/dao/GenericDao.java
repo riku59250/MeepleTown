@@ -110,17 +110,19 @@ public class GenericDao<T extends DbObject> {
 		EntityManager em = createEntityManager();
 
 		// on crée la requête
-		TypedQuery<T> query = em.createQuery("SELECT entity FROM " + clazz.getName() + " entity", clazz);
+		TypedQuery<T> query = em.createQuery("SELECT entity FROM " + clazz.getName() + " entity ", clazz);
 
 		
 		// on exécute la requête et on récupère le résultat
 		//TODO faut le transformer en SET maintenant
 		//resultat = query.getResultList();
-		resultat = new HashSet<T>(query.getResultList());
+		List<T> list = query.getResultList();
+		
+		
+		resultat = new HashSet<T>(list);
 		
 
 		em.close();
-
 		return resultat;
 	}
 
