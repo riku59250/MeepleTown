@@ -15,7 +15,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/angular" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -56,7 +56,12 @@
       <workItem from="1576572440638" duration="18168000" />
       <workItem from="1576672222264" duration="336000" />
       <workItem from="1576680997916" duration="15564000" />
+<<<<<<< HEAD
 	  <workItem from="1576844796974" duration="5117000" />
+=======
+      <workItem from="1576844796974" duration="5117000" />
+      <workItem from="1578660958657" duration="108000" />
+>>>>>>> 8a22a4cb0579965f265738e81e14f7c6f6180448
     </task>
     <servers />
   </component>

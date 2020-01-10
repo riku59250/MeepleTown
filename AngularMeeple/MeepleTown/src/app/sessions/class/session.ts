@@ -1,4 +1,5 @@
 import {User} from '../../users/class/user';
+import {Game} from "../../games/class/game";
 
 export class Session {
     id: number;
@@ -12,6 +13,6 @@ export class Session {
     isPrivate: boolean;
     sessionType: string;
     playersList: User[];
+    gamesListSession: Game[];
     author: User;
-    // gamesListSession;
 }

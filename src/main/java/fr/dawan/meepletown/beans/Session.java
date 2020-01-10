@@ -1,16 +1,13 @@
 package fr.dawan.meepletown.beans;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import fr.dawan.meepletown.enums.SessionType;
 
@@ -27,15 +24,16 @@ public class Session extends DbObject {
 	private Date endDate;
 	private boolean isPrivate;
 	
-	@ManyToMany( fetch =  FetchType.EAGER)
-	@JsonManagedReference
+	@ManyToMany
+	@JsonIgnore
 	private Set<User> playersList;
-	@ManyToMany( fetch =  FetchType.EAGER)
-	@JsonManagedReference
+	
+	@ManyToMany
+	@JsonIgnore
 	private Set<Game> gamesListSession;
 	
 	@ManyToOne
-	@JsonManagedReference
+	@JsonIgnore
 	private User author;
 	
 	public Session() {}
@@ -127,9 +125,9 @@ public class Session extends DbObject {
 	public String toString() {
 		return "Session [title=" + title + ", place=" + place + ", sessionType=" + sessionType + ", description="
 				+ description + ", nbMaxPlayers=" + nbMaxPlayers + ", nbMinPlayers=" + nbMinPlayers + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", isPrivate=" + isPrivate + ", playersList=" + playersList
-				+ ", gamesListSession=" + gamesListSession + "]";
+				+ startDate + ", endDate=" + endDate + ", isPrivate=" + isPrivate + "]";
 	}
+	
 
 	
 	
