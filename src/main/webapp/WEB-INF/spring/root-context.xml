@@ -42,5 +42,6 @@
     
     </bean> 
     <bean id="userdao" class="fr.dawan.meepletown.dao.userDao"></bean>
+    <bean id="sessiondao" class="fr.dawan.meepletown.dao.SessionDao"></bean>
 
 </beans>

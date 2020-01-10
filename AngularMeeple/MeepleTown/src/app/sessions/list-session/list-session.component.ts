@@ -6,6 +6,7 @@ import {LoginService} from '../../login/services/login.service';
 import {BehaviorSubject} from "rxjs";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {log} from "util";
 
 @Component({
   selector: 'app-list-session',
@@ -52,14 +53,26 @@ export class ListSessionComponent implements OnInit {
 
   addPlayer(id: number) {
     this.sessionService.getSessionById(id).subscribe( (session) => {
-     if (session.playersList.length < session.nbMaxPlayers) {
-       console.log('ok');
-       this.isComplete = false;
-       // this.sessionService.addSession(session).subscribe();
-     } else {
-       this.isComplete = true;
-       console.log('pas possible');
-     }
+      if (!session.playersList) {
+        session.playersList = new Array();
+      }
+      if (session.playersList.length < session.nbMaxPlayers) {
+        // TODO faire l'appel au login pour récupérer l'id en cours
+        let user = this.logService.log().value;
+        if (user !== null) {
+          console.log(user);
+          this.sessionService.addPlayer(session, user).subscribe(value => {
+            session.playersList.push(user);
+            console.log(value);
+          }, (error) => {
+            console.log(error);
+          });
+        }
+
+      } else {
+        this.isComplete = true;
+        console.log('pas possible');
+      }
     });
   }
 

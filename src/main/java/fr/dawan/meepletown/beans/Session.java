@@ -1,6 +1,7 @@
 package fr.dawan.meepletown.beans;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -90,12 +91,7 @@ public class Session extends DbObject {
 	public void setPlayersList(Set<User> playersList) {
 		this.playersList = playersList;
 	}
-	public Set<Game> getGamesList() {
-		return gamesListSession;
-	}
-	public void setGamesList(Set<Game> gamesList) {
-		this.gamesListSession = gamesList;
-	}
+	
 	public Date getStartDate() {
 		return startDate;
 	}
