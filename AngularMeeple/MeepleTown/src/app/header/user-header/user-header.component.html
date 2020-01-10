@@ -1,8 +1,8 @@
 <div *ngIf="user.value === null ; else connect ">
-    <button routerLink="/signup" class="btn btn-outline-dark">S'inscrire </button> -
-    <button routerLink="/signin" class="btn btn-dark">Connexion</button>
+    <a routerLink="/signup">S'inscrire</a>
+    <a routerLink="/signin">Connexion</a>
 </div>
 <ng-template #connect>
     <a routerLink="/user">{{user.value.pseudo}}</a>
-    <button class="btn btn-dark" (click)="openDialogDeco()">Déconnexion</button>
+    <button class="btn btn-danger" (click)="logout()">Déconnexion</button>
 </ng-template>
