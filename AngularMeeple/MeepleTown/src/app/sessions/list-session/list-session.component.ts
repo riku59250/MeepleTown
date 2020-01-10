@@ -5,7 +5,8 @@ import {User} from '../../users/class/user';
 import {LoginService} from '../../login/services/login.service';
 import {BehaviorSubject} from "rxjs";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
+import {UserServicesService} from "../../users/services/user-services.service";
 
 @Component({
   selector: 'app-list-session',
@@ -19,7 +20,7 @@ export class ListSessionComponent implements OnInit {
   user: BehaviorSubject<User>;
 
   // @ts-ignore
-  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService) { }
+  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private userService: UserServicesService) { }
 
   ngOnInit() {
     this.getAllSession();
@@ -52,14 +53,20 @@ export class ListSessionComponent implements OnInit {
 
   addPlayer(id: number) {
     this.sessionService.getSessionById(id).subscribe( (session) => {
-     if (session.playersList.length < session.nbMaxPlayers) {
-       console.log('ok');
-       this.isComplete = false;
-       // this.sessionService.addSession(session).subscribe();
-     } else {
-       this.isComplete = true;
-       console.log('pas possible');
-     }
+      if (!session.playersList) {
+        session.playersList = new Array();
+      }
+      if (session.playersList.length < session.nbMaxPlayers) {
+        // TODO faire l'appel au login pour récupérer l'id en cours
+         this.userService.getUserById(1).subscribe( (user) => {
+           session.playersList.push(user);
+           this.sessionService.addPlayer(session, user).subscribe();
+           console.log(session.playersList);
+         });
+       } else {
+         this.isComplete = true;
+         console.log('pas possible');
+       }
     });
   }
 
