@@ -7,8 +7,8 @@ import {Group} from '../group/group';
   styleUrls: ['./list-group.component.scss']
 })
 export class ListGroupComponent implements OnInit {
-
-    listGroup = [];
+  searchString: string;
+  listGroup = [];
 
   constructor() { }
 

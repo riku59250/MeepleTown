@@ -1,16 +1,21 @@
-<table class="table table-bordered">
-    <thead>
+<h1>Liste des groupes </h1>
+
+<nav class="navbar navbar-light bg-light float-right col-12">
+    <form class="form-inline col-12">
+        <input class="form-control col-12" type="search" name="searchString" [(ngModel)]="searchString" autocomplete="off" placeholder="Entrez un lieu pour filter les résultats.">
+    </form>
+</nav>
+
+<table class="table">
+    <thead class="thead-light">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nom de groupe</th>
-        <th scope="col">Type de groupe</th>
-        <th scope="col">Département</th>
+        <th scope="col">Nom du groupe</th>
         <th scope="col">Ville</th>
+        <th scope="col">Département</th>
+        <th> Actions possibles</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
 
-    </tr>
     </tbody>
 </table>

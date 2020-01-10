@@ -1,21 +1,26 @@
+<h1>Liste des jeux </h1>
 
-<input name="recherche" placeholder="7 Wonders ....">
-<button class="btn btn-success">Recherche</button>
+<nav class="navbar navbar-light bg-light float-right col-12">
+    <form class="form-inline col-12">
+        <input class="form-control col-12" type="search" name="searchString" [(ngModel)]="searchString" autocomplete="off" placeholder="Entrez un lieu pour filter les résultats.">
+    </form>
+</nav>
+
 <table class="table">
-    <thead>
-        <tr>
-            <th>Noms</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Nombre de Joueurs</th>
-        </tr>
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Nom </th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+        <th> Nombre de joueurs</th>
+    </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let game of games ">
-            <td>{{game.name}}</td>
-            <td>{{game.type}}</td>
-            <td>{{game.description}}</td>
-            <td>{{game.nbrMinJoueur}}-{{game.nbrMaxJoueur}}</td>
-        </tr>
+    <tr *ngFor="let game of games  | searchFilter : 'name' : searchString">
+        <td>{{game.name}}</td>
+        <td>{{game.type}}</td>
+        <td>{{game.description}}</td>
+        <td>{{game.nbrMinJoueur}}-{{game.nbrMaxJoueur}}</td>
+    </tr>
     </tbody>
 </table>
