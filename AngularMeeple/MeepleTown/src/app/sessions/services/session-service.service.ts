@@ -33,14 +33,13 @@ export class SessionServiceService {
     return this.http.delete(url2);
   }
 
-  public addPlayer(session: Session, user: User) {
-    console.log(session + ' - ' + user)
-    // TODO changer l'url
-    return this.http.post(this.url, session);
-  }
-
   /*public updateSession(session: Session): Observable<Session> {
     const url2 = this.url + session.id;
     return this.http.put<Session>(url2, session);
   }*/
+
+  public addPlayer(session: Session, user: User): Observable<User> {
+    return this.http.put<User>(this.url + 'adduser/' + session.id , user);
+  }
+
 }

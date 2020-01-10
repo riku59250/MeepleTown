@@ -16,11 +16,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
 import {ListGroupComponent} from "./groups/list-group/list-group.component";
 import {CreategroupComponent} from "./groups/creategroup/creategroup.component";
 import {UserPageComponent} from "./users/user-page/user-page.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from "@angular/material/dialog";
-import { ConfirmationComponent } from './popup/confirmation/confirmation.component';
-import {MatIconModule} from "@angular/material/icon";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import { PagegroupComponent } from './groups/pagegroup/pagegroup.component';
 
 // @ts-ignore
 @NgModule({
@@ -38,25 +34,18 @@ import {MatFormFieldModule} from "@angular/material/form-field";
       CreategroupComponent,
     UserPageComponent,
     SearchFilterPipe,
-    ConfirmationComponent
+    PagegroupComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        MatDialogModule,
-        MatIconModule,
-        MatFormFieldModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   exports: [
     SearchFilterPipe
   ],
-    entryComponents: [
-        ConfirmationComponent
-    ],
   providers: [],
   bootstrap: [AppComponent]
 })

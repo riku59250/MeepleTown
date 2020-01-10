@@ -39,7 +39,7 @@ public class UserController {
 	
 	@GetMapping("/")
 	public Set<User> findAll(){
-			System.out.println("get all");
+		
 		return (Set<User>) userDao.findAll();
 
 	}
@@ -57,6 +57,7 @@ public class UserController {
 	
 	@RequestMapping("/connect")
 	public User findByEmail(@RequestParam("email") String email, @RequestParam("password") String password) {
+		System.out.println(email);
 		return userDao.findByEmailAndPassword(email, password);
 	}
 	

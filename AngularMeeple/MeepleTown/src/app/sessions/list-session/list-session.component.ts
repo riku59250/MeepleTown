@@ -58,15 +58,21 @@ export class ListSessionComponent implements OnInit {
       }
       if (session.playersList.length < session.nbMaxPlayers) {
         // TODO faire l'appel au login pour récupérer l'id en cours
-         this.userService.getUserById(1).subscribe( (user) => {
-           session.playersList.push(user);
-           this.sessionService.addPlayer(session, user).subscribe();
-           console.log(session.playersList);
-         });
-       } else {
-         this.isComplete = true;
-         console.log('pas possible');
-       }
+        let user = this.logService.log().value;
+        if (user !== null) {
+          console.log(user);
+          this.sessionService.addPlayer(session, user).subscribe(value => {
+            session.playersList.push(user);
+            console.log(value);
+          }, (error) => {
+            console.log(error);
+          });
+        }
+
+      } else {
+        this.isComplete = true;
+        console.log('pas possible');
+      }
     });
   }
 

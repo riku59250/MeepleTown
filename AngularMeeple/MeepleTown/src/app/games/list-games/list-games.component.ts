@@ -10,7 +10,6 @@ import {GamesServicesService} from "../services/games-services.service";
 })
 export class ListGamesComponent implements OnInit {
   games: Array<Game>;
-  searchString: string;
 
   constructor(private gameService: GamesServicesService) { }
 

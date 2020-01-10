@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2db4fc34-4e91-410c-b6cc-0362315a133f" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,14 +12,20 @@
   </component>
   <component name="ProjectId" id="1V3pghAd02nIjtiUmwaPYE5vcDm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/angular" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="ts.external.directory.path" value="C:\Formations\Projet\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -56,12 +61,11 @@
       <workItem from="1576572440638" duration="18168000" />
       <workItem from="1576672222264" duration="336000" />
       <workItem from="1576680997916" duration="15564000" />
-<<<<<<< HEAD
-	  <workItem from="1576844796974" duration="5117000" />
-=======
       <workItem from="1576844796974" duration="5117000" />
-      <workItem from="1578660958657" duration="108000" />
->>>>>>> 8a22a4cb0579965f265738e81e14f7c6f6180448
+      <workItem from="1578660958657" duration="1461000" />
+      <workItem from="1578662978622" duration="1996000" />
+      <workItem from="1578666933226" duration="1819000" />
+      <workItem from="1578668775215" duration="50000" />
     </task>
     <servers />
   </component>
@@ -80,5 +84,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="392" y="89" key="#Notifications" timestamp="1578300576299">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="392" y="89" key="#Notifications/0.0.1600.860@0.0.1600.860" timestamp="1578300576299" />
+    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1578662332172">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1578662332172" />
+    <state x="301" y="73" key="SettingsEditor" timestamp="1578662342534">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="301" y="73" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1578662342534" />
+    <state x="609" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578663093017">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="609" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860@0.0.1600.860" timestamp="1578663093017" />
+    <state x="497" y="28" width="606" height="804" key="find.popup" timestamp="1578659975602">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="497" y="28" width="606" height="804" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1578659975602" />
   </component>
 </project>
