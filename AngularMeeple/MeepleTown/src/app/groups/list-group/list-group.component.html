@@ -1,7 +1,6 @@
-<table class="table table-bordered">
+<table class="table table-bordered" >
     <thead>
     <tr>
-        <th scope="col">#</th>
         <th scope="col">Nom de groupe</th>
         <th scope="col">Type de groupe</th>
         <th scope="col">Département</th>
@@ -9,8 +8,26 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-
+    <tr *ngFor="let group of listGroup | slice:begin:end ">
+        <td>{{ group.nameGroup }}</td>
+        <td>{{ group.groupType}}</td>
+        <td>{{ group.nameDept}}</td>
+        <td>{{ group.city}}</td>
     </tr>
     </tbody>
 </table>
+
+<div class="clearfix"></div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li class="page-item disabled">
+            <button class="btn btn-outline-primary"   (click)="Previous()" tabindex="-1" [disabled]="Previous()" > Précédent </button>
+        </li>
+        <li class="page-item">
+            <button class="btn btn-outline-primary"   (click)="Next()" > Suivant </button>
+        </li>
+    </ul>
+</nav>
+
+
+

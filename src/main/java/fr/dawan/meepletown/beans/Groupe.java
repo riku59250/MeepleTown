@@ -33,6 +33,10 @@ public class Groupe extends DbObject{
 		this.description = description;
 		this.avatar = avatar;
 	}
+	
+		public void setIdGroupe(int idGroupe) {
+		this.idGroupe = idGroupe;
+	}
 
 	public int getIdGroupe() {
 		return idGroupe;
@@ -92,10 +96,8 @@ public class Groupe extends DbObject{
 
 	@Override
 	public String toString() {
-		return "Groupe [name=" + name + ", type=" + type + ", description=" + description + ", avatar=" + avatar
-				+ ", membersList=" + membersList + ", gamesList=" + gamesList + "]";
+		return "Groupe [idGroupe=" + idGroupe + ", name=" + name + ", type=" + type + ", description=" + description
+				+ ", avatar=" + avatar + ", membersList=" + membersList + ", gamesList=" + gamesList + "]";
 	}
-	
-	
 	
 }

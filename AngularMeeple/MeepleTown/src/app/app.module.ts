@@ -16,6 +16,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
 import {ListGroupComponent} from "./groups/list-group/list-group.component";
 import {CreategroupComponent} from "./groups/creategroup/creategroup.component";
 import {UserPageComponent} from "./users/user-page/user-page.component";
+import { PagegroupComponent } from './groups/pagegroup/pagegroup.component';
 
 // @ts-ignore
 @NgModule({
@@ -32,7 +33,8 @@ import {UserPageComponent} from "./users/user-page/user-page.component";
       ListGroupComponent,
       CreategroupComponent,
     UserPageComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    PagegroupComponent
   ],
   imports: [
     BrowserModule,

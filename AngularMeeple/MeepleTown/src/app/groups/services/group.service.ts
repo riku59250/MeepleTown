@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import {Group } from '../group/group';
 import { HttpClient, HttpParams} from '@angular/common/http';
-import { Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import { map} from 'rxjs/operators';
+import {group} from '@angular/animations';
 
 
 
@@ -13,8 +14,11 @@ import { map} from 'rxjs/operators';
 })
 export class GroupService {
 
-    private url = 'http://localhost:4200/createGroup';
-    groupSubject: any;
+    private url = 'http://localhost:3000/Group';
+    groupSubject = new Subject<Group[]>();
+    private group: Group;
+
+
 
     constructor(private http: HttpClient) {
     }
@@ -25,6 +29,19 @@ export class GroupService {
                 return groups.map((group: Group) => {
                     return new Group(group.nameGroup, group.groupType, group.nameDept, group.city);
                 });
+            })
+        );
+    }
+
+
+
+    public saveGroupToServer() {
+        this.http.put('http://localhost:8080/meepletown', this.group).subscribe(
+            () => {
+                console.log('Groupe enregistré !');
+            },
+            (error => {
+                console.log('Erreur ! : ' + error);
             })
         );
     }

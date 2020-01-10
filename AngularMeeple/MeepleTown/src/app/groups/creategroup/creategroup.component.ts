@@ -26,8 +26,9 @@ export class CreategroupComponent implements OnInit {
   city: FormControl;
   nameCityMinLength = 1;
   nameCityMaxLength = 45;
+  description: FormControl;
+  descriptionMax = 250;
   groupForm: FormGroup;
-
 
 
   constructor(private formB: FormBuilder) { }
@@ -44,27 +45,31 @@ export class CreategroupComponent implements OnInit {
     this.nameDept = new FormControl(null, [Validators.required]);
     this.city = new FormControl(null, [Validators.required, Validators.minLength(this.nameCityMinLength),
     Validators.maxLength(this.nameCityMaxLength)]);
+    this.description = new FormControl(null, [Validators.maxLength(this.descriptionMax)]);
 
     this.groupForm = this.formB.group({
       nameGroup: this.nameGroup,
       groupType: this.groupType,
       nameDept: this.nameDept,
       city: this.city,
+      description: this.description
     });
   }
 
-/*
-  public createGroup(group: Group) {
-    if (this.groupForm.valid) {
-      console.log(this.groupForm.value);
-      // tslint:disable-next-line:max-line-length
-      group = new Group(this.groupForm.value.nameGroup, this.groupForm.value.groupType, this.groupForm.value.nameDept, this.groupForm.value.city);
-      console.log(group);
-      // tslint:disable-next-line:no-unused-expression
-      this.groupForm.reset();
-    }
-  }
- */
+//  public createGroup(group: Group) {
+//    if (this.groupForm.valid) {
+//      console.log(this.groupForm.value);
+//      // tslint:disable-next-line:max-line-length
+//      // tslint:disable-next-line:max-line-length
+//      // tslint:disable-next-line:max-line-length
+//      group = new Group(this.groupForm.value.nameGroup,
+//      this.groupForm.value.groupType,
+//      this.groupForm.value.nameDept, this.groupForm.value.city);
+//      console.log(group);
+//      // tslint:disable-next-line:no-unused-expression
+//      this.groupForm.reset();
+//    }
+//  }
 
   public controlGroupName() {
     if (this.nameGroup.touched) {
@@ -124,6 +129,14 @@ export class CreategroupComponent implements OnInit {
     }
   }
 
+  public controlDescription() {
+    if(this.description.touched){
+      if(this.description.hasError('maxlength')){
+        return 'La description est trop longue, elle doit contenir ' + this.descriptionMax + ' caractères' + ' (actuellement ' +
+            this.description.value.length + ')';
+      }
+    }
+  }
 
 
 
