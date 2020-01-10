@@ -8,20 +8,28 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import fr.dawan.meepletown.enums.GroupType;
 
 @Entity
 public class Groupe extends DbObject{
-	
-	private int idGroupe;
+
 	private String name;
+	private String nameDept;
+	private String city;
 	private GroupType type;
 	private String description = "";
 	private String avatar = null;
 	
-	@ManyToMany( fetch =  FetchType.EAGER)
+	@ManyToMany()
+	@JsonIgnore
 	private Set<User> membersList;
-	@ManyToMany( fetch =  FetchType.EAGER)
+	
+	@ManyToMany()
+	@JsonIgnore
 	private Set<Game> gamesList;
 	
 	public Groupe() {}
@@ -34,12 +42,20 @@ public class Groupe extends DbObject{
 		this.avatar = avatar;
 	}
 
-	public int getIdGroupe() {
-		return idGroupe;
+	public String getNameDept() {
+		return nameDept;
 	}
 
-	public void setIdGroup(int idGroupe) {
-		this.idGroupe = idGroupe;
+	public void setNameDept(String nameDept) {
+		this.nameDept = nameDept;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 	
 	public String getName() {
@@ -92,9 +108,14 @@ public class Groupe extends DbObject{
 
 	@Override
 	public String toString() {
-		return "Groupe [name=" + name + ", type=" + type + ", description=" + description + ", avatar=" + avatar
-				+ ", membersList=" + membersList + ", gamesList=" + gamesList + "]";
+		return "Groupe [name=" + name + ", nameDept=" + nameDept + ", city=" + city + ", type=" + type
+				+ ", description=" + description + ", avatar=" + avatar + "]";
 	}
+
+
+	
+
+	
 	
 	
 	

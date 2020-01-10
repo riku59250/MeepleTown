@@ -1,5 +1,10 @@
 package fr.dawan.meepletown.dao;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -29,8 +34,33 @@ public class userDao {
 		entity = query.getSingleResult();
 		entityManager.close();
 
-		System.out.println(entity);
 		return entity;
+	}
+	public Set<User> findAll( ) {
+		Set<User> resultat = null;
+
+		EntityManager em = createEntityManager();
+
+		EntityGraph<User> graph = em.createEntityGraph(User.class);
+		graph.addSubgraph("listGame");
+		graph.addSubgraph("listGroup");
+		graph.addSubgraph("listSession");
+		// on crée la requête
+		TypedQuery<User> query = em.createQuery("SELECT entity FROM User entity ", User.class);
+		query.setHint("javax.persistence.loadgraph", graph);
+		
+		// on exécute la requête et on récupère le résultat
+		//TODO faut le transformer en SET maintenant
+		//resultat = query.getResultList();
+		List<User> list = query.getResultList();
+		System.out.println("requete find all");
+		System.out.println(list.size());
+		System.out.println(list);
+		resultat = new HashSet<User>(list);
+		
+
+		em.close();
+		return resultat;
 	}
 
 }

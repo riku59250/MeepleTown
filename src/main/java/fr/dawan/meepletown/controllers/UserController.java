@@ -1,5 +1,6 @@
 package fr.dawan.meepletown.controllers;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.ws.rs.PathParam;
@@ -38,7 +39,9 @@ public class UserController {
 	
 	@GetMapping("/")
 	public Set<User> findAll(){
-		return (Set<User>) dao.findAll(User.class);
+			System.out.println("get all");
+		return (Set<User>) userDao.findAll();
+
 	}
 	
 	@PostMapping("/")
@@ -54,15 +57,11 @@ public class UserController {
 	
 	@RequestMapping("/connect")
 	public User findByEmail(@RequestParam("email") String email, @RequestParam("password") String password) {
-		System.out.println(email);
-		System.out.println(password);
 		return userDao.findByEmailAndPassword(email, password);
 	}
 	
 	@PutMapping("/")
 	public void Update(@RequestBody User user) {
-		System.out.println("put"+user);
-		System.out.println(user.getId());
 		dao.update(user);
 	}
 
