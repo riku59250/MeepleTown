@@ -14,7 +14,7 @@ import {group} from '@angular/animations';
 })
 export class GroupService {
 
-    private url = 'http://localhost:3000/Groupe/';
+    private url = 'http://localhost:3000/Group/';
 
     groupSubject = new Subject<Group[]>();
     private group: Group;
@@ -35,7 +35,7 @@ export class GroupService {
     }
 
     public getPageGroup(id: number): Observable<Group[]> {
-    return  this.http.get<Group[]>(this.url + this.group.id).pipe(
+    return  this.http.get<Group[]>(this.url + '/' + this.group.id).pipe(
         map( (groups: Group[]) => {
             return groups.map(( group: Group) => {
                 return new Group(group.id, group.nameGroup, group.groupType, group.nameDept, group.city, group.description);

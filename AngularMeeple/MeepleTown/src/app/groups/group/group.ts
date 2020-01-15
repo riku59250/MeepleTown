@@ -1,7 +1,7 @@
 import { Type } from '@angular/compiler';
 
 export class Group {
-	private _id: string;
+	private _id: number;
 	// tslint:disable-next-line:variable-name
 	private _nameGroup: string;
 	// tslint:disable-next-line:variable-name
@@ -15,7 +15,7 @@ export class Group {
 
 
 
-	constructor( id?: number,nameGroup?: string, groupType?: boolean, nameDept?: string, city?: string, description?: string) {
+	constructor( id?: number, nameGroup?: string, groupType?: boolean, nameDept?: string, city?: string, description?: string) {
 		this._id = id;
 		this._nameGroup = nameGroup;
 		this._groupType = groupType;

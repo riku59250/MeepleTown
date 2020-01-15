@@ -14,7 +14,7 @@
         <td>{{ group.groupType}}</td>
         <td>{{ group.nameDept}}</td>
         <td>{{ group.city}}</td>
-        <td><input type="button" class="btn btn-outline-info" value="Consulter"></td>
+        <td><a class="btn btn-outline-info"  [routerLink]="['/pageGroup', group.id]">Consulter</a></td>
     </tr>
     </tbody>
 </table>
@@ -23,10 +23,10 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
         <li class="page-item disabled">
-            <button class="btn btn-outline-primary"   (click)="Previous()" tabindex="-1" [disabled]="Previous()" > Précédent </button>
+            <button id="prev" class="btn btn-outline-primary"   (click)="Previous()" tabindex="-1" [disabled]="Previous()" > Précédent </button>
         </li>
         <li class="page-item">
-            <button class="btn btn-outline-primary"   (click)="Next()" > Suivant </button>
+            <button id="next" class="btn btn-outline-primary"   (click)="Next()" > Suivant </button>
         </li>
     </ul>
 </nav>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GroupService} from "../services/group.service";
+import {GroupService} from '../services/group.service';
 
 @Component({
   selector: 'app-pagegroup',
@@ -9,11 +9,10 @@ import {GroupService} from "../services/group.service";
 export class PagegroupComponent implements OnInit {
 
   constructor(private serviceGroup: GroupService) {
-    // @ts-ignore
-    super(serviceGroup);
+
   }
-  description;
-  imgGroup;
+
+  Groups = [];
   data;
   addBtn;
 
@@ -22,9 +21,9 @@ export class PagegroupComponent implements OnInit {
     this.addBtn = 'Rejoindre';
 
 
+    // @ts-ignore
     this.serviceGroup.getPageGroup().subscribe( (data ) => {
-      this.description = data;
-      this.imgGroup = data;
+      this.Groups = data;
     });
   }
 
