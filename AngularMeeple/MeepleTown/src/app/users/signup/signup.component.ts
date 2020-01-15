@@ -47,12 +47,6 @@ export class SignupComponent implements OnInit {
     },{
       validators : CustomValidator.match_password()
     });
-
-    this.log.log().subscribe((value) => {
-      if ( value !== null) {
-        this.router.navigateByUrl('/createSession');
-      }
-    });
   }
 
   public signup() {

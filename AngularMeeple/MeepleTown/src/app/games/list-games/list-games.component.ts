@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Game} from "../class/game";
 import {GamesServicesService} from "../services/games-services.service";
@@ -9,17 +9,14 @@ import {GamesServicesService} from "../services/games-services.service";
   styleUrls: ['./list-games.component.scss']
 })
 export class ListGamesComponent implements OnInit {
-  games: Array<Game>;
-  searchString: string;
+    @Input()
+    listGames: Array<Game>;
+    searchText: string;
 
   constructor(private gameService: GamesServicesService) { }
 
   ngOnInit() {
-   this.gameService.getGames().subscribe((data) => {
-     this.games = data;
-   }, (error) => {
-     console.log(error);
-   });
+
   }
 
 }

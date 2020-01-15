@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'pageGroup', component: PagegroupComponent},
   {path: 'listGroup' , component: ListGroupComponent},
   {path: 'user', component: UserPageComponent},
+  {path: 'user/:id', component: UserPageComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];
 

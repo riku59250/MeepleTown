@@ -73,6 +73,16 @@ public class User extends DbObject{
 	//Getters
 	
 
+	public Set<Session> getSession() {
+		return session;
+	}
+
+
+	public void setSession(Set<Session> session) {
+		this.session = session;
+	}
+
+
 	public String getPseudo() {
 		return pseudo;
 	}
