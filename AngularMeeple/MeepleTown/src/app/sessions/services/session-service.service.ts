@@ -24,7 +24,6 @@ export class SessionServiceService {
   }
 
   public addSession(session: Session) {
-    console.log(session)
     return this.http.post(this.url, session);
   }
 
@@ -40,6 +39,16 @@ export class SessionServiceService {
 
   public addPlayer(session: Session, user: User): Observable<User> {
     return this.http.put<User>(this.url + 'adduser/' + session.id , user);
+  }
+
+  public deletePlayer(session: Session, user: User){
+    const url2 = this.url + 'deleteuser/' + session.id + '/' + user.id;
+    console.log('ok ' + url2)
+    return this.http.delete(url2);
+  }
+
+  public getPlayer(id: number): Observable<User[]> {
+    return this.http.get<User[]>(this.url + 'getusers/' + id);
   }
 
 }

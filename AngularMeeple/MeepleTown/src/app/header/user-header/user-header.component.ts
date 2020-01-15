@@ -4,6 +4,7 @@ import {User} from "../../users/class/user";
 import {LoginService} from "../../login/services/login.service";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-user-header',
@@ -11,12 +12,13 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./user-header.component.scss']
 })
 export class UserHeaderComponent implements OnInit {
-  user: BehaviorSubject<User>;
-  constructor(private dialog: MatDialog, private service: LoginService) { }
+  user: User;
+  constructor(private dialog: MatDialog, private service: LoginService, private router: Router) { }
 
   ngOnInit() {
-    this.user = this.service.log();
-    console.log(this.user.value);
+     this.service.log().subscribe((data) => {
+      this.user = data;
+    });
   }
 
   logout(): void {
@@ -24,12 +26,13 @@ export class UserHeaderComponent implements OnInit {
   }
 
   openDialogDeco() {
-    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Annuler la création',
-        message: `Êtes-vous sûr de vouloir annuler la création de ce groupe ? Toutes les données vont être effacées du formulaire.`, close: true}
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Déconnexion',
+        message: `Etes-vous sure de vouloir vous déconnecter ?`, close: true}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.logout();
+        this.router.navigateByUrl('/signin');
       }
     });
   }

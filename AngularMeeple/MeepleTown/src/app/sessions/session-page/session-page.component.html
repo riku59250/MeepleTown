@@ -20,9 +20,9 @@
     </thead>
     <tbody>
     <tr *ngFor="let user of session.playersList">
-        <td>{{user.pseudo}}}</td>
-        <td>{{user.mail}}}</td>
-        <td><button class="btn btn-secondary"> Supprimer de la partie</button></td>
+        <td>{{user.pseudo}}</td>
+        <td>{{user.mail}}</td>
+        <td><button class="btn btn-secondary" (click)="deletePlayer(user)"> Supprimer de la partie</button></td>
     </tr>
     </tbody>
 </table>

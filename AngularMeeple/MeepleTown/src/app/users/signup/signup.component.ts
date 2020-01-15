@@ -56,23 +56,34 @@ export class SignupComponent implements OnInit {
   }
 
   public signup() {
+
     if ( this.form.valid) {
       let user = new User(this.form.value.pseudo, this.form.value.email, this.form.value.password, this.form.value.departement, this.form.value.city);
-      this.userServices.createUser(user).subscribe(() => {
-        this.log.login(user.mail, user.password);
-        // this.openDialogValid(user);
-      });
+      this.openDialogValid(user);
+
     }
   }
 
-  openDialogValid(user: User) {
+   openDialogValid(user: User) {
     const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Bravo !',
-        message: `Votre compte a été crée. Vous allez être connecté au site. `, close: true}
+        message: `Etes-vous sure de vouloir crée ce compte ?  `, close: true}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.form.reset();
-        this.log.login(user.mail, user.password);
+        this.userServices.createUser(user).subscribe(() => {
+          this.log.login(user.mail, user.password).subscribe( (data) => {
+                if (data !== null ) {
+                  this.log.log().next(data);
+                  this.router.navigateByUrl('/createSession');
+                }
+              },
+              (error) => {
+                this.log.log().next(null);
+                console.log("error");
+              });
+
+        });
       }
     });
   }
