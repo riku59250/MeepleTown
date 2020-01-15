@@ -91,7 +91,7 @@
       <workItem from="1576748944360" duration="738000" />
       <workItem from="1576753229474" duration="53000" />
       <workItem from="1578399951484" duration="19000" />
-      <workItem from="1579082400377" duration="4518000" />
+      <workItem from="1579082400377" duration="9726000" />
     </task>
     <servers />
   </component>
@@ -116,6 +116,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="166" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579082550634" />
+    <state x="471" y="450" key="run.anything.popup" timestamp="1579096155355">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="471" y="450" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579096155355" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

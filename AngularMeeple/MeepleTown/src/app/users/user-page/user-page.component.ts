@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../login/services/login.service";
 import {BehaviorSubject} from "rxjs";
 import {User} from "../class/user";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {UserServicesService} from "../services/user-services.service";
 
 @Component({
   selector: 'app-user-page',
@@ -12,12 +14,41 @@ export class UserPageComponent implements OnInit {
 
   tabModif = [false, false];
   user: User;
-  constructor(private serviceLog: LoginService) { }
+  id: string;
+  admin: boolean;
+  constructor(private serviceLog: LoginService, private router: Router, private route: ActivatedRoute, private userService: UserServicesService) {
+    this.user = new User();
+    this.admin = false;
+  }
 
   ngOnInit() {
-    this.serviceLog.log().subscribe((value) => {
-      this.user = value;
+    this.route.paramMap.subscribe( (params: ParamMap) => {
+      if (params.has('id')) {
+        this.id =  params.get('id');
+        if (this.id && this.id !== '') {
+          let idNumber = parseInt(this.id);
+          if( idNumber !== NaN) {
+            this.userService.getUserById(idNumber).subscribe((data) => {
+              this.user = data;
+              this.admin = false;
+            }, (error) => {
+              this.router.navigateByUrl("/user");
+            });
+          }
+
+        }
+      } else {
+        this.serviceLog.log().subscribe((value) => {
+          if (value === null) {
+            this.router.navigateByUrl("/signin");
+          }
+          this.user = value;
+          this.admin = true;
+        });
+      }
+
     });
+
   }
   modifier(i: number) {
     this.tabModif[i] = !this.tabModif[i];
