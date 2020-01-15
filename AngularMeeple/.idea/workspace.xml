@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2db4fc34-4e91-410c-b6cc-0362315a133f" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +26,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="ts.external.directory.path" value="C:\Formations\Projet\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -66,6 +67,7 @@
       <workItem from="1578662978622" duration="1996000" />
       <workItem from="1578666933226" duration="1819000" />
       <workItem from="1578668775215" duration="50000" />
+      <workItem from="1578670602446" duration="960000" />
     </task>
     <servers />
   </component>

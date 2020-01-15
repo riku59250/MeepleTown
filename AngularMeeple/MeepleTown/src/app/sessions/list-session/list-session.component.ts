@@ -16,7 +16,6 @@ import {UserServicesService} from "../../users/services/user-services.service";
 export class ListSessionComponent implements OnInit {
   listSessions: Session[] = [];
   searchString: string;
-  isComplete = false ;
   user: BehaviorSubject<User>;
 
   // @ts-ignore
@@ -25,6 +24,7 @@ export class ListSessionComponent implements OnInit {
   ngOnInit() {
     this.getAllSession();
     this.user = this.logService.log();
+    
   }
 
   openDialogSuppress(id: number): void {
@@ -47,33 +47,61 @@ export class ListSessionComponent implements OnInit {
   getAllSession() {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
-      console.log(sessions);
+      for(let session of this.listSessions) {
+        this.getPlayers(session.id, session);
+      }
     });
   }
 
-  addPlayer(id: number) {
-    this.sessionService.getSessionById(id).subscribe( (session) => {
-      if (!session.playersList) {
-        session.playersList = new Array();
-      }
-      if (session.playersList.length < session.nbMaxPlayers) {
-        // TODO faire l'appel au login pour récupérer l'id en cours
-        let user = this.logService.log().value;
-        if (user !== null) {
-          console.log(user);
-          this.sessionService.addPlayer(session, user).subscribe(value => {
-            session.playersList.push(user);
-            console.log(value);
-          }, (error) => {
-            console.log(error);
-          });
+  addPlayer(session: Session) {
+      this.sessionService.getSessionById(session.id).subscribe( (session) => {
+        if (!session.playersList) {
+          session.playersList = new Array();
         }
-
-      } else {
-        this.isComplete = true;
-        console.log('pas possible');
-      }
-    });
+        if (session.playersList.length < session.nbMaxPlayers) {
+          if (this.user !== null) {
+            this.sessionService.addPlayer(session, this.user.getValue()).subscribe(value => {
+              session.playersList.push(this.user.getValue());
+            }, (error) => {
+              console.log(error);
+            });
+          }
+        } 
+      });
   }
 
+  getPlayers(id: number, session?){
+    if(session) {
+      this.sessionService.getPlayer(id).subscribe( (user) => {
+        session.playersList = user;
+      });
+    } else {
+      this.sessionService.getSessionById(id).subscribe( (session) => {
+        this.sessionService.getPlayer(id).subscribe( (user) => {
+          session.playersList = user;
+        });
+      });
+    }
+     
+    
+  }
+
+  isPlayer(session: Session){
+    if(this.user && session.playersList) {
+      for(let u of session.playersList) {
+        if (JSON.stringify(u) === JSON.stringify(this.user.getValue())) {
+          return true;
+        }
+      }
+    }
+    return false;
+   
+  }
+
+  isComplete(session: Session){
+    if(session.playersList) {
+      return  session.nbMaxPlayers <= session.playersList.length;
+    }
+    return false;
+  }
 }

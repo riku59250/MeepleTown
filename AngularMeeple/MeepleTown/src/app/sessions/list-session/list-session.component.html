@@ -6,8 +6,6 @@
     </form>
 </nav>
 
-<p *ngIf="isComplete" class="alert-danger"> La partie que vous souhaitez rejoindre est complète.</p>
-
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -26,7 +24,7 @@
             <td> du {{session.startDate | date: 'dd/MM/yyy hh:mm'}} au {{session.endDate | date: 'dd/MM/yyy hh:mm'}}</td>
             <td>{{session.nbMinPlayers}} à {{session.nbMaxPlayers}}</td>
             <td>{{session.author?.pseudo}}</td>
-            <td> <button class="btn btn-secondary" (click)="addPlayer(session.id)">Rejoindre</button> <button class="btn btn-danger" (click)="openDialogSuppress(session.id)">X</button> </td>
+            <td> <button class="btn btn-secondary" *ngIf="!isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> <button class="btn btn-danger" (click)="openDialogSuppress(session.id)">X</button> </td>
         </tr>
         </tbody>
     </table>
