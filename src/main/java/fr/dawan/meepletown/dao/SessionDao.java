@@ -1,11 +1,16 @@
 package fr.dawan.meepletown.dao;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import fr.dawan.meepletown.beans.Groupe;
 import fr.dawan.meepletown.beans.Session;
 import fr.dawan.meepletown.beans.User;
 
@@ -34,7 +39,6 @@ public class SessionDao {
 				query.setParameter("id", id);
 				// on paramètre et on exécute la requête, et on récupère le résultat
 				session = query.getSingleResult();
-				System.out.println(session);
 				// On met à jour la formation
 				session.getPlayersList().add(u);
 				entityManager.merge(session);
@@ -51,4 +55,8 @@ public class SessionDao {
 
 		}
 	}
+	
+
+	
+
 }

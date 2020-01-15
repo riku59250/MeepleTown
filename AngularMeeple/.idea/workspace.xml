@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2db4fc34-4e91-410c-b6cc-0362315a133f" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,6 +67,7 @@
       <workItem from="1578662978622" duration="1996000" />
       <workItem from="1578666933226" duration="1819000" />
       <workItem from="1578668775215" duration="50000" />
+      <workItem from="1578671370054" duration="261000" />
     </task>
     <servers />
   </component>
