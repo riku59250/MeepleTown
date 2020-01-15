@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a69a7bef-5922-405b-b959-ffb4b57ce9d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/services/group.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/services/group.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/list-session/list-session.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/list-session/list-session.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/list-session/list-session.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/list-session/list-session.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/services/session-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/services/session-service.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/session-page/session-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/session-page/session-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/session-page/session-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/session-page/session-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/users/signup/signup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/users/signup/signup.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/users/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/users/signup/signup.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/controllers/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/controllers/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/SessionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/SessionDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

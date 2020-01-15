@@ -11,37 +11,21 @@ export class PagegroupComponent implements OnInit {
 
   constructor(private serviceGroup: GroupService) {
   }
-
+  id
   Groups = [];
-  description;
   data;
   addBtn;
-  }
 
 
-
-ngOnInit(); {
+  ngOnInit() {
     this.addBtn = 'Rejoindre';
 
-    // @ts-ignore
-    this.serviceGroup.getPageGroup(1).subscribe( (data ) => {
+
+    this.serviceGroup.getPageGroup(this.id).subscribe( (data ) => {
       this.Groups = data;
     });
   }
-
-
-  // @ts-ignore
-// tslint:disable-next-line:align
-  public isAddBtn();: string; {
-    if (this.addBtn.click) {
-      this.addBtn._value = 'Quitter';
-    }
   }
 
-  /*
-   public displayDescription(){
-     return this.description;
-   }
- */
 
-}
+
