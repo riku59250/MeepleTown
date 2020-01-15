@@ -1,6 +1,7 @@
 import { Type } from '@angular/compiler';
 
 export class Group {
+	private _id: string;
 	// tslint:disable-next-line:variable-name
 	private _nameGroup: string;
 	// tslint:disable-next-line:variable-name
@@ -12,12 +13,23 @@ export class Group {
 	// tslint:disable-next-line:variable-name
 	private _description: string;
 
-	constructor(nameGroup?: string, groupType?: boolean, nameDept?: string, city?: string, description?: string) {
+
+
+	constructor( id?: number,nameGroup?: string, groupType?: boolean, nameDept?: string, city?: string, description?: string) {
+		this._id = id;
 		this._nameGroup = nameGroup;
 		this._groupType = groupType;
 		this._nameDept = nameDept;
 		this._city = city;
 		this._description = description;
+	}
+
+	get id(): number{
+		return this._id;
+	}
+
+	set id(value: number){
+		this._id = value;
 	}
 	get nameGroup(): string {
 		return this._nameGroup;
@@ -25,6 +37,7 @@ export class Group {
 	set nameGroup(value: string) {
 		this._nameGroup = value;
 	}
+
 	get groupType(): boolean {
 		return this._groupType;
 	}
