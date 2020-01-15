@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
             if (data !== null ) {
               this.service.log().next(data);
               this.error = false;
-              this.router.navigateByUrl('/createSession');
+              this.router.navigateByUrl('/user');
             }
           },
           (error) => {

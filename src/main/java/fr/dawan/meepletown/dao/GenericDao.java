@@ -20,7 +20,8 @@ public class GenericDao<T extends DbObject> {
 
 	public void create(T entity) {
 		if (entity.getId() == 0) {
-			EntityManager entityManager = createEntityManager();
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+			EntityManager entityManager = factory.createEntityManager();
 			EntityTransaction transaction = entityManager.getTransaction();
 
 			try {
@@ -38,12 +39,14 @@ public class GenericDao<T extends DbObject> {
 				ex.printStackTrace();
 			} finally {
 				entityManager.close();
+				factory.close();
 			}
 		}
 	}
 
 	public T findById(Class<T> clazz, long id) {
-		EntityManager entityManager = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager entityManager = factory.createEntityManager();
 		T entity = null;
 
 		try {
@@ -53,6 +56,7 @@ public class GenericDao<T extends DbObject> {
 			ex.printStackTrace();
 		} finally {
 			entityManager.close();
+			factory.close();
 		}
 
 		return entity;
@@ -60,7 +64,8 @@ public class GenericDao<T extends DbObject> {
 
 	public void update(T entity) {
 		if (entity.getId() > 0) {
-			EntityManager entityManager = createEntityManager();
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+			EntityManager entityManager = factory.createEntityManager();
 			EntityTransaction transaction = entityManager.getTransaction();
 
 			try {
@@ -78,12 +83,14 @@ public class GenericDao<T extends DbObject> {
 				ex.printStackTrace();
 			} finally {
 				entityManager.close();
+				factory.close();
 			}
 		}
 	}
 
 	public void delete(Class<T> clazz, long id) {
-		EntityManager entityManager = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 
 		try {
@@ -101,13 +108,15 @@ public class GenericDao<T extends DbObject> {
 			ex.printStackTrace();
 		} finally {
 			entityManager.close();
+			factory.close();
 		}
 	}
 
 	public Set<T> findAll(Class<T> clazz) {
 		Set<T> resultat = null;
 
-		EntityManager em = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager em = factory.createEntityManager();
 
 		// on crée la requête
 		TypedQuery<T> query = em.createQuery("SELECT entity FROM " + clazz.getName() + " entity ", clazz);
@@ -123,6 +132,7 @@ public class GenericDao<T extends DbObject> {
 		
 	
 		em.close();
+		factory.close();
 		return resultat;
 	}
 
@@ -138,7 +148,8 @@ public class GenericDao<T extends DbObject> {
 	public List<T> findAll(Class<T> clazz, int begin, int nbResult) {
 		List<T> resultat = null;
 
-		EntityManager em = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager em = factory.createEntityManager();
 
 		// on crée la requête
 		TypedQuery<T> query = em.createQuery("SELECT entity FROM " + clazz.getName() + " entity", clazz);
@@ -149,13 +160,13 @@ public class GenericDao<T extends DbObject> {
 				.getResultList();
 
 		em.close();
-
 		return resultat;
 	}
 
 	public void deleteAll(Class<T> clazz) {
 
-		EntityManager em = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager em = factory.createEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		
@@ -164,12 +175,9 @@ public class GenericDao<T extends DbObject> {
 		
 		transaction.commit();
 		em.close();
+
 	}
 
-	private EntityManager createEntityManager() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
-		EntityManager entityManager = factory.createEntityManager();
-		return entityManager;
-	}
+	
 }
 
