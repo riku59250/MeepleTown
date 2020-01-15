@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-
-    <list default="true" id="2db4fc34-4e91-410c-b6cc-0362315a133f" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-
-    <list default="true" id="2db4fc34-4e91-410c-b6cc-0362315a133f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+    <list default="true" id="a69a7bef-5922-405b-b959-ffb4b57ce9d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/group/group.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/group/group.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/list-group/list-group.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/list-group/list-group.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/styles.scss" afterDir="false" />
     </list>
-
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,15 +41,15 @@
       <recent name="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\src\app\sessions\services" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -93,7 +73,6 @@
       <workItem from="1578666933226" duration="1819000" />
       <workItem from="1578668775215" duration="50000" />
       <workItem from="1578670602446" duration="960000" />
-
     </task>
     <servers />
   </component>

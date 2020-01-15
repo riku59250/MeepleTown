@@ -1,18 +1,13 @@
 <div class="text-body">
-
-
-    <div class="col-md-9 mb-3">
-        <img id="imgGroup" class="img-fluid" src="{{imgGroup}}">
+    <label *ngFor="let group of Groups">{{group.nameGroup}}</label>
 
 
         <div class="col-md-12 mb-5">
 
             <label class="col-md-8 mb-3">
-                <!-- TODO afficher description -->
-                <p >{{description.group}}</p>
+                <p *ngFor="let group of Groups">{{group.description}}</p>
             </label>
             <input class="btn btn-outline-dark" (click)="isAddBtn()"  id="add" type="button" value="{{addBtn}}"/>
+
         </div>
     </div>
-
-</div>
