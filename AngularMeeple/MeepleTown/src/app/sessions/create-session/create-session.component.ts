@@ -9,6 +9,7 @@ import {BehaviorSubject} from "rxjs";
 import {User} from "../../users/class/user";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class CreateSessionComponent implements OnInit {
   // TODO implémenter la liste de jeux
   user: BehaviorSubject<User>;
 
-  constructor(private dialog: MatDialog, private fb: FormBuilder, private sessionService: SessionServiceService, private logService: LoginService) { }
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.title = new FormControl(null, [Validators.required]);
@@ -80,10 +81,12 @@ export class CreateSessionComponent implements OnInit {
         session.isPrivate = this.isPrivate.value;
       }
       this.user = this.logService.log();
-      session.author = this.user.getValue();
       session.sessionType = SessionType[this.type.value];
-      this.sessionService.addSession(session).subscribe();
-      this.form.reset();
+      this.sessionService.addSession(session, this.user.getValue()).subscribe( () => {
+        this.router.navigateByUrl('/listSessions');
+        this.form.reset();
+      });
+      
       }
     }
 

@@ -17,6 +17,7 @@ export class ListSessionComponent implements OnInit {
   listSessions: Session[] = [];
   searchString: string;
   user: BehaviorSubject<User>;
+  isUserConnected = false;
 
   // @ts-ignore
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private userService: UserServicesService) { }
@@ -24,6 +25,8 @@ export class ListSessionComponent implements OnInit {
   ngOnInit() {
     this.getAllSession();
     this.user = this.logService.log();
+    this.isUserConnected = this.isConnected();
+    console.log(this.isUserConnected)
     
   }
 
@@ -49,6 +52,7 @@ export class ListSessionComponent implements OnInit {
       this.listSessions = sessions;
       for(let session of this.listSessions) {
         this.getPlayers(session.id, session);
+        this.getAuthor(session.id, session)
       }
     });
   }
@@ -60,7 +64,7 @@ export class ListSessionComponent implements OnInit {
         }
         if (session.playersList.length < session.nbMaxPlayers) {
           if (this.user !== null) {
-            this.sessionService.addPlayer(session, this.user.getValue()).subscribe(value => {
+            this.sessionService.addPlayer(session.id, this.user.getValue()).subscribe(value => {
               session.playersList.push(this.user.getValue());
             }, (error) => {
               console.log(error);
@@ -86,6 +90,12 @@ export class ListSessionComponent implements OnInit {
     
   }
 
+  getAuthor(id: number, session: Session){
+      this.sessionService.getAuthor(id).subscribe( (user) => {
+        session.author = user;
+      });
+  }
+
   isPlayer(session: Session){
     if(this.user && session.playersList) {
       for(let u of session.playersList) {
@@ -103,5 +113,13 @@ export class ListSessionComponent implements OnInit {
       return  session.nbMaxPlayers <= session.playersList.length;
     }
     return false;
+  }
+
+  isConnected(){
+    return this.user.getValue() !== null;
+  }
+
+  isAuthor(session: Session){
+    return JSON.stringify(session.author) === JSON.stringify(this.user.getValue());
   }
 }

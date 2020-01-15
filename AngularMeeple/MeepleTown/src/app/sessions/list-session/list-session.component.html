@@ -14,7 +14,7 @@
             <th scope="col">Date</th>
             <th scope="col">Nombre de joueurs</th>
             <th scope="col">Auteur</th>
-            <th> Actions possibles</th>
+            <th *ngIf="isUserConnected"> Actions possibles</th>
         </tr>
         </thead>
         <tbody>
@@ -24,7 +24,8 @@
             <td> du {{session.startDate | date: 'dd/MM/yyy hh:mm'}} au {{session.endDate | date: 'dd/MM/yyy hh:mm'}}</td>
             <td>{{session.nbMinPlayers}} à {{session.nbMaxPlayers}}</td>
             <td>{{session.author?.pseudo}}</td>
-            <td> <button class="btn btn-secondary" *ngIf="!isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> <button class="btn btn-danger" (click)="openDialogSuppress(session.id)">X</button> </td>
+            <td *ngIf="isUserConnected"> <button class="btn btn-secondary" *ngIf="!isAuthor(session) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> 
+                <button class="btn btn-danger" *ngIf="isAuthor(session)" (click)="openDialogSuppress(session.id)">X</button> </td>
         </tr>
         </tbody>
     </table>
