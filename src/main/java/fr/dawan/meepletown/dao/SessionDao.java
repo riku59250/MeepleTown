@@ -102,11 +102,7 @@ public class SessionDao {
 				// on paramètre et on exécute la requête, et on récupère le résultat
 				session = query.getSingleResult();
 				// On met à jour la formation
-				
-				System.out.println(session.getPlayersList());
 				session.getPlayersList().remove(u);
-				System.out.println(session.getPlayersList());
-				
 				
 				entityManager.merge(session);
 
