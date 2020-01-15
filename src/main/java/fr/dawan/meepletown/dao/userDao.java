@@ -53,9 +53,6 @@ public class userDao {
 		//TODO faut le transformer en SET maintenant
 		//resultat = query.getResultList();
 		List<User> list = query.getResultList();
-		System.out.println("requete find all");
-		System.out.println(list.size());
-		System.out.println(list);
 		resultat = new HashSet<User>(list);
 		
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GroupService} from "../services/group.service";
 
 @Component({
   selector: 'app-pagegroup',

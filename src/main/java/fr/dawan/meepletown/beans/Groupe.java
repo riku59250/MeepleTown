@@ -1,6 +1,7 @@
 package fr.dawan.meepletown.beans; 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -8,21 +9,25 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import fr.dawan.meepletown.enums.GroupType;
 
 @Entity
 public class Groupe extends DbObject{
 	
-	private int idGroupe;
 	private String name;
 	private GroupType type;
 	private String description = "";
 	private String avatar = null;
 	
-	@ManyToMany( fetch =  FetchType.EAGER)
-	private Set<User> membersList;
-	@ManyToMany( fetch =  FetchType.EAGER)
-	private Set<Game> gamesList;
+	@ManyToMany
+	@JsonIgnore
+	private Set<User> membersList = new HashSet<User>();
+	
+	@ManyToMany
+	@JsonIgnore
+	private Set<Game> gamesList = new HashSet<Game>();
 	
 	public Groupe() {}
 	
@@ -32,20 +37,12 @@ public class Groupe extends DbObject{
 		this.type = type;
 		this.description = description;
 		this.avatar = avatar;
+		
 	}
 	
-		public void setIdGroupe(int idGroupe) {
-		this.idGroupe = idGroupe;
-	}
-
-	public int getIdGroupe() {
-		return idGroupe;
-	}
-
-	public void setIdGroup(int idGroupe) {
-		this.idGroupe = idGroupe;
-	}
 	
+
+
 	public String getName() {
 		return name;
 	}
@@ -60,22 +57,6 @@ public class Groupe extends DbObject{
 
 	public void setType(GroupType type) {
 		this.type = type;
-	}
-
-	public Set<User> getMembersList() {
-		return membersList;
-	}
-
-	public void setMembersList(Set<User> membersList) {
-		this.membersList = membersList;
-	}
-
-	public Set<Game> getGamesList() {
-		return gamesList;
-	}
-
-	public void setGamesList(Set<Game> gamesList) {
-		this.gamesList = gamesList;
 	}
 
 	public String getDescription() {
@@ -94,10 +75,28 @@ public class Groupe extends DbObject{
 		this.avatar = avatar;
 	}
 
+	public Set<User> getMembersList() {
+		return membersList;
+	}
+
+	public void setMembersList(Set<User> membersList) {
+		this.membersList = membersList;
+	}
+
+	public Set<Game> getGamesList() {
+		return gamesList;
+	}
+
+	public void setGamesList(Set<Game> gamesList) {
+		this.gamesList = gamesList;
+	}
+
 	@Override
 	public String toString() {
-		return "Groupe [idGroupe=" + idGroupe + ", name=" + name + ", type=" + type + ", description=" + description
-				+ ", avatar=" + avatar + ", membersList=" + membersList + ", gamesList=" + gamesList + "]";
+		return "Groupe [name=" + name + ", type=" + type + ", description=" + description + ", avatar=" + avatar + "]";
 	}
+
+
+
 	
 }

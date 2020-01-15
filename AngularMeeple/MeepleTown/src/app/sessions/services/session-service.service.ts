@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Session} from '../class/session';
+import {User} from '../../users/class/user';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class SessionServiceService {
   }
 
   public addSession(session: Session) {
+    console.log(session)
     return this.http.post(this.url, session);
   }
 
@@ -35,4 +37,9 @@ export class SessionServiceService {
     const url2 = this.url + session.id;
     return this.http.put<Session>(url2, session);
   }*/
+
+  public addPlayer(session: Session, user: User): Observable<User> {
+    return this.http.put<User>(this.url + 'adduser/' + session.id , user);
+  }
+
 }

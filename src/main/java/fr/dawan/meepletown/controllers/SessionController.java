@@ -1,10 +1,7 @@
 package fr.dawan.meepletown.controllers;
 
+import java.util.HashSet;
 import java.util.Set;
-
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,12 +9,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dawan.meepletown.beans.Session;
+import fr.dawan.meepletown.beans.User;
 import fr.dawan.meepletown.dao.GenericDao;
+import fr.dawan.meepletown.dao.SessionDao;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -26,11 +26,16 @@ public class SessionController {
 
 	@Autowired
 	GenericDao<Session> dao;
+	@Autowired
+	SessionDao sessioDao;
 	
 
 	@GetMapping("/")
 	public Set<Session> findAll(){
-		return (Set<Session>) dao.findAll(Session.class);
+		Set <Session> listSession = new HashSet<Session>();
+		listSession.addAll(dao.findAll(Session.class));
+		System.out.println("list:"+listSession);
+		return listSession;
 	}
 	
 	@GetMapping("/{id}")
@@ -59,4 +64,9 @@ public class SessionController {
 		dao.delete(Session.class, id);
 	}
 	
+	@PutMapping("/adduser/{id}")
+	public void addUser (@PathVariable(value = "id")long id, @RequestBody User u) {
+		sessioDao.UpdateSession(id, u);
+		
+	}
 }

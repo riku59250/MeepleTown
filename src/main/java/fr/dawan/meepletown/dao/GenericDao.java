@@ -121,7 +121,7 @@ public class GenericDao<T extends DbObject> {
 		
 		resultat = new HashSet<T>(list);
 		
-
+	
 		em.close();
 		return resultat;
 	}
