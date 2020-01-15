@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Session} from '../class/session';
 import {SessionServiceService} from '../services/session-service.service';
 import {User} from '../../users/class/user';
@@ -14,6 +14,8 @@ import {UserServicesService} from "../../users/services/user-services.service";
   styleUrls: ['./list-session.component.scss']
 })
 export class ListSessionComponent implements OnInit {
+
+  @Input()
   listSessions: Session[] = new Array;
   searchString: string;
   user: User;
@@ -23,10 +25,12 @@ export class ListSessionComponent implements OnInit {
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private userService: UserServicesService) { }
 
   ngOnInit() {
-    this.getAllSession();
+    if ( this.listSessions.length === 0){
+      this.getAllSession();
+    }
+
     this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
-    
   }
 
   openDialogSuppress(id: number): void {

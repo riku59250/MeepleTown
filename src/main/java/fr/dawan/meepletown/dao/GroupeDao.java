@@ -9,16 +9,13 @@ import fr.dawan.meepletown.json.Groupe;
 
 public class GroupeDao {
 
-		private EntityManager createEntityManager() {
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
-			EntityManager entityManager = factory.createEntityManager();
-			return entityManager;
-		}
+		
 
 		
 
 		public Groupe findById( long id) {
-			EntityManager entityManager = createEntityManager();
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+			EntityManager entityManager = factory.createEntityManager();
 			Groupe entity = null;
 
 			try {
@@ -34,6 +31,7 @@ public class GroupeDao {
 				ex.printStackTrace();
 			} finally {
 				entityManager.close();
+				factory.close();
 			}
 
 			return entity;

@@ -20,15 +20,11 @@ import fr.dawan.meepletown.beans.User;
 
 public class SessionDao {
 
-	private EntityManager createEntityManager() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
-		EntityManager entityManager = factory.createEntityManager();
-		return entityManager;
-	}
-
+	
 	public void createWithAuthor(Session s, long idUser) {
 		if (s.getId() == 0) {
-			EntityManager entityManager = createEntityManager();
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+			EntityManager entityManager = factory.createEntityManager();
 			EntityTransaction transaction = entityManager.getTransaction();
 
 			try {
@@ -48,13 +44,15 @@ public class SessionDao {
 				ex.printStackTrace();
 			} finally {
 				entityManager.close();
+				factory.close();
 			}
 		}
 	}
 
 	public void UpdateSession(long id, User u) {
 		if (u.getId() > 0) {
-			EntityManager entityManager = createEntityManager();
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+			EntityManager entityManager = factory.createEntityManager();
 			EntityTransaction transaction = entityManager.getTransaction();
 
 			try {
@@ -79,13 +77,15 @@ public class SessionDao {
 				ex.printStackTrace();
 			} finally {
 				entityManager.close();
+				factory.close();
 			}
 
 		}
 	}
 	
 	public void deletePlayer(long idSession, long idUser) {
-			EntityManager entityManager = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager entityManager = factory.createEntityManager();
 			EntityTransaction transaction = entityManager.getTransaction();
 
 			try {
@@ -114,13 +114,15 @@ public class SessionDao {
 				ex.printStackTrace();
 			} finally {
 				entityManager.close();
+				factory.close();
 			}
 
 		
 	}
 	
 	public Set<User> getPlayerList(long id) {
-			EntityManager entityManager = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager entityManager = factory.createEntityManager();
 			EntityTransaction transaction = entityManager.getTransaction();
 		
 			try {
@@ -144,13 +146,15 @@ public class SessionDao {
 				ex.printStackTrace();
 			} finally {
 				entityManager.close();
+				factory.close();
 			}
 
 			return null;
 	}
 	
 	public User getAuthor(long id) {
-		EntityManager entityManager = createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 	
 		try {
@@ -172,6 +176,7 @@ public class SessionDao {
 			ex.printStackTrace();
 		} finally {
 			entityManager.close();
+			factory.close();
 		}
 
 		return null;
