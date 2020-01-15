@@ -14,6 +14,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import fr.dawan.meepletown.beans.Groupe;
 import fr.dawan.meepletown.beans.Session;
 import fr.dawan.meepletown.beans.User;
 
@@ -42,7 +43,6 @@ public class SessionDao {
 				query.setParameter("id", id);
 				// on paramètre et on exécute la requête, et on récupère le résultat
 				session = query.getSingleResult();
-				System.out.println(session);
 				// On met à jour la formation
 				session.getPlayersList().add(u);
 				entityManager.merge(session);
@@ -128,4 +128,5 @@ public class SessionDao {
 
 			return null;
 	}
+
 }
