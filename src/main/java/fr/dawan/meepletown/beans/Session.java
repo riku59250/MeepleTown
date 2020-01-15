@@ -27,7 +27,7 @@ public class Session extends DbObject {
 	
 	@ManyToMany
 	@JsonIgnore
-	private Set<User> playersList;
+	private Set<User> playersList = new HashSet<User>();
 	
 	@ManyToMany
 	@JsonIgnore

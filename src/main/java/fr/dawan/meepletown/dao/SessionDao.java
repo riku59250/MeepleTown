@@ -32,6 +32,7 @@ public class SessionDao {
 				transaction.begin();
 				User u = entityManager.find(User.class, idUser);
 				s.setAuthor(u);
+				s.getPlayersList().add(u);
 				// On insère la formation dans la BDD
 				entityManager.persist(s);
 
