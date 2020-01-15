@@ -10,7 +10,6 @@ export class PagegroupComponent implements OnInit {
 
   constructor(private serviceGroup: GroupService) {
     // @ts-ignore
-    super(serviceGroup);
   }
   description;
   imgGroup;
@@ -22,7 +21,7 @@ export class PagegroupComponent implements OnInit {
     this.addBtn = 'Rejoindre';
 
 
-    this.serviceGroup.getPageGroup().subscribe( (data ) => {
+    this.serviceGroup.getPageGroup(1).subscribe( (data ) => {
       this.description = data;
       this.imgGroup = data;
     });
