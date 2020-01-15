@@ -66,6 +66,7 @@ export class ListSessionComponent implements OnInit {
           if (this.user !== null) {
             this.sessionService.addPlayer(session.id, this.user.getValue()).subscribe(value => {
               session.playersList.push(this.user.getValue());
+              this.getAllSession();
             }, (error) => {
               console.log(error);
             });
@@ -94,6 +95,12 @@ export class ListSessionComponent implements OnInit {
       this.sessionService.getAuthor(id).subscribe( (user) => {
         session.author = user;
       });
+  }
+
+  deletePlayer(session: Session){
+    this.sessionService.deletePlayer(session, this.user.getValue()).subscribe( () => {
+      this.getAllSession();
+    });
   }
 
   isPlayer(session: Session){
