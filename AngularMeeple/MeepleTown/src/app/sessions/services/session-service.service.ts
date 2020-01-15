@@ -23,8 +23,8 @@ export class SessionServiceService {
     return this.http.get<Session>(url2);
   }
 
-  public addSession(session: Session) {
-    return this.http.post(this.url, session);
+  public addSession(session: Session, user: User){
+    return this.http.post(this.url + '/' + user.id, session, );
   }
 
   public deleteSession(id: number) {
@@ -37,8 +37,8 @@ export class SessionServiceService {
     return this.http.put<Session>(url2, session);
   }*/
 
-  public addPlayer(session: Session, user: User): Observable<User> {
-    return this.http.put<User>(this.url + 'adduser/' + session.id , user);
+  public addPlayer(id: number, user: User): Observable<User> {
+    return this.http.put<User>(this.url + 'adduser/' + id , user);
   }
 
   public deletePlayer(session: Session, user: User){
@@ -51,4 +51,7 @@ export class SessionServiceService {
     return this.http.get<User[]>(this.url + 'getusers/' + id);
   }
 
+  public getAuthor(id: number): Observable<User> {
+    return this.http.get<User>(this.url + 'getauthor/' + id);
+  }
 }

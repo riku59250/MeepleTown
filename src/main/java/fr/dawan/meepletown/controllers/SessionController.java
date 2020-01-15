@@ -59,6 +59,12 @@ public class SessionController {
 		dao.create(session);
 	}
 	
+	@PostMapping("/{idUser}")
+	public void createOrUpdate(@PathVariable(value="idUser") long idUser, @RequestBody Session session) {
+		System.out.println(session);
+		sessioDao.createWithAuthor(session, idUser);
+	}
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable(value = "id") long id) {
 		dao.delete(Session.class, id);
@@ -77,5 +83,10 @@ public class SessionController {
 	@DeleteMapping("/deleteuser/{idSession}/{idUser}")
 	public void deleteUser (@PathVariable(value = "idSession")long idSession, @PathVariable(value = "idUser")long idUser) {
 		sessioDao.deletePlayer(idSession, idUser);
+	}
+	
+	@GetMapping("/getauthor/{id}")
+	public User getAuthor(@PathVariable(value = "id") long id) {
+		return sessioDao.getAuthor(id);
 	}
 }

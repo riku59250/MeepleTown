@@ -26,7 +26,30 @@ public class SessionDao {
 		return entityManager;
 	}
 
-	
+	public void createWithAuthor(Session s, long idUser) {
+		if (s.getId() == 0) {
+			EntityManager entityManager = createEntityManager();
+			EntityTransaction transaction = entityManager.getTransaction();
+
+			try {
+				// début de la transaction
+				transaction.begin();
+				User u = entityManager.find(User.class, idUser);
+				s.setAuthor(u);
+				// On insère la formation dans la BDD
+				entityManager.persist(s);
+
+				// on commit tout ce qui s'est fait dans la transaction
+				transaction.commit();
+			} catch (Exception ex) {
+				// en cas d'erreur, on effectue un rollback
+				transaction.rollback();
+				ex.printStackTrace();
+			} finally {
+				entityManager.close();
+			}
+		}
+	}
 
 	public void UpdateSession(long id, User u) {
 		if (u.getId() > 0) {
@@ -128,5 +151,33 @@ public class SessionDao {
 
 			return null;
 	}
+	
+	public User getAuthor(long id) {
+		EntityManager entityManager = createEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+	
+		try {
+			// début de la transaction
+			transaction.begin();
+			Session session = null;
+			TypedQuery<Session> query = entityManager.createQuery(
+					"select session from Session session where session.id = :id ", Session.class);
+
+			query.setParameter("id", id);
+			// on paramètre et on exécute la requête, et on récupère le résultat
+			session = query.getSingleResult();
+			return session.getAuthor();
+			
+
+		} catch (Exception ex) {
+			// en cas d'erreur, on effectue un rollback
+			transaction.rollback();
+			ex.printStackTrace();
+		} finally {
+			entityManager.close();
+		}
+
+		return null;
+}
 
 }
