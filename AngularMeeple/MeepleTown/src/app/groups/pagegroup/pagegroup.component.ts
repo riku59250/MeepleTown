@@ -7,15 +7,13 @@ import {GroupService} from "../services/group.service";
   styleUrls: ['./pagegroup.component.scss']
 })
 export class PagegroupComponent implements OnInit {
-
-  constructor(private serviceGroup: GroupService) {
-    // @ts-ignore
-    super(serviceGroup);
-  }
   description;
   imgGroup;
   data;
   addBtn;
+
+  constructor(private serviceGroup: GroupService) {}
+
 
 
   ngOnInit() {
