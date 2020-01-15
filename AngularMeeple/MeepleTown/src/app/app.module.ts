@@ -17,6 +17,7 @@ import {ListGroupComponent} from "./groups/list-group/list-group.component";
 import {CreategroupComponent} from "./groups/creategroup/creategroup.component";
 import {UserPageComponent} from "./users/user-page/user-page.component";
 import { PagegroupComponent } from './groups/pagegroup/pagegroup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // @ts-ignore
 @NgModule({
@@ -41,7 +42,8 @@ import { PagegroupComponent } from './groups/pagegroup/pagegroup.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   exports: [
     SearchFilterPipe

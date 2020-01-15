@@ -12,6 +12,8 @@ export class Group {
 	// tslint:disable-next-line:variable-name
 	private _description: string;
 
+
+
 	constructor(nameGroup?: string, groupType?: boolean, nameDept?: string, city?: string, description?: string) {
 		this._nameGroup = nameGroup;
 		this._groupType = groupType;

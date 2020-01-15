@@ -27,7 +27,7 @@ export class CreategroupComponent implements OnInit {
   nameCityMinLength = 1;
   nameCityMaxLength = 45;
   description: FormControl;
-  descriptionMax = 250;
+  descriptionMax = 300;
   groupForm: FormGroup;
 
 

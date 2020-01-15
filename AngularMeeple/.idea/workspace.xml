@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2db4fc34-4e91-410c-b6cc-0362315a133f" name="Default Changelist" comment="" />
+    <list default="true" id="2db4fc34-4e91-410c-b6cc-0362315a133f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/group/group.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/group/group.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/list-group/list-group.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/list-group/list-group.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/header/user-header/user-header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/styles.scss" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +27,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/MeepleTown/package.json" />
   </component>
   <component name="ProjectId" id="1V3pghAd02nIjtiUmwaPYE5vcDm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -66,6 +87,7 @@
       <workItem from="1578300102067" duration="1393000" />
       <workItem from="1578643894761" duration="463000" />
       <workItem from="1578646411312" duration="5503000" />
+      <workItem from="1579076881542" duration="2086000" />
     </task>
     <servers />
   </component>
