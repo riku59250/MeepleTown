@@ -8,13 +8,18 @@ import {GroupService} from "../services/group.service";
 })
 export class PagegroupComponent implements OnInit {
 
+
   constructor(private serviceGroup: GroupService) {
     // @ts-ignore
   }
+
   description;
   imgGroup;
   data;
   addBtn;
+
+
+
 
 
   ngOnInit() {

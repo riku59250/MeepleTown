@@ -34,7 +34,7 @@ export class GroupService {
         );
     }
 
-    public getPageGroup(id: number): Observable<Group[]> {
+    public getPageGroup(id?: number): Observable<Group[]> {
     return  this.http.get<Group[]>(this.url + this.group.id).pipe(
         map( (groups: Group[]) => {
             return groups.map(( group: Group) => {

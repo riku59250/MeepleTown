@@ -67,6 +67,15 @@ public class SessionController {
 	@PutMapping("/adduser/{id}")
 	public void addUser (@PathVariable(value = "id")long id, @RequestBody User u) {
 		sessioDao.UpdateSession(id, u);
-		
+	}
+	
+	@GetMapping("/getusers/{id}")
+	public Set<User> getUsers (@PathVariable(value = "id")long id) {
+		return sessioDao.getPlayerList(id);
+	}
+	
+	@DeleteMapping("/deleteuser/{idSession}/{idUser}")
+	public void deleteUser (@PathVariable(value = "idSession")long idSession, @PathVariable(value = "idUser")long idUser) {
+		sessioDao.deletePlayer(idSession, idUser);
 	}
 }
