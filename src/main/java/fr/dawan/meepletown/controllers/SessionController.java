@@ -1,5 +1,7 @@
 package fr.dawan.meepletown.controllers;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.dawan.meepletown.beans.Game;
 import fr.dawan.meepletown.beans.Session;
 import fr.dawan.meepletown.beans.User;
 import fr.dawan.meepletown.dao.GenericDao;
@@ -63,6 +66,13 @@ public class SessionController {
 	@PostMapping("/{idUser}")
 	public void createOrUpdate(@PathVariable(value="idUser") long idUser, @RequestBody Session session) {
 		sessioDao.createWithAuthor(session, idUser);
+	}
+	
+	@PostMapping("/withgames/{idUser}")
+	public void createWithGames(@PathVariable(value="idUser") long idUser, @RequestBody SessionJson session) {
+		System.out.println("--------------");
+		System.out.println(session.getGamesListSession());
+		sessioDao.createWithAuthorAndGames(session, idUser);
 	}
 	
 	@DeleteMapping("/{id}")
