@@ -40,8 +40,9 @@ public class SessionController {
 	}
 	
 	@GetMapping("/{id}")
-	public Session findBy(@PathVariable(value = "id")  long id) {
-		return dao.findById(Session.class, id);
+	public SessionJson findBy(@PathVariable(value = "id")  long id) {
+		System.out.println(sessioDao.findById(id));
+		return sessioDao.findById(id);
 	}
 	
 	
@@ -86,8 +87,8 @@ public class SessionController {
 		sessioDao.deletePlayer(idSession, idUser);
 	}
 	
-	@GetMapping("/getauthor/{id}")
-	public User getAuthor(@PathVariable(value = "id") long id) {
-		return sessioDao.getAuthor(id);
-	}
+//	@GetMapping("/getauthor/{id}")
+//	public User getAuthor(@PathVariable(value = "id") long id) {
+//		return sessioDao.getAuthor(id);
+//	}
 }

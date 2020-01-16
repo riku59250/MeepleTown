@@ -37,20 +37,51 @@ public class SessionDao {
 		query.setHint("javax.persistence.loadgraph", graph);
 		
 		// on exécute la requête et on récupère le résultat
-		//TODO faut le transformer en SET maintenant
-		//resultat = query.getResultList();
 		List<Session> list = query.getResultList();
 		resultat = new HashSet<SessionJson>();
 		for (Session session : list) {
-			resultat.add(new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(), session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(), session.getAuthor()));
+			SessionJson s = new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(), 
+					session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), 
+					session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(), 
+					session.getAuthor());
+			s.setId(session.getId());
+			resultat.add(s);
 		}
-
-		
 	
 		em.close();
 		factory.close();
 		return resultat;
 	}
+	
+	public SessionJson findById(long id) {
+		SessionJson resultat = null;
+
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager em = factory.createEntityManager();
+
+		EntityGraph<Session> graph = em.createEntityGraph(Session.class);
+		graph.addSubgraph("playersList");
+		graph.addSubgraph("gamesListSession");
+		graph.addSubgraph("author");
+		// on crée la requête
+		TypedQuery<Session> query = em.createQuery(
+				"select session from Session session where session.id = :id ", Session.class);
+		query.setParameter("id", id);
+		query.setHint("javax.persistence.loadgraph", graph);
+		
+		// on exécute la requête et on récupère le résultat
+		Session session = query.getSingleResult();
+		
+		resultat = new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(), session.getDescription(), 
+				session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), session.getEndDate(), session.getIsPrivate(), 
+				session.getPlayersList(), session.getGamesListSession(), session.getAuthor());
+		resultat.setId(session.getId());
+
+		em.close();
+		factory.close();
+		return resultat;
+	}
+	
 	public void createWithAuthor(Session s, long idUser) {
 		if (s.getId() == 0) {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
@@ -182,34 +213,34 @@ public class SessionDao {
 			return null;
 	}
 	
-	public User getAuthor(long id) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
-		EntityManager entityManager = factory.createEntityManager();
-		EntityTransaction transaction = entityManager.getTransaction();
-	
-		try {
-			// début de la transaction
-			transaction.begin();
-			Session session = null;
-			TypedQuery<Session> query = entityManager.createQuery(
-					"select session from Session session where session.id = :id ", Session.class);
-
-			query.setParameter("id", id);
-			// on paramètre et on exécute la requête, et on récupère le résultat
-			session = query.getSingleResult();
-			return session.getAuthor();
-			
-
-		} catch (Exception ex) {
-			// en cas d'erreur, on effectue un rollback
-			transaction.rollback();
-			ex.printStackTrace();
-		} finally {
-			entityManager.close();
-			factory.close();
-		}
-
-		return null;
-}
+//	public User getAuthor(long id) {
+//		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+//		EntityManager entityManager = factory.createEntityManager();
+//		EntityTransaction transaction = entityManager.getTransaction();
+//	
+//		try {
+//			// début de la transaction
+//			transaction.begin();
+//			Session session = null;
+//			TypedQuery<Session> query = entityManager.createQuery(
+//					"select session from Session session where session.id = :id ", Session.class);
+//
+//			query.setParameter("id", id);
+//			// on paramètre et on exécute la requête, et on récupère le résultat
+//			session = query.getSingleResult();
+//			return session.getAuthor();
+//			
+//
+//		} catch (Exception ex) {
+//			// en cas d'erreur, on effectue un rollback
+//			transaction.rollback();
+//			ex.printStackTrace();
+//		} finally {
+//			entityManager.close();
+//			factory.close();
+//		}
+//
+//		return null;
+//}
 
 }

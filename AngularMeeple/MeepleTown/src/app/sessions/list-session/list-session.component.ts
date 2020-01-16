@@ -3,10 +3,9 @@ import {Session} from '../class/session';
 import {SessionServiceService} from '../services/session-service.service';
 import {User} from '../../users/class/user';
 import {LoginService} from '../../login/services/login.service';
-import {BehaviorSubject} from "rxjs";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
-import {UserServicesService} from "../../users/services/user-services.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-session',
@@ -22,7 +21,7 @@ export class ListSessionComponent implements OnInit {
   isUserConnected = false;
 
   // @ts-ignore
-  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private userService: UserServicesService) { }
+  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
 
   ngOnInit() {
     if ( this.listSessions.length === 0) {
@@ -53,33 +52,20 @@ export class ListSessionComponent implements OnInit {
   getAllSession() {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
-      console.log(sessions);
-      for (let session of this.listSessions) {
-        this.getPlayers(session.id, session);
-        this.sessionService.getAuthor(session.id).subscribe( (user) => {
-          session.author = user;
-        });
-      }
-      for(let session of this.listSessions) {
-        console.log('-------------')
-        console.log(session.author)
-      }
-
+      console.log(sessions)
     });
   }
 
   addPlayer(session: Session) {
-    console.log(session.author)
       this.sessionService.getSessionById(session.id).subscribe( (session) => {
         if (!session.playersList) {
           session.playersList = new Array();
         }
         if (session.playersList.length < session.nbMaxPlayers) {
           if (this.user !== null) {
-            this.sessionService.addPlayer(session.id, this.user).subscribe(value => {
+            this.sessionService.addPlayer(session.id, this.user).subscribe( () => {
               session.playersList.push(this.user);
-             
-              //this.listSessions.push(session);
+              this.router.navigateByUrl('/sessionPage/' + session.id);
             }, (error) => {
               console.log(error);
             });
@@ -117,9 +103,10 @@ export class ListSessionComponent implements OnInit {
   }
 
   isPlayer(session: Session){
+    console.log('ici')
     if(this.user && session.playersList) {
       for(let u of session.playersList) {
-        if (JSON.stringify(u) === JSON.stringify(this.user)) {
+        if (u.id === this.user.id) {
           return true;
         }
       }
@@ -139,7 +126,10 @@ export class ListSessionComponent implements OnInit {
     return this.user !== null;
   }
 
-  isAuthor(session: Session){
-    return JSON.stringify(session.author) === JSON.stringify(this.user);
+  isAuthor(author: User){
+    if(author) {
+      return author.id === this.user.id;
+    }
+    return false;
   }
 }

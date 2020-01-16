@@ -25,9 +25,6 @@ export class SessionPageComponent implements OnInit {
     if (this.id && this.id !== '') {
       this.sessionService.getSessionById(Number.parseInt(this.id, 10)).subscribe((session) => {
         this.session = session;
-        this.sessionService.getPlayer(session.id).subscribe((listUsers) => {
-          session.playersList = listUsers;
-        });
       });
     }
   }
