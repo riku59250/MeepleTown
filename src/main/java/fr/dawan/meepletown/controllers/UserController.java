@@ -33,7 +33,7 @@ public class UserController {
 	
 	
 	@RequestMapping("/{idUser}")
-	public fr.dawan.meepletown.json.User  findBy(@PathVariable(value = "idUser") long id) {
+	public fr.dawan.meepletown.json.UserJson  findBy(@PathVariable(value = "idUser") long id) {
 		return userDao.findById( id);
 	}
 	
@@ -56,7 +56,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/connect")
-	public fr.dawan.meepletown.json.User findByEmail(@RequestParam("email") String email, @RequestParam("password") String password) {
+	public fr.dawan.meepletown.json.UserJson findByEmail(@RequestParam("email") String email, @RequestParam("password") String password) {
 		System.out.println(email);
 		return userDao.findByEmailAndPassword(email, password);
 	}

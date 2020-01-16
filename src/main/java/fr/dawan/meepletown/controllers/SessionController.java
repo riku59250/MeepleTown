@@ -1,6 +1,5 @@
 package fr.dawan.meepletown.controllers;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import fr.dawan.meepletown.beans.Session;
 import fr.dawan.meepletown.beans.User;
 import fr.dawan.meepletown.dao.GenericDao;
 import fr.dawan.meepletown.dao.SessionDao;
+import fr.dawan.meepletown.json.SessionJson;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -31,11 +31,12 @@ public class SessionController {
 	
 
 	@GetMapping("/")
-	public Set<Session> findAll(){
-		Set <Session> listSession = new HashSet<Session>();
-		listSession.addAll(dao.findAll(Session.class));
-		System.out.println("list:"+listSession);
-		return listSession;
+	public Set<SessionJson> findAll(){
+//		Set <Session> listSession = new HashSet<Session>();
+//		listSession.addAll(dao.findAll(Session.class));
+//		System.out.println("list:"+listSession);
+//		return listSession;
+		return sessioDao.findAll();
 	}
 	
 	@GetMapping("/{id}")

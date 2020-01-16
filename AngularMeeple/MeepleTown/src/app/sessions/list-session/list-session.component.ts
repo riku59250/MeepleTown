@@ -24,7 +24,7 @@ export class ListSessionComponent implements OnInit {
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private userService: UserServicesService) { }
 
   ngOnInit() {
-    if ( this.listSessions.length === 0){
+    if ( this.listSessions.length === 0) {
       this.getAllSession();
     }
 
@@ -53,7 +53,8 @@ export class ListSessionComponent implements OnInit {
   getAllSession() {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
-      for(let session of this.listSessions) {
+      console.log(sessions);
+      for (let session of this.listSessions) {
         this.getPlayers(session.id, session);
         this.getAuthor(session.id, session);
       }

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -17,10 +18,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import fr.dawan.meepletown.beans.Groupe;
 import fr.dawan.meepletown.beans.Session;
 import fr.dawan.meepletown.beans.User;
+import fr.dawan.meepletown.json.SessionJson;
 
 public class SessionDao {
 
+	public Set<SessionJson> findAll() {
+		Set<SessionJson> resultat = null;
+
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager em = factory.createEntityManager();
+
+		EntityGraph<Session> graph = em.createEntityGraph(Session.class);
+		graph.addSubgraph("playersList");
+		graph.addSubgraph("gamesListSession");
+		graph.addSubgraph("author");
+		// on crée la requête
+		TypedQuery<Session> query = em.createQuery("SELECT entity FROM Session entity ", Session.class);
+		query.setHint("javax.persistence.loadgraph", graph);
+		
+		// on exécute la requête et on récupère le résultat
+		//TODO faut le transformer en SET maintenant
+		//resultat = query.getResultList();
+		List<Session> list = query.getResultList();
+		resultat = new HashSet<SessionJson>();
+		for (Session session : list) {
+			resultat.add(new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(), session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(), session.getAuthor()));
+		}
+
+		
 	
+		em.close();
+		factory.close();
+		return resultat;
+	}
 	public void createWithAuthor(Session s, long idUser) {
 		if (s.getId() == 0) {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
