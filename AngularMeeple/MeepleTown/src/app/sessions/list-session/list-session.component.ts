@@ -55,7 +55,9 @@ export class ListSessionComponent implements OnInit {
       this.listSessions = sessions;
       for(let session of this.listSessions) {
         this.getPlayers(session.id, session);
-        this.getAuthor(session.id, session);
+        this.sessionService.getAuthor(session.id).subscribe( (user) => {
+          session.author = user;
+        });
       }
       for(let session of this.listSessions) {
         console.log('-------------')
@@ -88,7 +90,6 @@ export class ListSessionComponent implements OnInit {
   getPlayers(id: number, session?){
     if(session) {
       this.sessionService.getPlayer(id).subscribe( (user) => {
-        
         session.playersList = user;
       });
     } else {
