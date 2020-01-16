@@ -15,14 +15,14 @@
     <tr>
         <th scope="col">Pseudo</th>
         <th scope="col">Mail</th>
-        <th scope="col">Actions possibles</th>
+        <th scope="col" *ngIf="isUserConnected">Actions possibles</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let user of session.playersList">
         <td>{{user.pseudo}}</td>
         <td>{{user.mail}}</td>
-        <td><button class="btn btn-secondary" (click)="deletePlayer(user)"> Supprimer de la partie</button></td>
+        <td *ngIf="isUserConnected"><button class="btn btn-secondary" *ngIf="isAuthor() || isPlayer()" (click)="openDialogSuppress(user)"> Supprimer ce joueur</button></td>
     </tr>
     </tbody>
 </table>

@@ -52,7 +52,6 @@ export class ListSessionComponent implements OnInit {
   getAllSession() {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
-      console.log(sessions)
     });
   }
 
@@ -103,7 +102,6 @@ export class ListSessionComponent implements OnInit {
   }
 
   isPlayer(session: Session){
-    console.log('ici')
     if(this.user && session.playersList) {
       for(let u of session.playersList) {
         if (u.id === this.user.id) {
