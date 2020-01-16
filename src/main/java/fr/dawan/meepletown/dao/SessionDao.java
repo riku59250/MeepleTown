@@ -126,6 +126,7 @@ public class SessionDao {
 				// début de la transaction
 				transaction.begin();
 				User u = entityManager.find(User.class, idUser);
+				newSession.setAuthor(u);
 				newSession.getPlayersList().add(u);
 				newSession.setGamesListSession(session.getGamesListSession());
 				// On insère la formation dans la BDD
