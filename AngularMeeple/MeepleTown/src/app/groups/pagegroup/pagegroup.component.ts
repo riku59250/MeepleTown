@@ -42,6 +42,8 @@ export class PagegroupComponent implements OnInit {
     console.log("coucou");
   }
 
+
+
 }
 
 
