@@ -43,7 +43,6 @@ export class SessionServiceService {
 
   public deletePlayer(session: Session, user: User){
     const url2 = this.url + 'deleteuser/' + session.id + '/' + user.id;
-    console.log('ok ' + url2)
     return this.http.delete(url2);
   }
 

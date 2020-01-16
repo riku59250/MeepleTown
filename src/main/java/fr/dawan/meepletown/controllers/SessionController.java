@@ -57,13 +57,11 @@ public class SessionController {
 	
 	@PostMapping("/")
 	public void createOrUpdate(@RequestBody Session session) {
-		System.out.println(session);
 		dao.create(session);
 	}
 	
 	@PostMapping("/{idUser}")
 	public void createOrUpdate(@PathVariable(value="idUser") long idUser, @RequestBody Session session) {
-		System.out.println(session);
 		sessioDao.createWithAuthor(session, idUser);
 	}
 	

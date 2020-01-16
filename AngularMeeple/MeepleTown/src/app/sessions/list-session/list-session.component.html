@@ -18,15 +18,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let session of listSessions | searchFilter : 'place' : searchString">
-            <th scope="row"> <a class="nav-link" [routerLink]="['/sessionPage', session.id]" > {{session.title}} </a></th>
+        <tr *ngFor="let session of listSessions | searchFilter : 'place' : searchString" [className]="session.isPrivate ? 'table-secondary' : '' " >
+            <th scope="row"> <a class="nav-link" [routerLink]="['/sessionPage', session.id]" >{{session.title}} </a></th>
             <td>{{session.place}}</td>
             <td> du {{session.startDate | date: 'dd/MM/yyy hh:mm'}} au {{session.endDate | date: 'dd/MM/yyy hh:mm'}}</td>
             <td>{{session.nbMinPlayers}} à {{session.nbMaxPlayers}}</td>
             <td>{{session.author?.pseudo}}</td>
-            <td *ngIf="isUserConnected"> <button class="btn btn-secondary" *ngIf="!isAuthor(session.author) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> 
-                <button class="btn btn-danger" *ngIf="isAuthor(session.author)" (click)="openDialogSuppress(session.id)">X</button> 
-            <p class="alert alert-success" *ngIf="!isAuthor(session.author) && isPlayer(session)">Vous participez à cette partie. <button class="btn btn-danger" (click)="deletePlayer(session)"> Quitter ? </button></p></td>
+            <td *ngIf="isUserConnected">
+                <p class="alert alert-secondary" *ngIf="session.isPrivate">Cette partie est privée.</p>
+                <button class="btn btn-secondary" *ngIf="!session.isPrivate && !isAuthor(session.author) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> 
+                <button class="btn btn-danger" *ngIf="!session.isPrivate && isAuthor(session.author)" (click)="openDialogSuppress(session.id)">Supprimer</button> 
+                <p class="alert alert-success" *ngIf="!isAuthor(session.author) && isPlayer(session)">Vous participez à cette partie. <button class="btn btn-danger" (click)="deletePlayer(session)"> Quitter ? </button></p>
+            </td>
         </tr>
         </tbody>
     </table>
