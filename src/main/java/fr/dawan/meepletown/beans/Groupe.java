@@ -20,6 +20,8 @@ public class Groupe extends DbObject{
 	private GroupType type;
 	private String description = "";
 	private String avatar = null;
+	private String nameDept;
+	private String city;
 	
 	@ManyToMany
 	@JsonIgnore
@@ -42,6 +44,22 @@ public class Groupe extends DbObject{
 	
 	
 
+
+	public String getNameDept() {
+		return nameDept;
+	}
+
+	public void setNameDept(String nameDept) {
+		this.nameDept = nameDept;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 
 	public String getName() {
 		return name;

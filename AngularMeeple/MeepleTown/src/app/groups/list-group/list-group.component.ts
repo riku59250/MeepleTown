@@ -11,7 +11,7 @@ import {group} from '@angular/animations';
 })
 export class ListGroupComponent implements OnInit {
   constructor(private serviceGroup: GroupService) { }
-  listGroup = [];
+  listGroup: Array<Group>;
   begin = 0;
   end = 5;
   data;
@@ -19,6 +19,7 @@ export class ListGroupComponent implements OnInit {
     this.data = 5;
     this.serviceGroup.getAllGroup().subscribe((data) => {
           this.listGroup = data;
+          console.log(this.listGroup);
         }
     );
   }

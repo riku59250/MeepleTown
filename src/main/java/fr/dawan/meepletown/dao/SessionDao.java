@@ -44,6 +44,7 @@ public class SessionDao {
 					session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), 
 					session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(), 
 					session.getAuthor());
+
 			s.setId(session.getId());
 			resultat.add(s);
 		}
