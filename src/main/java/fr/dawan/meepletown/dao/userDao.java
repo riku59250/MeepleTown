@@ -9,21 +9,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import javax.swing.ImageIcon;
 
-import fr.dawan.meepletown.beans.Game;
-import fr.dawan.meepletown.beans.Groupe;
 import fr.dawan.meepletown.beans.User;
+import fr.dawan.meepletown.json.UserJson;
 
 public class userDao {
 
 
 	
-	public fr.dawan.meepletown.json.User findByEmailAndPassword(String email, String password) {
+	public fr.dawan.meepletown.json.UserJson findByEmailAndPassword(String email, String password) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
 		EntityManager entityManager = factory.createEntityManager();
 		User entity = null;
-		fr.dawan.meepletown.json.User user = null;
+		fr.dawan.meepletown.json.UserJson user = null;
 		TypedQuery<User> query = entityManager.createQuery("select user from User user where user.mail = :email and user.password = :password" , User.class );
 
 		query.setParameter("email", email);
@@ -34,7 +32,7 @@ public class userDao {
 			entity.getListGroup().size();
 			entity.getListSession().size();
 			entity.getSession().size();
-			 user = new fr.dawan.meepletown.json.User(entity.getPseudo(), entity.getMail(), entity.getPassword(), entity.getNumDept(), entity.getCity(), entity.getAvatar(), entity.getListGroup(), entity.getListGame());
+			 user = new fr.dawan.meepletown.json.UserJson(entity.getPseudo(), entity.getMail(), entity.getPassword(), entity.getNumDept(), entity.getCity(), entity.getAvatar(), entity.getListGroup(), entity.getListGame());
 			user.setListSession(entity.getListSession());
 			user.setSession(entity.getSession());
 		}catch (Exception e) {
@@ -75,7 +73,7 @@ public class userDao {
 		return resultat;
 	}
 
-	public fr.dawan.meepletown.json.User findById(long id) {
+	public UserJson findById(long id) {
 		System.out.println("FindById");
 
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
@@ -92,7 +90,7 @@ public class userDao {
 		entity.getListGroup().size();
 		entity.getListSession().size();
 		entity.getSession().size();
-		fr.dawan.meepletown.json.User user = new fr.dawan.meepletown.json.User(entity.getPseudo(), entity.getMail(), entity.getPassword(), entity.getNumDept(), entity.getCity(), entity.getAvatar(), entity.getListGroup(), entity.getListGame());
+		UserJson user = new UserJson(entity.getPseudo(), entity.getMail(), entity.getPassword(), entity.getNumDept(), entity.getCity(), entity.getAvatar(), entity.getListGroup(), entity.getListGame());
 		user.setListSession(entity.getListSession());
 		user.setSession(entity.getSession());
 		entityManager.close();

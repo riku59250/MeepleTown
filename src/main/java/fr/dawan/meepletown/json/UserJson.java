@@ -10,7 +10,7 @@ import fr.dawan.meepletown.beans.DbObject;
 import fr.dawan.meepletown.beans.Game;
 import fr.dawan.meepletown.beans.Session;
 
-public class User extends DbObject{
+public class UserJson extends DbObject{
 
   //Attributs Initialisation
 	private String pseudo;
@@ -34,7 +34,7 @@ public class User extends DbObject{
 	private Set<Session> session;
 	
 	//Create constructor
-	public User( String pseudo, String mail, String password, int numDept, String city, ImageIcon avatar,
+	public UserJson( String pseudo, String mail, String password, int numDept, String city, ImageIcon avatar,
 			Set<fr.dawan.meepletown.beans.Groupe> listGroup, Set<Game> listGame) {
 		this.pseudo = pseudo;
 		this.mail = mail;
@@ -47,7 +47,7 @@ public class User extends DbObject{
 	}
 	
 	
-	public User () {
+	public UserJson () {
 		super();
 		
 		
