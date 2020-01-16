@@ -10,8 +10,8 @@
     </thead>
     <tbody>
     <tr *ngFor="let group of listGroup | slice:begin:end ">
-        <td>{{ group.nameGroup }}</td>
-        <td>{{ group.groupType}}</td>
+        <td>{{ group.name }}</td>
+        <td>{{ group.type}}</td>
         <td>{{ group.nameDept}}</td>
         <td>{{ group.city}}</td>
         <td><a class="btn btn-outline-info"  [routerLink]="['/pageGroup', group.id]">Consulter</a></td>

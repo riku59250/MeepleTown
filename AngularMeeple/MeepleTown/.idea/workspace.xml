@@ -26,7 +26,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="ts.external.directory.path" value="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -36,6 +36,7 @@
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (MeepleTown)" type="JavaScriptTestRunnerKarma">
       <config-file value="$PROJECT_DIR$/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$" />
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
@@ -91,7 +92,9 @@
       <workItem from="1576748944360" duration="738000" />
       <workItem from="1576753229474" duration="53000" />
       <workItem from="1578399951484" duration="19000" />
-      <workItem from="1579082400377" duration="13507000" />
+      <workItem from="1579082400377" duration="13660000" />
+      <workItem from="1579162357548" duration="49000" />
+      <workItem from="1579162530004" duration="5826000" />
     </task>
     <servers />
   </component>
@@ -112,6 +115,22 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1579162692949">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579162692949" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1579162692949">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579162692949" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1579162692949">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579162692949" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1579162692949">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579162692949" />
     <state x="463" y="166" key="SettingsEditor" timestamp="1579082550634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,65 +1,30 @@
 import { Type } from '@angular/compiler';
+import {User} from "../../users/class/user";
 
 export class Group {
-	private _id: number;
+	 id: number;
 	// tslint:disable-next-line:variable-name
-	private _nameGroup: string;
+	 name: string;
 	// tslint:disable-next-line:variable-name
-	private _groupType: boolean;
+	 type: boolean;
 	// tslint:disable-next-line:variable-name
-	private _nameDept: string;
+	 nameDept: string;
 	// tslint:disable-next-line:variable-name
-	private _city: string;
+	city: string;
 	// tslint:disable-next-line:variable-name
-	private _description: string;
+	 description: string;
+	membersList: Array<User>;
 
 
-
-	constructor( id?: number, nameGroup?: string, groupType?: boolean, nameDept?: string, city?: string, description?: string) {
-		this._id = id;
-		this._nameGroup = nameGroup;
-		this._groupType = groupType;
-		this._nameDept = nameDept;
-		this._city = city;
-		this._description = description;
+	constructor( id?: number, nameGroup?: string, groupType?: boolean,  description?: string, city?: string, nameDept?: string, membersList?: Array<User>) {
+		this.id = id;
+		this.name = nameGroup;
+		this.type = groupType;
+		this.nameDept = nameDept;
+		this.city = city;
+		this.description = description;
+		this.membersList = membersList;
 	}
 
-	get id(): number{
-		return this._id;
-	}
 
-	set id(value: number){
-		this._id = value;
-	}
-	get nameGroup(): string {
-		return this._nameGroup;
-	}
-	set nameGroup(value: string) {
-		this._nameGroup = value;
-	}
-
-	get groupType(): boolean {
-		return this._groupType;
-	}
-	set groupType(value: boolean) {
-		this._groupType = value;
-	}
-	get nameDept(): string {
-		return this._nameDept;
-	}
-	set nameDept(value: string) {
-		this._nameDept = value;
-	}
-	get city(): string {
-		return this._city;
-	}
-	set city(value: string) {
-		this._city = value;
-	}
-	get description(): string {
-		return this._description;
-	}
-	set description(value) {
-		this._description = value;
-	}
 }

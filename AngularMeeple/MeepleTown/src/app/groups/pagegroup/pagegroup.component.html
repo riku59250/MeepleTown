@@ -1,13 +1,37 @@
-<div class="text-body">
-    <label *ngFor="let group of Groups">{{group.nameGroup}}</label>
+<div class="text-body" *ngIf="group !== undefined">
+    <label>{{group.name}}</label>
 
 
         <div class="col-md-12 mb-5">
 
             <label class="col-md-8 mb-3">
-                <p *ngFor="let group of Groups">{{group.description}}</p>
+                <p>{{group.description}}</p>
             </label>
             <input class="btn btn-outline-dark" (click)="isAddBtn()"  id="add" type="button" value="{{addBtn}}"/>
 
         </div>
+    <div>
+        <h2>Liste des Membres</h2>
+        <table class="table table-bordered" >
+            <thead>
+            <tr>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Mail</th>
+                <th scope="col">Numero de département</th>
+                <th scope="col">Ville</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of group.membersList ">
+                <td>{{ user.pseudo }}</td>
+                <td>{{ user.mail}}</td>
+                <td>{{ user.numDept}}</td>
+                <td>{{ user.city}}</td>
+                <td><a class="btn btn-outline-info"  [routerLink]="['/user', user.id]">Consulter</a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
+</div>
