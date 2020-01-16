@@ -3,10 +3,9 @@ import {Session} from '../class/session';
 import {SessionServiceService} from '../services/session-service.service';
 import {User} from '../../users/class/user';
 import {LoginService} from '../../login/services/login.service';
-import {BehaviorSubject} from "rxjs";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
-import {UserServicesService} from "../../users/services/user-services.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-session',
@@ -14,23 +13,23 @@ import {UserServicesService} from "../../users/services/user-services.service";
   styleUrls: ['./list-session.component.scss']
 })
 export class ListSessionComponent implements OnInit {
+
   @Input()
-  listSessions: Session[] = [];
+  listSessions: Session[] = new Array;
   searchString: string;
-  user: BehaviorSubject<User>;
+  user: User;
   isUserConnected = false;
 
   // @ts-ignore
-  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private userService: UserServicesService) { }
+  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
 
   ngOnInit() {
     if ( this.listSessions.length === 0) {
       this.getAllSession();
     }
 
-    this.user = this.logService.log();
+    this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
-    console.log(this.isUserConnected);
   }
 
   openDialogSuppress(id: number): void {
@@ -46,18 +45,13 @@ export class ListSessionComponent implements OnInit {
 
   deleteSession(id: number) {
     this.sessionService.deleteSession(id).subscribe( () => {
-        this.getAllSession();
+      this.listSessions = this.listSessions.filter(item => item.id !== id);
     });
   }
 
   getAllSession() {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
-      console.log(sessions);
-      for (let session of this.listSessions) {
-        this.getPlayers(session.id, session);
-        this.getAuthor(session.id, session);
-      }
     });
   }
 
@@ -68,9 +62,9 @@ export class ListSessionComponent implements OnInit {
         }
         if (session.playersList.length < session.nbMaxPlayers) {
           if (this.user !== null) {
-            this.sessionService.addPlayer(session.id, this.user.getValue()).subscribe(value => {
-              session.playersList.push(this.user.getValue());
-              this.getAllSession();
+            this.sessionService.addPlayer(session.id, this.user).subscribe( () => {
+              session.playersList.push(this.user);
+              this.router.navigateByUrl('/sessionPage/' + session.id);
             }, (error) => {
               console.log(error);
             });
@@ -102,15 +96,15 @@ export class ListSessionComponent implements OnInit {
   }
 
   deletePlayer(session: Session){
-    this.sessionService.deletePlayer(session, this.user.getValue()).subscribe( () => {
-      this.getAllSession();
+    this.sessionService.deletePlayer(session, this.user).subscribe( () => {
+      session.playersList = session.playersList.filter(item => item.id !== this.user.id);
     });
   }
 
   isPlayer(session: Session){
     if(this.user && session.playersList) {
       for(let u of session.playersList) {
-        if (JSON.stringify(u) === JSON.stringify(this.user.getValue())) {
+        if (u.id === this.user.id) {
           return true;
         }
       }
@@ -121,16 +115,19 @@ export class ListSessionComponent implements OnInit {
 
   isComplete(session: Session){
     if(session.playersList) {
-      return  session.nbMaxPlayers <= session.playersList.length;
+      return session.nbMaxPlayers <= session.playersList.length;
     }
     return false;
   }
 
   isConnected(){
-    return this.user.getValue() !== null;
+    return this.user !== null;
   }
 
-  isAuthor(session: Session){
-    return JSON.stringify(session.author) === JSON.stringify(this.user.getValue());
+  isAuthor(author: User){
+    if(author) {
+      return author.id === this.user.id;
+    }
+    return false;
   }
 }

@@ -24,9 +24,9 @@
             <td> du {{session.startDate | date: 'dd/MM/yyy hh:mm'}} au {{session.endDate | date: 'dd/MM/yyy hh:mm'}}</td>
             <td>{{session.nbMinPlayers}} à {{session.nbMaxPlayers}}</td>
             <td>{{session.author?.pseudo}}</td>
-            <td *ngIf="isUserConnected"> <button class="btn btn-secondary" *ngIf="!isAuthor(session) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> 
-                <button class="btn btn-danger" *ngIf="isAuthor(session)" (click)="openDialogSuppress(session.id)">X</button> 
-            <p class="alert alert-success" *ngIf="!isAuthor(session) && isPlayer(session)">Vous participez à cette partie. <button class="btn btn-danger" (click)="deletePlayer(session)"> Quitter ? </button></p></td>
+            <td *ngIf="isUserConnected"> <button class="btn btn-secondary" *ngIf="!isAuthor(session.author) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> 
+                <button class="btn btn-danger" *ngIf="isAuthor(session.author)" (click)="openDialogSuppress(session.id)">X</button> 
+            <p class="alert alert-success" *ngIf="!isAuthor(session.author) && isPlayer(session)">Vous participez à cette partie. <button class="btn btn-danger" (click)="deletePlayer(session)"> Quitter ? </button></p></td>
         </tr>
         </tbody>
     </table>

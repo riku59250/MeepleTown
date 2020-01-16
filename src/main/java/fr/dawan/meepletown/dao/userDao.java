@@ -35,6 +35,7 @@ public class userDao {
 			 user = new fr.dawan.meepletown.json.UserJson(entity.getPseudo(), entity.getMail(), entity.getPassword(), entity.getNumDept(), entity.getCity(), entity.getAvatar(), entity.getListGroup(), entity.getListGame());
 			user.setListSession(entity.getListSession());
 			user.setSession(entity.getSession());
+			user.setId(entity.getId());
 		}catch (Exception e) {
 			// TODO: handle exception
 		}finally {
@@ -93,6 +94,7 @@ public class userDao {
 		UserJson user = new UserJson(entity.getPseudo(), entity.getMail(), entity.getPassword(), entity.getNumDept(), entity.getCity(), entity.getAvatar(), entity.getListGroup(), entity.getListGame());
 		user.setListSession(entity.getListSession());
 		user.setSession(entity.getSession());
+		user.setId(entity.getId());
 		entityManager.close();
 		factory.close();
 		return user;

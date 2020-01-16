@@ -3,6 +3,9 @@ import {Session} from '../class/session';
 import {SessionServiceService} from '../services/session-service.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {User} from '../../users/class/user';
+import {LoginService} from '../../login/services/login.service';
+import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-session-page',
@@ -12,8 +15,10 @@ import {User} from '../../users/class/user';
 export class SessionPageComponent implements OnInit {
   id: string;
   session: Session = new Session();
+  user: User;
+  isUserConnected = false;
 
-  constructor(private sessionService: SessionServiceService, private route: ActivatedRoute) { }
+  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private route: ActivatedRoute, private logService: LoginService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe( (params: ParamMap) => {
@@ -25,18 +30,50 @@ export class SessionPageComponent implements OnInit {
     if (this.id && this.id !== '') {
       this.sessionService.getSessionById(Number.parseInt(this.id, 10)).subscribe((session) => {
         this.session = session;
-        this.sessionService.getPlayer(session.id).subscribe((listUsers) => {
-          session.playersList = listUsers;
-        });
       });
     }
+
+    this.user = this.logService.log().getValue();
+    this.isUserConnected = this.isConnected();
   }
 
   deletePlayer(user: User) {
     this.sessionService.deletePlayer(this.session, user).subscribe( () => {
-      this.sessionService.getPlayer(this.session.id).subscribe((listUsers) => {
-        this.session.playersList = listUsers;
+      this.session.playersList = this.session.playersList.filter(item => item.id !== this.user.id);
+    });
+  }
+
+  isAuthor(){
+    if(this.session.author) {
+      return this.session.author.id === this.user.id;
+    }
+    return false;
+  }
+
+  isConnected(){
+    return this.user !== null;
+  }
+
+  isPlayer(){
+    if(this.user && this.session.playersList) {
+      for(let u of this.session.playersList) {
+        if (u.id === this.user.id) {
+          return true;
+        }
+      }
+    }
+    return false;
+   
+  }
+
+  openDialogSuppress(user: User): void {
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Suppression de joueur',
+        message: `Êtes-vous sûr de vouloir supprimer ce joueur ?`, close: true}
       });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deletePlayer(user);
+      }
     });
   }
 
