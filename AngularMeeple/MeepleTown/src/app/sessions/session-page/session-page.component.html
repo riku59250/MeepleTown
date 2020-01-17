@@ -1,15 +1,17 @@
 
 <h1>{{session.title}} <small>par {{ session.author?.pseudo}}</small></h1>
-<div class="col-md-8 ">
-<p >Lieu : {{session.place}}</p>
-<p >Date de début : {{session.startDate | date : 'medium'}} </p>
-<p >Date de fin : {{session.endDate | date : 'medium'}} </p>
-<p >Jeu </p>
-<p>Nombre min de joueurs : {{session.nbMinPlayers}}</p>
-<p >Nombre max de joueurs : {{session.nbMaxPlayers}} </p>
-<p >Publique ? {{session.isPrivate}}</p>
+<div class="col-md-8 "> le {{session.startDate | date: 'EEEE dd MMMM yyy':'fr'}} de {{session.startDate | date: 'HH:mm'}} à {{session.endDate | date: 'HH:mm'}}</div>
+
+<div class="col-md-8 ">à {{session.place}}</div>
+
+<h1>Jeux proposés </h1>
+<div class="form-row" *ngFor="let game of session.gamesListSession">
+    <div class="col-md-4 mb-3 alert alert-success text-center">  {{game.name}}</div>
 </div>
 
+<hr />
+
+<h1>Liste des joueurs <small> {{session.playersList.length}} / {{session.nbMaxPlayers}} </small></h1> 
 <table class="table">
     <thead class="thead-light">
     <tr>

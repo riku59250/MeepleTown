@@ -52,6 +52,7 @@ export class ListSessionComponent implements OnInit {
   getAllSession() {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
+      this.listSessions.sort((a, b) => (a.startDate > b.startDate) ? 1 : -1);
     });
   }
 
