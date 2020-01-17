@@ -3,29 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a69a7bef-5922-405b-b959-ffb4b57ce9d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/creategroup/creategroup.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/group/group.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/group/group.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/list-group/list-group.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/list-group/list-group.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/games/list-games/list-games.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/pagegroup/pagegroup.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/groups/services/group.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/groups/services/group.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/create-session/create-session.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/create-session/create-session.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/create-session/create-session.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/create-session/create-session.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/list-session/list-session.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/list-session/list-session.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/services/session-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/services/session-service.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/sessions/session-page/session-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/sessions/session-page/session-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeepleTown/src/app/users/user-page/user-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeepleTown/src/app/users/user-page/user-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/beans/Groupe.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/beans/Groupe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/beans/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/beans/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/controllers/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/controllers/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/controllers/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/controllers/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/GenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/GenericDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/GroupeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/GroupeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/SessionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/fr/dawan/meepletown/dao/SessionDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,10 +99,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="89" key="#Notifications/0.0.1600.860@0.0.1600.860" timestamp="1578300576299" />
-    <state x="92" y="92" width="1416" height="676" key="DiffContextDialog" timestamp="1579252724943">
+    <state x="92" y="92" width="1416" height="676" key="DiffContextDialog" timestamp="1579253334122">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="92" y="92" width="1416" height="676" key="DiffContextDialog/0.0.1600.860@0.0.1600.860" timestamp="1579252724943" />
+    <state x="92" y="92" width="1416" height="676" key="DiffContextDialog/0.0.1600.860@0.0.1600.860" timestamp="1579253334122" />
     <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1579252750456">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -131,10 +111,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="301" y="73" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1578662342534" />
-    <state x="92" y="92" width="1416" height="676" key="ShowDiffWithBranchDialog" timestamp="1579252724943">
+    <state x="92" y="92" width="1416" height="676" key="ShowDiffWithBranchDialog" timestamp="1579253334122">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="92" y="92" width="1416" height="676" key="ShowDiffWithBranchDialog/0.0.1600.860@0.0.1600.860" timestamp="1579252724943" />
+    <state x="92" y="92" width="1416" height="676" key="ShowDiffWithBranchDialog/0.0.1600.860@0.0.1600.860" timestamp="1579253334122" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1579252724943">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

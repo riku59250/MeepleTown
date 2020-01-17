@@ -15,13 +15,13 @@ export class ListGamesComponent implements OnInit {
     searchText: string;
     begin = 0;
     end = 5;
-    data;
+    diff;
 
   constructor(private gameService: GamesServicesService) { }
 
   ngOnInit() {
 
-      this.data = 5;
+      this.diff = 5;
 
       this.gameService.getGames().subscribe( (data) => {
         this.listGames = data;
@@ -31,23 +31,23 @@ export class ListGamesComponent implements OnInit {
 
 
   public prev(): void {
-      if (this.begin >= this.data) {
-          this.end += -this.data;
-          this.begin += -this.data;
+      if (this.begin >= this.diff) {
+          this.end += -this.diff;
+          this.begin += -this.diff;
       }
   }
 
   public next(): void {
       if (this.end < this.listGames.length) {
-          this.begin += this.data;
-          this.end += this.data;
+          this.begin += this.diff;
+          this.end += this.diff;
       }
   }
 
   length(): void {
-      this.data += this.begin;
+      this.diff += this.begin;
       this.begin = 0;
-      this.end +=  this.data;
+      this.end +=  this.diff;
   }
 
 }
