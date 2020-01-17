@@ -112,38 +112,7 @@ public class SessionDao {
 		}
 	}
 	
-	public void createWithAuthorAndGames(SessionJson session, long idUser) {
-		if (session.getId() == 0) {
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
-			EntityManager entityManager = factory.createEntityManager();
-			EntityTransaction transaction = entityManager.getTransaction();
-			
-			Session newSession = new Session(session.getTitle(), session.getPlace(), session.getSessionType(), session.getDescription(), 
-					session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), session.getEndDate(), 
-					session.getIsPrivate(), session.getAuthor());
-
-			try {
-				// début de la transaction
-				transaction.begin();
-				User u = entityManager.find(User.class, idUser);
-				newSession.setAuthor(u);
-				newSession.getPlayersList().add(u);
-				newSession.setGamesListSession(session.getGamesListSession());
-				// On insère la formation dans la BDD
-				entityManager.persist(newSession);
-
-				// on commit tout ce qui s'est fait dans la transaction
-				transaction.commit();
-			} catch (Exception ex) {
-				// en cas d'erreur, on effectue un rollback
-				transaction.rollback();
-				ex.printStackTrace();
-			} finally {
-				entityManager.close();
-				factory.close();
-			}
-		}
-	}
+	
 
 	public void createWithAuthorAndGames(SessionJson session, long idUser) {
 		if (session.getId() == 0) {
