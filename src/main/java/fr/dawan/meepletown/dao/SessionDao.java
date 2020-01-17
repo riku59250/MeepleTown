@@ -115,7 +115,7 @@ public class SessionDao {
 
 
 
-	public void createWithAuthorAndGames(SessionJson session, long idUser) {
+	public long createWithAuthorAndGames(SessionJson session, long idUser) {
 		if (session.getId() == 0) {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
 			EntityManager entityManager = factory.createEntityManager();
@@ -145,7 +145,9 @@ public class SessionDao {
 				entityManager.close();
 				factory.close();
 			}
+			return newSession.getId();
 		}
+		return 0;
 	}
 
 	public void UpdateSession(long id, User u) {

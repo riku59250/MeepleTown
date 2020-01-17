@@ -52,7 +52,6 @@ export class PagegroupComponent implements OnInit {
     if ( !this.includeUser() ) {
       this.group.membersList.push(this.loginService.log().value);
       this.serviceGroup.update(this.group).subscribe((success) => {
-        console.log(success);
       }, (error) => {
         console.log(error);
       });

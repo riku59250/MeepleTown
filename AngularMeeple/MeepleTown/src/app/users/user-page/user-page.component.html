@@ -12,11 +12,16 @@
             </ng-template>
         </ul>
     </div>
-    <div *ngIf="user.listGame !== null">
-        <app-list-games [listGames]="user.listGame "></app-list-games>
-    </div>
     <div *ngIf="user.listSession !== null && user.listSession !== undefined">
         <app-list-session [userPage]="true" [id]="user.id"></app-list-session>
     </div>
+    <div *ngIf="user.listGroup !== null">
+        <app-list-group [userPage]="true" [listGroup]="user.listGroup"></app-list-group>
+    </div>
+    <div *ngIf="user.listGame !== null">
+        <app-list-games [listGames]="user.listGame "></app-list-games>
+    </div>
+
+
 </div>
 

@@ -1,8 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+
+import {Component, Input, OnInit} from '@angular/core';
 import {Group} from '../group/group';
 import {GroupService} from '../services/group.service';
 import {group} from '@angular/animations';
 import {log} from "util";
+import {LoginService} from "../../login/services/login.service";
+import {UserServicesService} from "../../users/services/user-services.service";
+import {Sort} from "@angular/material/sort";
 
 
 @Component({
@@ -11,22 +15,29 @@ import {log} from "util";
   styleUrls: ['./list-group.component.scss']
 })
 export class ListGroupComponent implements OnInit {
-  constructor(private serviceGroup: GroupService) { }
+
+  constructor(private serviceGroup: GroupService, private loginService: LoginService, private userServicesService: UserServicesService) { }
   @Input()
-  searchText: string;
-  listGroup: Array<Group>;
+  listGroup: Array<Group> = new Array<Group>();
+  @Input()
+  userPage = false;
+
   begin = 0;
   end = 10;
   diff;
   data;
-  
+
   ngOnInit() {
+    this.data = 5;
     this.diff = 10;
-    this.serviceGroup.getAllGroup().subscribe((data) => {
-          this.listGroup = data;
-        }
-    );
+    if (!this.userPage && this.listGroup.length === 0){
+      this.serviceGroup.getAllGroup().subscribe((data) => {
+            this.listGroup = data;
+          }
+      );
+    }
   }
+
   public Previous(): void {
     // @ts-ignore
 
@@ -43,6 +54,7 @@ export class ListGroupComponent implements OnInit {
     }
     */
   }
+
   public Next(): void {
     if (this.end < this.listGroup.length) {
       this.begin += this.diff;
@@ -67,6 +79,32 @@ export class ListGroupComponent implements OnInit {
   length(): void {
     this.diff += this.begin;
     this.begin = 0;
-    this.end +=  this.diff;
+    this.end += this.diff;
   }
+
+  sortTable(sort: Sort) {
+    const data = this.data.slice();
+    if (!sort.active || sort.direction === '') {
+      this.listGroup = data;
+      return;
+    }
+
+    this.listGroup = this.data.sort((a, b) => {
+      // tslint:disable-next-line:no-shadowed-variable
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name': return compare(a.name, b.name, isAsc);
+        case 'city': return compare(a.city, b.city, isAsc);
+        default: return 0;
+      }
+    });
+
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+  }
+
 }
+
+
+

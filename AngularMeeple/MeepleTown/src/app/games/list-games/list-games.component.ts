@@ -11,7 +11,9 @@ import {GamesServicesService} from "../services/games-services.service";
 export class ListGamesComponent implements OnInit {
 
     @Input()
-    listGames: Array<Game>;
+    listGames: Array<Game> = new Array<Game>();
+    @Input()
+    userPage = false;
     searchText: string;
     begin = 0;
     end = 10;
@@ -24,10 +26,12 @@ export class ListGamesComponent implements OnInit {
 
       this.diff = 10;
 
-      this.gameService.getGames().subscribe( (data) => {
-        this.listGames = data;
-        console.log(this.listGames);
-      });
+      if ( !this.userPage && this.listGames.length === 0 ) {
+          this.gameService.getGames().subscribe( (data) => {
+              this.listGames = data;
+          });
+      }
+
   }
 
 
