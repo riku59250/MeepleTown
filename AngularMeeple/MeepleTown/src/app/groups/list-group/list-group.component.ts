@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Group} from '../group/group';
 import {GroupService} from '../services/group.service';
 import {group} from '@angular/animations';
 import {log} from "util";
+import {LoginService} from "../../login/services/login.service";
+import {UserServicesService} from "../../users/services/user-services.service";
 
 
 @Component({
@@ -11,18 +13,23 @@ import {log} from "util";
   styleUrls: ['./list-group.component.scss']
 })
 export class ListGroupComponent implements OnInit {
-  constructor(private serviceGroup: GroupService) { }
-  listGroup: Array<Group>;
+  constructor(private serviceGroup: GroupService, private loginService: LoginService, private userServicesService: UserServicesService) { }
+  @Input()
+  listGroup: Array<Group> = new Array<Group>();
+  @Input()
+  userPage = false;
   begin = 0;
   end = 5;
   diff = 0;
   data;
   ngOnInit() {
     this.data = 5;
-    this.serviceGroup.getAllGroup().subscribe((data) => {
-          this.listGroup = data;
-        }
-    );
+    if (!this.userPage && this.listGroup.length === 0){
+      this.serviceGroup.getAllGroup().subscribe((data) => {
+            this.listGroup = data;
+          }
+      );
+    }
   }
   public Previous(): void {
     // @ts-ignore

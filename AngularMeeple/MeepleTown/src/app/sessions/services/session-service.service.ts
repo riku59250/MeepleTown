@@ -32,8 +32,8 @@ export class SessionServiceService {
     return this.http.post(this.url + '/' + user.id, session );
   }
 
-  public addSessionWithGames(session: Session, user: User){
-    console.log(session.gamesListSession)
+  public addSessionWithGames(session: Session, user: User) {
+
     return this.http.post(this.url + 'withgames/' + user.id, session);
   }
 

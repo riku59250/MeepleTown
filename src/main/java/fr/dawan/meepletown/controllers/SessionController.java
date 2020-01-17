@@ -73,10 +73,10 @@ public class SessionController {
 	}
 	
 	@PostMapping("/withgames/{idUser}")
-	public void createWithGames(@PathVariable(value="idUser") long idUser, @RequestBody SessionJson session) {
+	public long createWithGames(@PathVariable(value="idUser") long idUser, @RequestBody SessionJson session) {
 		System.out.println("--------------");
 		System.out.println(session.getGamesListSession());
-		sessioDao.createWithAuthorAndGames(session, idUser);
+		return sessioDao.createWithAuthorAndGames(session, idUser);
 	}
 
 	@DeleteMapping("/{id}")

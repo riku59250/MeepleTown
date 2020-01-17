@@ -91,11 +91,12 @@ export class CreateSessionComponent implements OnInit {
       }
       this.user = this.logService.log();
       session.sessionType = SessionType[this.type.value];
-      this.sessionService.addSessionWithGames(session, this.user.getValue()).subscribe( () => {
-        this.router.navigateByUrl('/listSessions');
+      console.log(this.user)
+      this.sessionService.addSessionWithGames(session, this.user.getValue()).subscribe( (id) => {
+        console.log(id);
+       this.router.navigateByUrl(`/sessionPage/${id}`);
         this.form.reset();
       });
-      
       }
     }
 

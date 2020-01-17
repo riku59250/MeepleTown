@@ -38,13 +38,20 @@ export class UserPageComponent implements OnInit {
 
         }
       } else {
-        this.serviceLog.log().subscribe((value) => {
-          if (value === null) {
-            this.router.navigateByUrl("/signin");
-          }
-          this.user = value;
-          this.admin = true;
-        });
+        if (this.serviceLog.log().value !== null ) {
+          this.userService.getUserById(this.serviceLog.log().value.id).subscribe((data)=>{
+            if (data !== null) {
+              this.serviceLog.log().next(data);
+            }
+          });
+          this.serviceLog.log().subscribe((value) => {
+            this.user = value;
+            this.admin = true;
+          });
+        } else {
+          this.router.navigateByUrl("/signin");
+        }
+
       }
 
     });

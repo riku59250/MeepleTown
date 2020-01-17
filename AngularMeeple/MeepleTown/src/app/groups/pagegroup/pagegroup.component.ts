@@ -15,8 +15,7 @@ import {User} from "../../users/class/user";
 export class PagegroupComponent implements OnInit {
 
 
-  constructor(private serviceGroup: GroupService, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
-  }
+  constructor(private serviceGroup: GroupService, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {}
   id: string;
   group: Group;
   addBtn;
@@ -46,7 +45,7 @@ export class PagegroupComponent implements OnInit {
     if ( !this.includeUser() ) {
       this.group.membersList.push(this.loginService.log().value);
       this.serviceGroup.update(this.group).subscribe((success) => {
-        console.log(success);
+        this.loginService.log().value.listGroup.add(this.group);
       }, (error) => {
         console.log(error);
       });

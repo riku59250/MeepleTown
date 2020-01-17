@@ -17,7 +17,7 @@ export class SessionPageComponent implements OnInit {
   session: Session = new Session();
   user: User;
   isUserConnected = false;
-
+  isFull = true;
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private route: ActivatedRoute, private logService: LoginService) { }
 
   ngOnInit() {
@@ -30,11 +30,13 @@ export class SessionPageComponent implements OnInit {
     if (this.id && this.id !== '') {
       this.sessionService.getSessionById(Number.parseInt(this.id, 10)).subscribe((session) => {
         this.session = session;
+        this.isFull = this.full();
       });
     }
 
     this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
+
   }
 
   deletePlayer(user: User) {
@@ -43,15 +45,18 @@ export class SessionPageComponent implements OnInit {
     });
   }
 
-  isAuthor(){
-    if(this.session.author) {
+  isAuthor() {
+    if (this.session.author) {
       return this.session.author.id === this.user.id;
     }
     return false;
   }
 
-  isConnected(){
+  isConnected() {
     return this.user !== null;
+  }
+  full() {
+    return this.session.playersList.length >= this.session.nbMaxPlayers;
   }
 
   isPlayer(){
@@ -75,6 +80,27 @@ export class SessionPageComponent implements OnInit {
         this.deletePlayer(user);
       }
     });
+  }
+  skip(): void {
+    this.deletePlayer(this.user);
+  }
+  addPlayer() {
+    this.sessionService.getSessionById(this.session.id).subscribe( (session) => {
+      if (!session.playersList) {
+        session.playersList = new Array();
+      }
+      if (session.playersList.length < session.nbMaxPlayers) {
+        if (this.user !== null) {
+          this.sessionService.addPlayer(session.id, this.user).subscribe( () => {
+            session.playersList.push(this.user);
+          }, (error) => {
+            console.log(error);
+          });
+        }
+      }
+      this.session = session;
+    });
+
   }
 
 }

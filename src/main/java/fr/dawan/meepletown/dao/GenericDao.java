@@ -42,7 +42,9 @@ public class GenericDao<T extends DbObject> {
 				entityManager.close();
 				factory.close();
 			}
+			
 		}
+		
 	}
 
 	public T findById(Class<T> clazz, long id) {

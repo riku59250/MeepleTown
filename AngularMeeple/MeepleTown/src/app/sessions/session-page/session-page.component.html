@@ -10,7 +10,26 @@
             <div class="col-md-4 mb-3 alert alert-success text-center">  {{game.name}}</div>
         </div>
     </div>
+    <div *ngIf="session.playersList !== undefined">
+        <div *ngIf="!isUserConnected ; else connect ">
+            <p>Vous n'etes pas connecté</p>
+        </div>
+        <ng-template #connect>
+            <div *ngIf="isFull && !isPlayer(); else action">
+                <p>La partie est complete ({{session.playersList.length}} / {{session.nbMaxPlayers}})</p>
+            </div>
+            <ng-template #action>
+                <div *ngIf="isPlayer(); else rejoindre ">
+                    <input class="btn btn-outline-danger" (click)="skip()"  id="add" type="button" value="Quitter"/>
+                </div>
+                <ng-template #rejoindre>
+                    <input class="btn btn-outline-dark" (click)="addPlayer()"  id="add" type="button" value="Rejoindre"/>
+                </ng-template>
+            </ng-template>
 
+        </ng-template>
+
+    </div>
 
     <hr />
     <div *ngIf="session.playersList !== undefined">

@@ -53,7 +53,7 @@ export class GroupService {
    public update(group: Group): Observable<Group> {
         return  this.http.put<Group>(this.url , group );
    }
-    public createGroupe(group : Group, id: number): Observable<Group>{
+    public createGroupe(group : Group, id: number): Observable<Group> {
             return this.http.post<Group>(this.url  + id, group);
     }
 }
