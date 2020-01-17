@@ -15,8 +15,7 @@ import {User} from "../../users/class/user";
 export class PagegroupComponent implements OnInit {
 
 
-  constructor(private serviceGroup: GroupService, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
-  }
+  constructor(private serviceGroup: GroupService, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {}
   id: string;
   group: Group;
   addBtn;

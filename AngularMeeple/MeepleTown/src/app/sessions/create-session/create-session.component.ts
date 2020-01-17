@@ -97,7 +97,6 @@ export class CreateSessionComponent implements OnInit {
        this.router.navigateByUrl(`/sessionPage/${id}`);
         this.form.reset();
       });
-      
       }
     }
 
