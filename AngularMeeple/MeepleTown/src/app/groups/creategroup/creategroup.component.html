@@ -151,17 +151,17 @@
 		<textarea id="description"  class="form-control" formControlName="description"></textarea>
 		<p class="text-danger" *ngIf="controlDescription(); let message">{{message}}</p>
 	</div>
-
+<!--
 	<div class="col-md-9 mb-3">
 		<label for="file">Choisir une image : </label><br/>
 		<input type="file">
 		<input type="submit">
 	</div>
-
+-->
 	<div class="form-group row">
 		<div class="col-5 offset-3">
 			<input type="submit" name="send" class="btn btn-outline-dark " value="Créer le groupe "/> -
-			<input type="button" name="cancel" class="btn btn-dark"  value="Annuler" (click)="openDialogCancel()" />
+			<input type="button" name="cancel" class="btn btn-dark"  value="Annuler" (click)="annuler()" />
 		</div>
 	</div>
 </form>

@@ -26,7 +26,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -94,7 +94,8 @@
       <workItem from="1578399951484" duration="19000" />
       <workItem from="1579082400377" duration="13660000" />
       <workItem from="1579162357548" duration="49000" />
-      <workItem from="1579162530004" duration="5826000" />
+      <workItem from="1579162530004" duration="21344000" />
+      <workItem from="1579248627788" duration="1115000" />
     </task>
     <servers />
   </component>
@@ -135,10 +136,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="166" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579082550634" />
-    <state x="471" y="450" key="run.anything.popup" timestamp="1579096155355">
+    <state x="471" y="450" key="run.anything.popup" timestamp="1579182827130">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="471" y="450" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579096155355" />
+    <state x="471" y="450" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579182827130" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579181891458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579181891458" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
