@@ -20,6 +20,7 @@ export class SigninComponent implements OnInit {
   password: FormControl;
 
   form: FormGroup;
+  load: boolean = false;
   constructor(private fb: FormBuilder, private service: LoginService, private router: Router) {}
 
   ngOnInit(): void {
@@ -34,17 +35,25 @@ export class SigninComponent implements OnInit {
 
   public signin(): void {
     if (this.form.valid) {
+      this.load = true;
       this.service.login(this.form.value.email, this.form.value.password).subscribe(
           (data) => {
             if (data !== null ) {
               this.service.log().next(data);
               this.error = false;
               this.router.navigateByUrl('/user');
+
+            } else {
+              this.service.log().next(null);
+              this.error = true;
             }
           },
           (error) => {
+
             this.service.log().next(null);
             this.error = true;
+          },() => {
+            this.load = false;
           }
       );
       this.form.reset();
@@ -66,7 +75,7 @@ export class SigninComponent implements OnInit {
     }
     return null;
   }
-  public messageError(): string{
+  public messageError(): string {
     if (this.error) {
       return `Le mot de passe ou l'addresse email est invalide !`;
     }

@@ -15,4 +15,5 @@ export class Session {
     playersList: User[];
     gamesListSession: Game[];
     author: User;
+
 }

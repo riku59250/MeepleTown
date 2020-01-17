@@ -56,7 +56,11 @@ public class SessionController {
 //		return dao.findById(Session.class, postalCode);
 //	}
 	
-	
+	@GetMapping("/user/{id}")
+	public Set<SessionJson> findByUser(@PathVariable(value = "id")  long id) {
+		System.out.println("ici");
+		return sessioDao.findAllUser(id);
+	}
 	
 	@PostMapping("/")
 	public void createOrUpdate(@RequestBody Session session) {

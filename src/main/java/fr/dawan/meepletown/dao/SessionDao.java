@@ -248,6 +248,45 @@ public class SessionDao {
 			return null;
 	}
 	
+	public Set<SessionJson> findAllUser(long id) {
+		Set<SessionJson> resultat = null;
+
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager em = factory.createEntityManager();
+
+		EntityGraph<Session> graph = em.createEntityGraph(Session.class);
+		graph.addSubgraph("playersList");
+		graph.addSubgraph("gamesListSession");
+		graph.addSubgraph("author");
+		// on crée la requête
+		TypedQuery<Session> query = em.createQuery("SELECT entity FROM Session entity ", Session.class);
+		query.setHint("javax.persistence.loadgraph", graph);
+		
+		// on exécute la requête et on récupère le résultat
+		List<Session> list = query.getResultList();
+		resultat = new HashSet<SessionJson>();
+		for (Session session : list) {
+			for(User u : session.getPlayersList()) {
+				
+				if(u.getId()== id) {
+					
+					SessionJson s = new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(), 
+							session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), 
+							session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(), 
+							session.getAuthor());
+
+					s.setId(session.getId());
+					resultat.add(s);
+
+				}
+			}
+			
+		}
+	
+		em.close();
+		factory.close();
+		return resultat;
+	}
 //	public User getAuthor(long id) {
 //		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
 //		EntityManager entityManager = factory.createEntityManager();

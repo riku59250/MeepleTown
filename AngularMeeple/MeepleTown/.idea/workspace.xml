@@ -20,7 +20,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Formations/angular" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -29,7 +29,12 @@
     <property name="ts.external.directory.path" value="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\src\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\src\assets" />
+      <recent name="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\src\app" />
       <recent name="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\src\app\login\services" />
     </key>
   </component>
@@ -95,7 +100,7 @@
       <workItem from="1579082400377" duration="13660000" />
       <workItem from="1579162357548" duration="49000" />
       <workItem from="1579162530004" duration="21344000" />
-      <workItem from="1579248627788" duration="1115000" />
+      <workItem from="1579248627788" duration="11372000" />
     </task>
     <servers />
   </component>
@@ -116,6 +121,14 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="765" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1579257915757">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579257915757" />
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1579266756236">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579266756236" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1579162692949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

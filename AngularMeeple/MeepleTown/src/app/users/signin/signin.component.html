@@ -1,28 +1,32 @@
 
     <h1>Connexion</h1>
-
-    <form [formGroup]="form"  (submit)="signin()">
-        <div class="form-row">
-            <div class="col-md-12 mb-3">
-                <label for="email">E-mail</label>
-                <input type="text" id="email" class="form-control" placeholder="Email ..." formControlName="email" />
-                <p class="text-danger" *ngIf="controlEmail(); let message">{{message}}</p>
+    <div *ngIf="!load; else loading">
+        <form [formGroup]="form"  (submit)="signin()">
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" class="form-control" placeholder="Email ..." formControlName="email" />
+                    <p class="text-danger" *ngIf="controlEmail(); let message">{{message}}</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-row">
-            <div class="col-md-12 mb-3">
-                <label for="mdp">Mot de passe</label>
-                <input type="password" id="mdp" class="form-control" placeholder="Password ..." formControlName="password" />
-                <p class="text-danger" *ngIf="controlPassword(); let message">{{message}}</p>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" id="mdp" class="form-control" placeholder="Password ..." formControlName="password" />
+                    <p class="text-danger" *ngIf="controlPassword(); let message">{{message}}</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-10 offset-6">
-                <input type="submit" name="send" class="btn btn-outline-dark" value="Connexion" />
+            <div class="form-group row">
+                <div class="col-10 offset-6">
+                    <input type="submit" name="send" class="btn btn-outline-dark" value="Connexion" />
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+    <ng-template #loading>
+        <img src="assets/images/load.gif">
+    </ng-template>
     <p class="text-danger" *ngIf="messageError(); let message">{{message}}</p>
 

@@ -1,31 +1,37 @@
+<div *ngIf="session !== null">
+    <h1>{{session.title}} <small>par {{ session.author?.pseudo}}</small></h1>
+    <div class="col-md-8 "> le {{session.startDate | date: 'EEEE dd MMMM yyy':'fr'}} de {{session.startDate | date: 'HH:mm'}} à {{session.endDate | date: 'HH:mm'}}</div>
 
-<h1>{{session.title}} <small>par {{ session.author?.pseudo}}</small></h1>
-<div class="col-md-8 "> le {{session.startDate | date: 'EEEE dd MMMM yyy':'fr'}} de {{session.startDate | date: 'HH:mm'}} à {{session.endDate | date: 'HH:mm'}}</div>
+    <div class="col-md-8 ">à {{session.place}}</div>
 
-<div class="col-md-8 ">à {{session.place}}</div>
+    <div *ngIf="session.gamesListSession !== undefined">
+        <h1>Jeux proposés </h1>
+        <div class="form-row" *ngFor="let game of session.gamesListSession">
+            <div class="col-md-4 mb-3 alert alert-success text-center">  {{game.name}}</div>
+        </div>
+    </div>
 
-<h1>Jeux proposés </h1>
-<div class="form-row" *ngFor="let game of session.gamesListSession">
-    <div class="col-md-4 mb-3 alert alert-success text-center">  {{game.name}}</div>
+
+    <hr />
+    <div *ngIf="session.playersList !== undefined">
+        <h1>Liste des joueurs <small> {{session.playersList.length}} / {{session.nbMaxPlayers}} </small></h1>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Mail</th>
+                <th scope="col" *ngIf="isUserConnected">Actions possibles</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of session.playersList">
+                <td><a   [routerLink]="['/user', user.id]">{{user.pseudo}}</a></td>
+                <td><a  [routerLink]="['/user', user.id]">{{user.mail}}</a></td>
+                <td *ngIf="isUserConnected"><button class="btn btn-secondary" *ngIf="isAuthor() && isPlayer()" (click)="openDialogSuppress(user)"> Supprimer ce joueur</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<hr />
-
-<h1>Liste des joueurs <small> {{session.playersList.length}} / {{session.nbMaxPlayers}} </small></h1> 
-<table class="table">
-    <thead class="thead-light">
-    <tr>
-        <th scope="col">Pseudo</th>
-        <th scope="col">Mail</th>
-        <th scope="col" *ngIf="isUserConnected">Actions possibles</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of session.playersList">
-        <td>{{user.pseudo}}</td>
-        <td>{{user.mail}}</td>
-        <td *ngIf="isUserConnected"><button class="btn btn-secondary" *ngIf="isAuthor() || isPlayer()" (click)="openDialogSuppress(user)"> Supprimer ce joueur</button></td>
-    </tr>
-    </tbody>
-</table>
 
