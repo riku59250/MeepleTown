@@ -114,6 +114,7 @@ public class SessionDao {
 	
 
 
+
 	public void createWithAuthorAndGames(SessionJson session, long idUser) {
 		if (session.getId() == 0) {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
@@ -270,11 +271,14 @@ public class SessionDao {
 		for (Session session : list) {
 			for(User u : session.getPlayersList()) {
 
-				if(u.getId()== id) {
 
-					SessionJson s = new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(),
-							session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(),
-							session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(),
+				
+				
+				if(u.getId()== id) {
+					
+					SessionJson s = new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(), 
+							session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), 
+							session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(), 
 							session.getAuthor());
 
 					s.setId(session.getId());
@@ -283,8 +287,11 @@ public class SessionDao {
 				}
 			}
 
-		}
 
+
+			
+		}
+	
 		em.close();
 		factory.close();
 		return resultat;
@@ -320,3 +327,4 @@ public class SessionDao {
 //}
 
 }
+

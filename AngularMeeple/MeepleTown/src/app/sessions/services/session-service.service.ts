@@ -3,7 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Session} from '../class/session';
 import {User} from '../../users/class/user';
-// import {Game} from '../class/game';
+
+//import {Game} from '../class/game';
+
 
 @Injectable({
   providedIn: 'root'

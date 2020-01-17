@@ -68,6 +68,7 @@ public class GroupeDao {
 				}
 			}
 		}
+		
 		public void updateGroupe(Groupe gr) {
 			if (gr.getId() > 0) {
 				EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
@@ -78,14 +79,10 @@ public class GroupeDao {
 					// début de la transaction
 					transaction.begin();
 
-
 					fr.dawan.meepletown.beans.Groupe groupe = new fr.dawan.meepletown.beans.Groupe(gr.getId(), gr.getName(), gr.getType(), gr.getDescription(), gr.getAvatar());
 					groupe.setGamesList(gr.getGamesList());
 					groupe.setMembersList(gr.getMembersList());
 
-
-					
-			
 
 					// On insère la formation dans la BDD
 					entityManager.merge(groupe);
@@ -102,7 +99,6 @@ public class GroupeDao {
 				}
 			}
 		}
-
 
 
 		

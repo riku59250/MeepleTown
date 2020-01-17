@@ -34,6 +34,7 @@ export class ListSessionComponent implements OnInit {
 
     this.diff = 10;
 
+
     this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
     if ( !this.userPage) {
@@ -41,8 +42,6 @@ export class ListSessionComponent implements OnInit {
     } else {
       this.getAllSessionUser(this.id);
     }
-
-
   }
 
   openDialogSuppress(id: number): void {
@@ -77,6 +76,7 @@ export class ListSessionComponent implements OnInit {
     });
   }
 
+
   addPlayer(session: Session) {
       this.sessionService.getSessionById(session.id).subscribe( (session) => {
         if (!session.playersList) {
@@ -96,7 +96,7 @@ export class ListSessionComponent implements OnInit {
   }
 
   getPlayers(id: number, session?){
-    if(session) {
+    if (session) {
       this.sessionService.getPlayer(id).subscribe( (user) => {
         session.playersList = user;
       });
