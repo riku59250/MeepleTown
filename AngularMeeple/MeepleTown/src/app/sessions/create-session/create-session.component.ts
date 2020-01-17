@@ -83,7 +83,7 @@ export class CreateSessionComponent implements OnInit {
       session.startDate = this.createDateFromForm(this.date.value, this.startDate.value);
       session.endDate = this.createDateFromForm(this.date.value, this.endDate.value);
       session.gamesListSession = this.listGames.filter(item => item.id === Number.parseInt(this.gamesListSession.value, 10));
-      
+
       if (this.isPrivate.value == null) {
         session.isPrivate = false;
       } else {

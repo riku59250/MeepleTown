@@ -3,7 +3,8 @@ import {GroupService} from '../services/group.service';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Group} from "../group/group";
 import {logger} from "codelyzer/util/logger";
-import {LoginService} from "../../login/services/login.service";
+import {LoginService} from '../../login/services/login.service';
+
 import {User} from "../../users/class/user";
 
 @Component({

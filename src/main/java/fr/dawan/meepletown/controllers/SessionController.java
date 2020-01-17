@@ -78,7 +78,11 @@ public class SessionController {
 		System.out.println(session.getGamesListSession());
 		sessioDao.createWithAuthorAndGames(session, idUser);
 	}
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 0d8c5bc9709302462c256d652cb719c5586d9e12
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable(value = "id") long id) {
 		dao.delete(Session.class, id);

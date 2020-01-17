@@ -27,7 +27,11 @@
             <td *ngIf="isUserConnected">
                 <p class="alert alert-secondary" *ngIf="session.isPrivate">Cette partie est privée.</p>
                 <button class="btn btn-secondary" *ngIf="!session.isPrivate && !isAuthor(session.author) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> 
+<<<<<<< HEAD
+                <button class="btn btn-danger" *ngIf="isAuthor(session.author)" (click)="openDialogSuppress(session.id)">Supprimer</button>
+=======
                 <button class="btn btn-danger" *ngIf="isAuthor(session.author)" (click)="openDialogSuppress(session.id)">Supprimer</button> 
+>>>>>>> 0d8c5bc9709302462c256d652cb719c5586d9e12
                 <p class="alert alert-success" *ngIf="!isAuthor(session.author) && isPlayer(session)">Vous participez à cette partie. <button class="btn btn-danger" (click)="deletePlayer(session)"> Quitter ? </button></p>
             </td>
         </tr>

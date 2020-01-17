@@ -9,14 +9,45 @@ import {GamesServicesService} from "../services/games-services.service";
   styleUrls: ['./list-games.component.scss']
 })
 export class ListGamesComponent implements OnInit {
+
     @Input()
     listGames: Array<Game>;
     searchText: string;
+    begin = 0;
+    end = 5;
+    diff;
 
   constructor(private gameService: GamesServicesService) { }
 
   ngOnInit() {
 
+      this.diff = 5;
+
+      this.gameService.getGames().subscribe( (data) => {
+        this.listGames = data;
+        console.log(this.listGames);
+      });
+  }
+
+
+  public prev(): void {
+      if (this.begin >= this.diff) {
+          this.end += -this.diff;
+          this.begin += -this.diff;
+      }
+  }
+
+  public next(): void {
+      if (this.end < this.listGames.length) {
+          this.begin += this.diff;
+          this.end += this.diff;
+      }
+  }
+
+  length(): void {
+      this.diff += this.begin;
+      this.begin = 0;
+      this.end +=  this.diff;
   }
 
 }

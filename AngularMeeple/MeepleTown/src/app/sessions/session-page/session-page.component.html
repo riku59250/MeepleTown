@@ -34,4 +34,28 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<h1>Liste des joueurs <small> {{session.playersList.length}} / {{session.nbMaxPlayers}} </small></h1>
+=======
+<h1>Liste des joueurs <small> {{session.playersList.length}} / {{session.nbMaxPlayers}} </small></h1> 
+>>>>>>> 0d8c5bc9709302462c256d652cb719c5586d9e12
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Pseudo</th>
+        <th scope="col">Mail</th>
+        <th scope="col" *ngIf="isUserConnected">Actions possibles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of session.playersList">
+        <td>{{user.pseudo}}</td>
+        <td>{{user.mail}}</td>
+        <td *ngIf="isUserConnected"><button class="btn btn-secondary" *ngIf="isAuthor() || isPlayer()" (click)="openDialogSuppress(user)"> Supprimer ce joueur</button></td>
+    </tr>
+    </tbody>
+</table>
+>>>>>>> 4e63557cdefdadbba7d50b24b29f7fb06704b9f9
 
