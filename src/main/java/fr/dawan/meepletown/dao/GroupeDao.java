@@ -52,6 +52,7 @@ public class GroupeDao {
 					transaction.begin();
 					User u = entityManager.find(User.class, idUser);
 					gr.getMembersList().add(u);
+
 					// On insère la formation dans la BDD
 					entityManager.persist(gr);
 
@@ -77,6 +78,7 @@ public class GroupeDao {
 				try {
 					// début de la transaction
 					transaction.begin();
+
 					fr.dawan.meepletown.beans.Groupe groupe = new fr.dawan.meepletown.beans.Groupe(gr.getId(), gr.getName(), gr.getType(), gr.getDescription(), gr.getAvatar());
 					groupe.setGamesList(gr.getGamesList());
 					groupe.setMembersList(gr.getMembersList());

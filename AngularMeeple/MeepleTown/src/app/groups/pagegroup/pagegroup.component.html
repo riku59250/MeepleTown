@@ -34,7 +34,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let user of group.membersList ">
+            <tr *ngFor="let user of group.membersList | slice:begin:end ">
                 <td>{{ user.pseudo }}</td>
                 <td>{{ user.mail}}</td>
                 <td>{{ user.numDept}}</td>
@@ -44,5 +44,17 @@
             </tbody>
         </table>
     </div>
+
+    <div class="clearfix"></div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <button id="prev" class="btn btn-outline-primary"   (click)="Previous()" > Précédent </button>
+            </li>
+            <li class="page-item">
+                <button id="next" class="btn btn-outline-primary"   (click)="Next()" > Suivant </button>
+            </li>
+        </ul>
+    </nav>
 
 </div>

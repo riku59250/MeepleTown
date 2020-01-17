@@ -74,10 +74,11 @@ public class GenericDao<T extends DbObject> {
 			try {
 				// début de la transaction
 				transaction.begin();
-
+				System.out.println(entity);
 				// On met à jour la formation
 				entityManager.merge(entity);
 
+				
 				// on commit tout ce qui s'est fait dans la transaction
 				transaction.commit();
 			} catch (Exception ex) {

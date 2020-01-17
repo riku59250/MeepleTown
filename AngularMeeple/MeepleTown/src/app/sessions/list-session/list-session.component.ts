@@ -23,11 +23,18 @@ export class ListSessionComponent implements OnInit {
   searchString: string;
   user: User;
   isUserConnected = false;
+  begin = 0;
+  end = 10;
+   diff;
 
   // @ts-ignore
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
 
   ngOnInit() {
+
+    this.diff = 10;
+
+
     this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
     if ( !this.userPage) {
@@ -35,8 +42,6 @@ export class ListSessionComponent implements OnInit {
     } else {
       this.getAllSessionUser(this.id);
     }
-
-
   }
 
   openDialogSuppress(id: number): void {
@@ -70,6 +75,8 @@ export class ListSessionComponent implements OnInit {
       console.log(this.listSessions);
     });
   }
+
+
   addPlayer(session: Session) {
       this.sessionService.getSessionById(session.id).subscribe( (session) => {
         if (!session.playersList) {
@@ -84,12 +91,12 @@ export class ListSessionComponent implements OnInit {
               console.log(error);
             });
           }
-        } 
+        }
       });
   }
 
   getPlayers(id: number, session?){
-    if(session) {
+    if (session) {
       this.sessionService.getPlayer(id).subscribe( (user) => {
         session.playersList = user;
       });
@@ -100,8 +107,8 @@ export class ListSessionComponent implements OnInit {
         });
       });
     }
-     
-    
+
+
   }
 
   getAuthor(id: number, session: Session){
@@ -128,7 +135,6 @@ export class ListSessionComponent implements OnInit {
       }
     }
     return false;
-   
   }
 
   isComplete(session: Session){
@@ -138,14 +144,34 @@ export class ListSessionComponent implements OnInit {
     return false;
   }
 
-  isConnected(){
+  isConnected() {
     return this.user !== null;
   }
 
-  isAuthor(author: User){
+  isAuthor(author: User) {
     if(author) {
       return author.id === this.user.id;
     }
     return false;
+  }
+
+  public Previous(): void {
+    if (this.begin >= this.diff) {
+      this.end += -this.diff;
+      this.begin += -this.diff;
+    }
+  }
+
+  public Next(): void {
+    if (this.end < this.listSessions.length) {
+      this.begin += this.diff;
+      this.end += this.diff;
+    }
+  }
+
+  length(): void {
+    this.diff += this.begin;
+    this.begin = 0;
+    this.end +=  this.diff;
   }
 }

@@ -41,6 +41,7 @@ public class GroupController {
 
 	@PostMapping("/{iduser}")
 	public long createOrUpdate(@RequestBody Groupe groupe, @PathVariable(value = "iduser") long id) {
+
 		groupeDao.createWithAuthor(groupe, id);
 		return groupe.getId();
 	}

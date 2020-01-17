@@ -112,7 +112,8 @@ public class SessionDao {
 		}
 	}
 	
-	
+
+
 
 	public long createWithAuthorAndGames(SessionJson session, long idUser) {
 		if (session.getId() == 0) {
@@ -265,12 +266,15 @@ public class SessionDao {
 		// on crée la requête
 		TypedQuery<Session> query = em.createQuery("SELECT entity FROM Session entity ", Session.class);
 		query.setHint("javax.persistence.loadgraph", graph);
-		
+
 		// on exécute la requête et on récupère le résultat
 		List<Session> list = query.getResultList();
 		resultat = new HashSet<SessionJson>();
 		for (Session session : list) {
 			for(User u : session.getPlayersList()) {
+
+
+				
 				
 				if(u.getId()== id) {
 					
@@ -284,6 +288,9 @@ public class SessionDao {
 
 				}
 			}
+
+
+
 			
 		}
 	
@@ -322,3 +329,4 @@ public class SessionDao {
 //}
 
 }
+

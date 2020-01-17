@@ -20,8 +20,14 @@ export class PagegroupComponent implements OnInit {
   group: Group;
   addBtn;
   user: User;
+  begin = 0;
+  end = 10;
+  diff;
 
   ngOnInit() {
+
+    this.diff = 10;
+
     this.user = this.loginService.log().value;
     this.route.paramMap.subscribe( (params: ParamMap) => {
         if (params.has('id')) {
@@ -45,7 +51,6 @@ export class PagegroupComponent implements OnInit {
     if ( !this.includeUser() ) {
       this.group.membersList.push(this.loginService.log().value);
       this.serviceGroup.update(this.group).subscribe((success) => {
-        this.loginService.log().value.listGroup.add(this.group);
       }, (error) => {
         console.log(error);
       });
@@ -79,6 +84,25 @@ export class PagegroupComponent implements OnInit {
     return bool;
   }
 
+  public Previous(): void {
+    if (this.begin >= this.diff ) {
+      this.end += -this.diff;
+      this.begin += -this.diff;
+    }
+  }
+
+  public Next(): void {
+    if (this.end < this.group.membersList.length) {
+      this.begin += this.diff;
+      this.end += this.diff;
+    }
+  }
+
+   length(): void {
+    this.diff += this.begin;
+    this.begin = 0;
+    this.end += this.diff;
+  }
 
 
 }

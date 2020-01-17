@@ -39,6 +39,7 @@ public class Session extends DbObject {
 	
 	public Session() {}
 
+
 	public Session(String title, String place, SessionType sessionType, String description, int nbMaxPlayers,
 			int nbMinPlayers, Date startDate, Date endDate, boolean isPrivate, User author) {
 		super();
