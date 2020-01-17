@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Session} from '../class/session';
 import {User} from '../../users/class/user';
-import {Game} from "../class/game";
+// import {Game} from '../class/game';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,9 @@ export class SessionServiceService {
 
   public getAllSessions(): Observable<Session[]> {
     return this.http.get<Session[]>(this.url);
+  }
+  public getAllSessionsByUser(id: number): Observable<Session[]> {
+    return this.http.get<Session[]>(this.url + 'user/' + id);
   }
 
   public getSessionById(id: number): Observable<Session> {

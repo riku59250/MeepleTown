@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-light bg-light float-right col-12">
     <form class="form-inline col-12">
-        <input class="form-control col-12" type="search" name="searchString" [(ngModel)]="searchText" autocomplete="off" placeholder="Entrez un lieu pour filter les résultats.">
+        <input class="form-control col-12" type="search" name="searchString" [(ngModel)]="searchText" autocomplete="off" placeholder="Entrez un nom de jeu pour filtrer les résultats.">
     </form>
 </nav>
 
@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let game of listGames  |searchFilter: 'name' : searchText">
+    <tr *ngFor="let game of listGames  |searchFilter: 'name' : searchText |slice:begin:end">
         <td>{{game.name}}</td>
         <td>{{game.type}}</td>
         <td>{{game.description}}</td>

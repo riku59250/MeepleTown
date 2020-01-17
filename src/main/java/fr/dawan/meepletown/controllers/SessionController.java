@@ -56,7 +56,11 @@ public class SessionController {
 //		return dao.findById(Session.class, postalCode);
 //	}
 	
-	
+	@GetMapping("/user/{id}")
+	public Set<SessionJson> findByUser(@PathVariable(value = "id")  long id) {
+		System.out.println("ici");
+		return sessioDao.findAllUser(id);
+	}
 	
 	@PostMapping("/")
 	public void createOrUpdate(@RequestBody Session session) {
@@ -74,11 +78,7 @@ public class SessionController {
 		System.out.println(session.getGamesListSession());
 		sessioDao.createWithAuthorAndGames(session, idUser);
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 0d8c5bc9709302462c256d652cb719c5586d9e12
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable(value = "id") long id) {
 		dao.delete(Session.class, id);

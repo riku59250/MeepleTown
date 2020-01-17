@@ -44,7 +44,7 @@ public class userDao {
 			factory.close();
 		}
 		// on paramètre et on exécute la requête, et on récupère le résultat
-		
+		System.out.println(user);
 		return user;
 	}
 	public Set<User> findAll( ) {

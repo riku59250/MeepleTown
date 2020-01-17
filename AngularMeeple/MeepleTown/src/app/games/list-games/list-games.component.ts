@@ -14,14 +14,15 @@ export class ListGamesComponent implements OnInit {
     listGames: Array<Game>;
     searchText: string;
     begin = 0;
-    end = 5;
+    end = 10;
+    data;
     diff;
 
   constructor(private gameService: GamesServicesService) { }
 
   ngOnInit() {
 
-      this.diff = 5;
+      this.diff = 10;
 
       this.gameService.getGames().subscribe( (data) => {
         this.listGames = data;

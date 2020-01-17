@@ -57,7 +57,6 @@ public class UserController {
 	
 	@RequestMapping("/connect")
 	public fr.dawan.meepletown.json.UserJson findByEmail(@RequestParam("email") String email, @RequestParam("password") String password) {
-		System.out.println(email);
 		return userDao.findByEmailAndPassword(email, password);
 	}
 	

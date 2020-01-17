@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let session of listSessions | searchFilter : 'place' : searchString" [className]="session.isPrivate ? 'table-secondary' : '' " >
+        <tr *ngFor="let session of listSessions | slice:begin:end | searchFilter : 'place' : searchString" [className]="session.isPrivate ? 'table-secondary' : ''  " >
             <th scope="row"> <a class="nav-link" [routerLink]="['/sessionPage', session.id]" >{{session.title}} </a></th>
             <td>{{session.place}}</td>
             <td> le {{session.startDate | date: 'EEEE dd MMMM yyy':'fr'}} de {{session.startDate | date: 'HH:mm'}} à {{session.endDate | date: 'HH:mm'}}</td>
@@ -26,14 +26,23 @@
             <td>{{session.author?.pseudo}}</td>
             <td *ngIf="isUserConnected">
                 <p class="alert alert-secondary" *ngIf="session.isPrivate">Cette partie est privée.</p>
-                <button class="btn btn-secondary" *ngIf="!session.isPrivate && !isAuthor(session.author) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button> 
-<<<<<<< HEAD
+                <button class="btn btn-secondary" *ngIf="!session.isPrivate && !isAuthor(session.author) && !isComplete(session) && !isPlayer(session)" (click)="addPlayer(session)">Rejoindre</button>
                 <button class="btn btn-danger" *ngIf="isAuthor(session.author)" (click)="openDialogSuppress(session.id)">Supprimer</button>
-=======
-                <button class="btn btn-danger" *ngIf="isAuthor(session.author)" (click)="openDialogSuppress(session.id)">Supprimer</button> 
->>>>>>> 0d8c5bc9709302462c256d652cb719c5586d9e12
+
                 <p class="alert alert-success" *ngIf="!isAuthor(session.author) && isPlayer(session)">Vous participez à cette partie. <button class="btn btn-danger" (click)="deletePlayer(session)"> Quitter ? </button></p>
             </td>
         </tr>
         </tbody>
     </table>
+
+<div class="clearfix"></div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li class="page-item disabled">
+            <button id="prev" class="btn btn-outline-primary"   (click)="Previous()" > Précédent </button>
+        </li>
+        <li class="page-item">
+            <button id="next" class="btn btn-outline-primary"   (click)="Next()" > Suivant </button>
+        </li>
+    </ul>
+</nav>

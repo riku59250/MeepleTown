@@ -16,7 +16,7 @@
         <app-list-games [listGames]="user.listGame "></app-list-games>
     </div>
     <div *ngIf="user.listSession !== null && user.listSession !== undefined">
-        <app-list-session [listSessions]="user.listSession"></app-list-session>
+        <app-list-session [userPage]="true" [id]="user.id"></app-list-session>
     </div>
 </div>
 

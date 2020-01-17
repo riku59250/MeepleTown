@@ -112,38 +112,7 @@ public class SessionDao {
 		}
 	}
 	
-	public void createWithAuthorAndGames(SessionJson session, long idUser) {
-		if (session.getId() == 0) {
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
-			EntityManager entityManager = factory.createEntityManager();
-			EntityTransaction transaction = entityManager.getTransaction();
-			
-			Session newSession = new Session(session.getTitle(), session.getPlace(), session.getSessionType(), session.getDescription(), 
-					session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(), session.getEndDate(), 
-					session.getIsPrivate(), session.getAuthor());
 
-			try {
-				// début de la transaction
-				transaction.begin();
-				User u = entityManager.find(User.class, idUser);
-				newSession.setAuthor(u);
-				newSession.getPlayersList().add(u);
-				newSession.setGamesListSession(session.getGamesListSession());
-				// On insère la formation dans la BDD
-				entityManager.persist(newSession);
-
-				// on commit tout ce qui s'est fait dans la transaction
-				transaction.commit();
-			} catch (Exception ex) {
-				// en cas d'erreur, on effectue un rollback
-				transaction.rollback();
-				ex.printStackTrace();
-			} finally {
-				entityManager.close();
-				factory.close();
-			}
-		}
-	}
 
 	public void createWithAuthorAndGames(SessionJson session, long idUser) {
 		if (session.getId() == 0) {
@@ -281,6 +250,45 @@ public class SessionDao {
 			return null;
 	}
 	
+	public Set<SessionJson> findAllUser(long id) {
+		Set<SessionJson> resultat = null;
+
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager em = factory.createEntityManager();
+
+		EntityGraph<Session> graph = em.createEntityGraph(Session.class);
+		graph.addSubgraph("playersList");
+		graph.addSubgraph("gamesListSession");
+		graph.addSubgraph("author");
+		// on crée la requête
+		TypedQuery<Session> query = em.createQuery("SELECT entity FROM Session entity ", Session.class);
+		query.setHint("javax.persistence.loadgraph", graph);
+
+		// on exécute la requête et on récupère le résultat
+		List<Session> list = query.getResultList();
+		resultat = new HashSet<SessionJson>();
+		for (Session session : list) {
+			for(User u : session.getPlayersList()) {
+
+				if(u.getId()== id) {
+
+					SessionJson s = new SessionJson(session.getTitle(), session.getPlace(), session.getSessionType(),
+							session.getDescription(), session.getNbMaxPlayers(), session.getNbMinPlayers(), session.getStartDate(),
+							session.getEndDate(), session.getIsPrivate(), session.getPlayersList(), session.getGamesListSession(),
+							session.getAuthor());
+
+					s.setId(session.getId());
+					resultat.add(s);
+
+				}
+			}
+
+		}
+
+		em.close();
+		factory.close();
+		return resultat;
+	}
 //	public User getAuthor(long id) {
 //		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
 //		EntityManager entityManager = factory.createEntityManager();

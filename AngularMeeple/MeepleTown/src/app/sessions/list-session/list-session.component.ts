@@ -6,6 +6,7 @@ import {LoginService} from '../../login/services/login.service';
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from '@angular/router';
+import {group} from "@angular/animations";
 
 @Component({
   selector: 'app-list-session',
@@ -15,21 +16,33 @@ import {Router} from '@angular/router';
 export class ListSessionComponent implements OnInit {
 
   @Input()
-  listSessions: Session[] = new Array;
+  userPage: boolean = false;
+  @Input()
+  id: number;
+  listSessions: Session[] = new Array ();
   searchString: string;
   user: User;
   isUserConnected = false;
+  begin = 0;
+  end = 10;
+   diff;
 
   // @ts-ignore
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
 
   ngOnInit() {
-    if ( this.listSessions.length === 0) {
-      this.getAllSession();
-    }
+
+    this.diff = 10;
 
     this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
+    if ( !this.userPage) {
+      this.getAllSession();
+    } else {
+      this.getAllSessionUser(this.id);
+    }
+
+
   }
 
   openDialogSuppress(id: number): void {
@@ -56,6 +69,14 @@ export class ListSessionComponent implements OnInit {
     });
   }
 
+  getAllSessionUser(id: number) {
+    this.sessionService.getAllSessionsByUser(id).subscribe( (sessions) => {
+      this.listSessions = sessions;
+      this.listSessions.sort((a, b) => (a.startDate > b.startDate) ? 1 : -1);
+      console.log(this.listSessions);
+    });
+  }
+
   addPlayer(session: Session) {
       this.sessionService.getSessionById(session.id).subscribe( (session) => {
         if (!session.playersList) {
@@ -70,7 +91,7 @@ export class ListSessionComponent implements OnInit {
               console.log(error);
             });
           }
-        } 
+        }
       });
   }
 
@@ -86,8 +107,8 @@ export class ListSessionComponent implements OnInit {
         });
       });
     }
-     
-    
+
+
   }
 
   getAuthor(id: number, session: Session){
@@ -99,6 +120,9 @@ export class ListSessionComponent implements OnInit {
   deletePlayer(session: Session){
     this.sessionService.deletePlayer(session, this.user).subscribe( () => {
       session.playersList = session.playersList.filter(item => item.id !== this.user.id);
+      if (this.userPage) {
+        this.listSessions = this.listSessions.filter(item => item.id !== session.id);
+      }
     });
   }
 
@@ -111,7 +135,6 @@ export class ListSessionComponent implements OnInit {
       }
     }
     return false;
-   
   }
 
   isComplete(session: Session){
@@ -121,14 +144,34 @@ export class ListSessionComponent implements OnInit {
     return false;
   }
 
-  isConnected(){
+  isConnected() {
     return this.user !== null;
   }
 
-  isAuthor(author: User){
+  isAuthor(author: User) {
     if(author) {
       return author.id === this.user.id;
     }
     return false;
+  }
+
+  public Previous(): void {
+    if (this.begin >= this.diff) {
+      this.end += -this.diff;
+      this.begin += -this.diff;
+    }
+  }
+
+  public Next(): void {
+    if (this.end < this.listSessions.length) {
+      this.begin += this.diff;
+      this.end += this.diff;
+    }
+  }
+
+  length(): void {
+    this.diff += this.begin;
+    this.begin = 0;
+    this.end +=  this.diff;
   }
 }
