@@ -6,7 +6,7 @@ export class Group {
 	// tslint:disable-next-line:variable-name
 	 name: string;
 	// tslint:disable-next-line:variable-name
-	 type: boolean;
+	 type: string;
 	// tslint:disable-next-line:variable-name
 	 nameDept: string;
 	// tslint:disable-next-line:variable-name
@@ -16,7 +16,7 @@ export class Group {
 	membersList: Array<User>;
 
 
-	constructor( id?: number, nameGroup?: string, groupType?: boolean,  description?: string, city?: string, nameDept?: string, membersList?: Array<User>) {
+	constructor( id?: number, nameGroup?: string, groupType?: string,  description?: string, city?: string, nameDept?: string, membersList?: Array<User>) {
 		this.id = id;
 		this.name = nameGroup;
 		this.type = groupType;

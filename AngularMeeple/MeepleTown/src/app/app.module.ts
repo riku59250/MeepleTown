@@ -23,7 +23,6 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-
 // @ts-ignore
 @NgModule({
   declarations: [

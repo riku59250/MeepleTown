@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Session} from '../class/session';
 import {User} from '../../users/class/user';
+import {Game} from "../class/game";
 
 @Injectable({
   providedIn: 'root'
@@ -24,18 +25,19 @@ export class SessionServiceService {
   }
 
   public addSession(session: Session, user: User){
-    return this.http.post(this.url + '/' + user.id, session, );
+    console.log(session.gamesListSession)
+    return this.http.post(this.url + '/' + user.id, session );
+  }
+
+  public addSessionWithGames(session: Session, user: User){
+    console.log(session.gamesListSession)
+    return this.http.post(this.url + 'withgames/' + user.id, session);
   }
 
   public deleteSession(id: number) {
     const url2 = this.url + id;
     return this.http.delete(url2);
   }
-
-  /*public updateSession(session: Session): Observable<Session> {
-    const url2 = this.url + session.id;
-    return this.http.put<Session>(url2, session);
-  }*/
 
   public addPlayer(id: number, user: User): Observable<User> {
     return this.http.put<User>(this.url + 'adduser/' + id , user);

@@ -38,6 +38,28 @@ public class Session extends DbObject {
 	private User author;
 	
 	public Session() {}
+
+
+	public Session(String title, String place, SessionType sessionType, String description, int nbMaxPlayers,
+			int nbMinPlayers, Date startDate, Date endDate, boolean isPrivate, User author) {
+		super();
+		this.title = title;
+		this.place = place;
+		this.sessionType = sessionType;
+		this.description = description;
+		this.nbMaxPlayers = nbMaxPlayers;
+		this.nbMinPlayers = nbMinPlayers;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.isPrivate = isPrivate;
+		this.author = author;
+	}
+
+
+
+
+
+
 	public Session(String title) {
 		this.setTitle(title);
 	}

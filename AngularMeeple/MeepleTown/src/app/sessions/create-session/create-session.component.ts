@@ -10,6 +10,7 @@ import {User} from "../../users/class/user";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from '@angular/router';
+import { GamesServicesService } from 'src/app/games/services/games-services.service';
 
 
 @Component({
@@ -27,17 +28,21 @@ export class CreateSessionComponent implements OnInit {
   date: FormControl;
   startDate: FormControl;
   endDate: FormControl;
-  // TODO vérifier le boolean car il n'est pas recu en java
   isPrivate: FormControl;
   type: FormControl;
-  // TODO changer pour que ça apparaisse avec du texte dans le html
-  sessionTypes: SessionType[] = [SessionType.JDP, SessionType.JDR, SessionType.FIG, SessionType.GN]
-  // TODO implémenter la liste de jeux
+  gamesListSession: FormControl;
+  listGames;
+
+  // sessionTypes: SessionType[] = [SessionType.JDP, SessionType.JDR, SessionType.FIG, SessionType.GN]
   user: BehaviorSubject<User>;
 
-  constructor(private dialog: MatDialog, private fb: FormBuilder, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
+  constructor(private gameService: GamesServicesService, private dialog: MatDialog, private fb: FormBuilder, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.gameService.getGames().subscribe( (games) => {
+      this.listGames = games;
+    });
+
     this.title = new FormControl(null, [Validators.required]);
     this.place = new FormControl(null, [Validators.required]);
     this.description = new FormControl();
@@ -58,7 +63,8 @@ export class CreateSessionComponent implements OnInit {
       startDate: this.startDate,
       endDate: this.endDate,
       isPrivate: this.isPrivate,
-      type: this.type
+      type: this.type,
+      gamesListSession: this.gamesListSession
     }, {
       validators: [ SessionValidators.endDate(), SessionValidators.maxPlayers() ]
     });
@@ -75,6 +81,8 @@ export class CreateSessionComponent implements OnInit {
       session.nbMinPlayers = this.nbMinPlayers.value;
       session.startDate = this.createDateFromForm(this.date.value, this.startDate.value);
       session.endDate = this.createDateFromForm(this.date.value, this.endDate.value);
+      session.gamesListSession = this.listGames.filter(item => item.id === Number.parseInt(this.gamesListSession.value, 10));
+
       if (this.isPrivate.value == null) {
         session.isPrivate = false;
       } else {
@@ -82,7 +90,7 @@ export class CreateSessionComponent implements OnInit {
       }
       this.user = this.logService.log();
       session.sessionType = SessionType[this.type.value];
-      this.sessionService.addSession(session, this.user.getValue()).subscribe( () => {
+      this.sessionService.addSessionWithGames(session, this.user.getValue()).subscribe( () => {
         this.router.navigateByUrl('/listSessions');
         this.form.reset();
       });

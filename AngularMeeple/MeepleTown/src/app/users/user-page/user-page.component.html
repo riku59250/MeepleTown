@@ -1,19 +1,22 @@
-<div>
-    <h3>{{user.pseudo}}</h3>
-    <ul class="list-unstyled ">
-        <li *ngIf="!tabModif[0];  else villeInput">Ville : {{user.city}} <button class="btn btn-dark" (click)="modifier(0)">Modifier</button></li>
-        <li *ngIf="!tabModif[1]; else departementInput">Département : {{user.numDept}} <button class="btn btn-dark" (click)="modifier(1)">Modifier</button></li>
-        <ng-template #villeInput>
-            <li><input [(ngModel)]="user.city" type="text" > <button class="btn-success btn"  (click)="update(0)">Ajouter</button>  <button class="btn btn-dark" (click)="modifier(0)">Anuler</button></li>
-        </ng-template>
-        <ng-template #departementInput>
-            <li><input [(ngModel)]="user.numDept" type="text" >  <button class="btn-success btn" (click)="update(1)">Ajouter</button> <button class="btn btn-dark" (click)="modifier(1)">Anuler</button></li>
-        </ng-template>
-    </ul>
+<div *ngIf="user !== undefined">
+    <div>
+        <h3>{{user.pseudo}}</h3>
+        <ul class="list-unstyled ">
+            <li *ngIf="!tabModif[0];  else villeInput">Ville : {{user.city}} <button class="btn btn-dark" (click)="modifier(0)">Modifier</button></li>
+            <li *ngIf="!tabModif[1]; else departementInput">Département : {{user.numDept}} <button class="btn btn-dark" (click)="modifier(1)">Modifier</button></li>
+            <ng-template #villeInput>
+                <li><input [(ngModel)]="user.city" type="text" > <button class="btn-success btn"  (click)="update(0)">Ajouter</button>  <button class="btn btn-dark" (click)="modifier(0)">Anuler</button></li>
+            </ng-template>
+            <ng-template #departementInput>
+                <li><input [(ngModel)]="user.numDept" type="text" >  <button class="btn-success btn" (click)="update(1)">Ajouter</button> <button class="btn btn-dark" (click)="modifier(1)">Anuler</button></li>
+            </ng-template>
+        </ul>
+    </div>
+    <div *ngIf="user.listGame !== null">
+        <app-list-games [listGames]="user.listGame "></app-list-games>
+    </div>
+    <div *ngIf="user.listSession !== null && user.listSession !== undefined">
+        <app-list-session [listSessions]="user.listSession"></app-list-session>
+    </div>
 </div>
-<div>
-    <app-list-games [listGames]="user.listGame "></app-list-games>
-</div>
-<div>
-    <app-list-session [listSessions]="user.listSession"></app-list-session>
-</div>
+

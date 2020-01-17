@@ -2,22 +2,22 @@
 
 <form [formGroup]="form" (submit)="createSession()">
     <div class="form-row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-7 mb-3">
             <label for="title">Titre*</label>
             <input type="text" formControlName="title" class="form-control" id="title" required>
             <p class="text-danger" *ngIf="controlTitle(); let message">{{message}}</p>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-5 mb-3">
             <label for="location">Lieu*</label>
             <input type="text" formControlName="place" class="form-control" id="location" required>
             <p class="text-danger" *ngIf="controlPlace(); let message">{{message}}</p>
         </div>
-        <div class="col-md-2 mb-3">
+       <!-- <div class="col-md-2 mb-3">
             <label for="type">Type de partie</label>
             <select class="custom-select" id="type" formControlName="type">
                 <option *ngFor=" let type of sessionTypes; let i = index" value="{{i}}">{{type.valueOf()}}</option>
             </select>
-        </div>
+        </div>-->
 
     </div>
 
@@ -50,11 +50,9 @@
     <div class="form-row">
         <div class="col-md-8 mb-3">
             <label for="game">Jeu*</label>
-            <select class="custom-select" id="game" required>
-                <option selected disabled value="">Choose...</option>
-                <option>Jeu 1</option>
-                <option>Jeu 2</option>
-                <option>Jeu 3</option>
+            <select class="custom-select" id="game" required formControlName="gamesListSession">
+                <option disabled >Choisis un jeu</option>
+                <option *ngFor="let game of listGames" [value]="game.id" > {{ game.name }}</option>
             </select>
         </div>
         <div class="col-md-2 mb-3">

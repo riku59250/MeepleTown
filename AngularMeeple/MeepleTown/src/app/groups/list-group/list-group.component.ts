@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Group} from '../group/group';
 import {GroupService} from '../services/group.service';
 import {group} from '@angular/animations';
+import {log} from "util";
 
 
 @Component({
@@ -14,12 +15,12 @@ export class ListGroupComponent implements OnInit {
   listGroup: Array<Group>;
   begin = 0;
   end = 5;
+  diff = 0;
   data;
   ngOnInit() {
     this.data = 5;
     this.serviceGroup.getAllGroup().subscribe((data) => {
           this.listGroup = data;
-          console.log(this.listGroup);
         }
     );
   }
@@ -32,8 +33,10 @@ export class ListGroupComponent implements OnInit {
         }
     */
     if (this.begin >= this.data) {
+      this.end += this.diff;
       this.end += -this.data;
       this.begin += -this.data;
+      this.diff = 0;
     }
   }
   public Next(): void {
@@ -42,14 +45,17 @@ export class ListGroupComponent implements OnInit {
       this.begin =  (this.begin + 5);
       this.end = (this.end + 5);
      */
+
     if (this.end < this.listGroup.length) {
-      this.begin += this.data;
-      this.end += this.data;
+      if ( (this.end + this.data) > this.listGroup.length){
+        this.begin += this.data;
+        this.end = this.listGroup.length;
+        this.diff = (this.data + this.begin) - this.listGroup.length;
+      } else {
+        this.begin += this.data;
+        this.end += this.data;
+      }
+
     }
-  }
-  length(): void {
-    this.data = +this.begin;
-    this.begin = 0;
-    this.end = this.data;
   }
 }

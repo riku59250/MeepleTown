@@ -5,6 +5,7 @@ import { HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import { map} from 'rxjs/operators';
 import {group} from '@angular/animations';
+import {User} from "../../users/class/user";
 
 
 
@@ -49,14 +50,10 @@ export class GroupService {
     return this.http.get<Group>(this.url + '/' + id);
     }
 
-    public saveGroupToServer() {
-        this.http.put('http://localhost:8080/meepletown', this.group).subscribe(
-            () => {
-                console.log('Groupe enregistré !');
-            },
-            (error => {
-                console.log('Erreur ! : ' + error);
-            })
-        );
+   public update(group: Group): Observable<Group> {
+        return  this.http.put<Group>(this.url , group );
+   }
+    public createGroupe(group : Group, id: number): Observable<Group>{
+            return this.http.post<Group>(this.url  + id, group);
     }
 }

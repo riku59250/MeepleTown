@@ -4,6 +4,11 @@ import { CheckboxControlValueAccessor, FormControl, FormBuilder, Validators, For
 import { NgForm } from '@angular/forms';
 import { GroupService} from '../services/group.service';
 import {Group} from '../group/group';
+import {User} from "../../users/class/user";
+import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
+import {LoginService} from "../../login/services/login.service";
 
 @Component({
   selector: 'app-creategroup',
@@ -31,12 +36,19 @@ export class CreategroupComponent implements OnInit {
   descriptionMax = 300;
   groupForm: FormGroup;
 
-
-  constructor(private formB: FormBuilder) { }
+  constructor(private formB: FormBuilder, private dialog: MatDialog, private groupService: GroupService, private router: Router, private loginService: LoginService) { }
 
     onSubmit() {
-      console.log(this.groupForm.value);
-      this.groupForm.reset();
+      if ( this.groupForm.valid) {
+        if (this.loginService.log().value !== null) {
+          let group = new Group(0, this.groupForm.value.nameGroup, this.groupForm.value.groupType, this.groupForm.value.description, this.groupForm.value.city, this.groupForm.value.nameDept, new Array<User>());
+          group.type = group.type.toUpperCase();
+          group.membersList.push(this.loginService.log().value);
+
+          this.openDialogCreate(group);
+          this.groupForm.reset();
+        }
+      }
     }
 
   ngOnInit() {
@@ -82,11 +94,16 @@ export class CreategroupComponent implements OnInit {
         return 'Le nom du groupe est trop long, il doit contenir ' + this.nameGroupMaxLength
           + ' caract�res maximum (actuellement ' + this.nameGroup.value.length + ')';
       }
+      if(this.nameGroup.hasError('minlength')) {
+        return 'Le nom du Groupe est trop court, il doit contenir ' + this.nameGroupMinLength
+            + ' caractéres minimum (actuellement ' + this.nameGroup.value.length + ')';
+      }
     }
+    return null;
   }
 
-  public controlGroupType(){
-    if(this.groupType.dirty) {
+  public controlGroupType() {
+    if (this.groupType.dirty) {
       if (this.groupType.hasError('required')) {
         return 'Veuillez choisir un type de groupe';
       }
@@ -115,7 +132,9 @@ export class CreategroupComponent implements OnInit {
       if (this.nameDept.hasError('required')) {
         return 'Veuillez choisir un d�partement';
       }
+
     }
+    return null;
   }
 
   public controlCity() {
@@ -128,6 +147,7 @@ export class CreategroupComponent implements OnInit {
             + ' caract�res maximum (actuellement ' + this.city.value.length + ')';
       }
     }
+    return null;
   }
 
   public controlDescription() {
@@ -137,10 +157,40 @@ export class CreategroupComponent implements OnInit {
             this.description.value.length + ')';
       }
     }
+    return null;
+  }
+  public annuler(): void {
+    this.onpenDialogAnnuler();
+  }
+  openDialogCreate(group: Group) {
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Creation groupe',
+        message: `Etes-vous sure de vouloir crée le groupe ${group.name} ?  `, close: true}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.groupForm.reset();
+        console.log(group);
+        this.groupService.createGroupe(group, this.loginService.log().value.id).subscribe((success) => {
+              console.log(success);
+              this.router.navigateByUrl(`/pageGroup/${success}`);
+
+        }, (error) => {
+          console.log(error);
+        });
+      }
+    });
   }
 
-
-
+  onpenDialogAnnuler() {
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Creation groupe',
+        message: `Etes-vous sure de vouloir annuler  ?  `, close: true}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.groupForm.reset();
+        }
+      });
+  }
 
 }
 

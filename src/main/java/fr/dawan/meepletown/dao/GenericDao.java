@@ -33,6 +33,7 @@ public class GenericDao<T extends DbObject> {
 
 				// on commit tout ce qui s'est fait dans la transaction
 				transaction.commit();
+				System.out.println(entity.getId());
 			} catch (Exception ex) {
 				// en cas d'erreur, on effectue un rollback
 				transaction.rollback();

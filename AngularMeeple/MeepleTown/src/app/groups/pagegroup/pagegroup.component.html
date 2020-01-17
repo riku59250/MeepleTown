@@ -7,7 +7,18 @@
             <label class="col-md-8 mb-3">
                 <p>{{group.description}}</p>
             </label>
-            <input class="btn btn-outline-dark" (click)="isAddBtn()"  id="add" type="button" value="{{addBtn}}"/>
+            <div *ngIf="user=== null ; else connect ">
+                <p>Vous n'etes pas connecté</p>
+            </div>
+            <ng-template #connect>
+                <div *ngIf="includeUser(); else rejoindre ">
+                    <input class="btn btn-outline-danger" (click)="skip()"  id="add" type="button" value="Quitter"/>
+                </div>
+                <ng-template #rejoindre>
+                    <input class="btn btn-outline-dark" (click)="addUser()"  id="add" type="button" value="Rejoindre"/>
+                </ng-template>
+            </ng-template>
+
 
         </div>
     <div>

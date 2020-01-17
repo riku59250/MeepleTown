@@ -33,8 +33,9 @@ public class Groupe extends DbObject{
 	
 	public Groupe() {}
 	
-	public Groupe(int id, String name, GroupType type, String description, String avatar) {
+	public Groupe(long id, String name, GroupType type, String description, String avatar) {
 		super();
+		this.setId(id);
 		this.name = name;
 		this.type = type;
 		this.description = description;
