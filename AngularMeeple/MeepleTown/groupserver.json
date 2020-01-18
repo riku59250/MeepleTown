@@ -1,19 +1,146 @@
 {
-  "posts": [
+  "Group": [
     {
+
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Le club de SASA",
+      "type": "Association",
+      "nameDept": "Nord" ,
+      "city": "Lille"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Les vétérans du jeu",
+      "type": "Particulier",
+      "nameDept":  "Pas-De-Calais",
+      "city": "Lens"
+    },
+    {
+      "id": 3,
+      "name": "L'Otarie Club",
+      "type": "Association",
+      "nameDept":  "Nord",
+      "city": "Villeneuve-D'Ascq"
+    },
+    {
+      "id": 4,
+      "name": "Halo 343",
+      "type": "Particulier",
+      "nameDept":  "Picardie",
+      "city": "Amiens"
+    },
+    {
+      "id": 5,
+      "name": "Les Orcs",
+      "type": "Particulier",
+      "nameDept":  "Bouches-du-Rhône",
+      "city": "Marseille"
+    },
+    {
+      "id": 6,
+      "name": "Le club de Ragnar",
+      "type": "Association",
+      "nameDept": "Nord" ,
+      "city": "Lille"
+    },
+    {
+      "id": 7,
+      "name": "Les vétérans du jeu",
+      "type": "Particulier",
+      "nameDept":  "Pas-De-Calais",
+      "city": "Lens"
+    },
+    {
+      "id": 8,
+      "name": "L'Otarie Club",
+      "type": "Association",
+      "nameDept":  "Nord",
+      "city": "Villeneuve-D'Ascq"
+    },
+    {
+      "id": 9,
+      "name": "Halo 2048",
+      "type": "Particulier",
+      "nameDept":  "Picardie",
+      "city": "Amiens"
+    },
+    {
+      "id": 10,
+      "name": "Les Eux",
+      "type": "Particulier",
+      "nameDept":  "Bouches-du-Rhône",
+      "city": "Marseille"
+    },
+    {
+
+      "id": 11,
+      "name": "Le club de LELE",
+      "type": "Association",
+      "nameDept": "Nord" ,
+      "city": "Haubourdin"
+    },
+    {
+      "id": 12,
+      "name": "Les vétérans du jeu",
+      "type": "Particulier",
+      "nameDept":  "Pas-De-Calais",
+      "city": "Lens"
+    },
+    {
+      "id": 13,
+      "name": "Les fantastiques du plateau",
+      "type": "Association",
+      "nameDept":  "Nord",
+      "city": "Villeneuve-D'Ascq"
+    },
+    {
+      "id": 14,
+      "name": "Les joueurs du samedi soir",
+      "type": "Particulier",
+      "nameDept":  "Normandie",
+      "city": "Rouen"
+    },
+    {
+      "id": 15,
+      "name": "John Doe Tribute Club",
+      "type": "Association",
+      "nameDept":  "Loire-Atlantique",
+      "city": "Nantes"
+    },
+    {
+      "id": 16,
+      "name": "Le club de Charlie",
+      "type": "Association",
+      "nameDept": "Nord" ,
+      "city": "Lille"
+    },
+    {
+      "id": 17,
+      "name": "Les rôlistes du coin",
+      "type": "Particulier",
+      "nameDept":  "Nord",
+      "city": "Douai"
+    },
+    {
+      "id": 18,
+      "name": "L'Opale Ludique",
+      "type": "Association",
+      "nameDept":  "Pas-De-Calais",
+      "city": "Boulogne-Sur-Mer"
+    },
+    {
+      "id": 19,
+      "name": "Kikou Play",
+      "type": "Particulier",
+      "nameDept":  "Nord",
+      "city": "Denain"
+    },
+    {
+      "id": 20,
+      "name": "Les Jacky du Game",
+      "type": "Particulier",
+      "nameDept":  "Pas-De-Calais",
+      "city": "Liévin"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

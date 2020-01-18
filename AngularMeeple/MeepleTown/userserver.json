@@ -1,0 +1,52 @@
+{
+  "User": [
+    {
+      "id": "1",
+      "pseudo": "Zoeram kle ",
+      "mail": "zozo@yahoo.fr",
+      "numDept": "62",
+      "city": "Lens" 
+      
+    },
+    {
+      "id": "4",
+      "pseudo": "PoPo kle ",
+      "mail": "popo@gmail.fr",
+      "numDept": "59",
+      "city": "Douai" 
+      
+    },
+    {
+      "id": "6",
+      "pseudo": "Crack ",
+      "mail": "crack@gmail.com",
+      "numDept": "80",
+      "city": "Amiens" 
+      
+    },
+   {
+      "id": "3",
+      "pseudo": "Popol kle ",
+      "mail": "popol@gmail.com",
+      "numDept": "41",
+      "city": "Nantes" 
+      
+    },
+  {
+      "id": "2",
+      "pseudo": "Ravier kle ",
+      "mail": "ravier@gmail.fr",
+      "numDept": "59",
+      "city": "Dunkerque" 
+      
+    },
+   {
+      "id": "5",
+      "pseudo": "Lalane ",
+      "mail": "lalane@gmail.be",
+      "numDept": "62",
+      "city": "Oignies" 
+      
+    }
+  ]
+}

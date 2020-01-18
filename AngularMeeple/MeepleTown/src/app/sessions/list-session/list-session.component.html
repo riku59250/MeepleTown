@@ -7,18 +7,18 @@
 </nav>
 
     <table class="table">
-        <thead class="thead-light">
+        <thead class="thead-light" matSort (matSortChange)="sortSessionTable($event)">
         <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Lieu</th>
-            <th scope="col">Date</th>
-            <th scope="col">Nombre de joueurs</th>
-            <th scope="col">Auteur</th>
+            <th scope="col" mat-sort-header="title">Titre</th>
+            <th scope="col" mat-sort-header="place">Lieu</th>
+            <th scope="col" mat-sort-header="startDate">Date</th>
+            <th scope="col" mat-sort-header="nbMaxPlayers">Nombre de joueurs</th>
+            <th scope="col" mat-sort-header="author?">Auteur</th>
             <th *ngIf="isUserConnected"> Actions possibles</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let session of listSessions | slice:begin:end | searchFilter : 'place' : searchString" [className]="session.isPrivate ? 'table-secondary' : ''  " >
+        <tr *ngFor="let session of sortListSessions | slice:begin:end | searchFilter : 'place' : searchString" [className]="session.isPrivate ? 'table-secondary' : ''  " >
             <th scope="row"> <a class="nav-link" [routerLink]="['/sessionPage', session.id]" >{{session.title}} </a></th>
             <td>{{session.place}}</td>
             <td> le {{session.startDate | date: 'EEEE dd MMMM yyy':'fr'}} de {{session.startDate | date: 'HH:mm'}} à {{session.endDate | date: 'HH:mm'}}</td>

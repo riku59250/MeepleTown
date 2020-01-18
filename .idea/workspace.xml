@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70cfa035-7a10-4f00-93fe-20564da163bc" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="70cfa035-7a10-4f00-93fe-20564da163bc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/MeepleTown.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MeepleTown.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/dawan/meepletown/dao/GenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/dawan/meepletown/dao/GenericDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,9 +17,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1V6UWVpzaz2oJKbsDL3xYPKBggO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AngularMeeple" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AngularMeeple/MeepleTown" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -22,15 +34,15 @@
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="ts.external.directory.path" value="C:\Formations\Projet\MeepleTown\node_modules\typescript\lib" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -48,6 +60,8 @@
       <workItem from="1576573193713" duration="1105000" />
       <workItem from="1576673441199" duration="1141000" />
       <workItem from="1576675210128" duration="2662000" />
+      <workItem from="1579305580728" duration="37000" />
+      <workItem from="1579305631173" duration="58000" />
     </task>
     <servers />
   </component>
@@ -66,5 +80,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1220" y="276" key="FileChooserDialogImpl" timestamp="1579305686646">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1220" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579305686646" />
   </component>
 </project>

@@ -81,11 +81,6 @@ public class GenericDao<T extends DbObject> {
 				// On met à jour la formation
 				entityManager.merge(entity);
 
-<<<<<<< HEAD
-
-=======
-				
->>>>>>> c73ef1a71002154d151f4c6cc3a6901c7137205a
 				// on commit tout ce qui s'est fait dans la transaction
 				transaction.commit();
 			} catch (Exception ex) {

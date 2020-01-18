@@ -43,18 +43,19 @@ import {MatSortModule} from "@angular/material/sort";
     PagegroupComponent,
       ConfirmationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatIconModule,
-    MatFormFieldModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSortModule
 
-  ],
+    ],
   exports: [
     SearchFilterPipe
   ],

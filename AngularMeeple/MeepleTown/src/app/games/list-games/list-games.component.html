@@ -6,17 +6,17 @@
     </form>
 </nav>
 
-<table class="table">
+<table class="table" matSort (matSortChange)="sortGameTable($event)">
     <thead class="thead-light">
     <tr>
-        <th scope="col">Nom </th>
-        <th scope="col">Type</th>
-        <th scope="col">Description</th>
-        <th> Nombre de joueurs</th>
+        <th scope="col" mat-sort-header="name">Nom </th>
+        <th scope="col" >Type</th>
+        <th scope="col" mat-sort-header="description">Description</th>
+        <th mat-sort-header="nbrMaxJoueur"> Nombre de joueurs</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let game of listGames  |searchFilter: 'name' : searchText |slice:begin:end">
+    <tr *ngFor="let game of sortListGames  |searchFilter: 'name' : searchText |slice:begin:end">
         <td>{{game.name}}</td>
         <td>{{game.type}}</td>
         <td>{{game.description}}</td>
