@@ -14,7 +14,7 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+  load: boolean;
   pseudo: FormControl;
   email: FormControl;
   genre: FormControl;
@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
   constructor(private dialog: MatDialog, private fb: FormBuilder, private userServices: UserServicesService, private log: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.load = false;
     this.pseudo = new FormControl(null, [Validators.required]);
     this.genre = new FormControl();
     this.departement = new FormControl(null, [Validators.required]);
@@ -52,6 +53,7 @@ export class SignupComponent implements OnInit {
   public signup() {
 
     if ( this.form.valid) {
+
       let user = new User(this.form.value.pseudo, this.form.value.email, this.form.value.password, this.form.value.departement, this.form.value.city);
       this.openDialogValid(user);
 
@@ -65,6 +67,7 @@ export class SignupComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.form.reset();
+        this.load = true;
         this.userServices.createUser(user).subscribe(() => {
           this.log.login(user.mail, user.password).subscribe( (data) => {
                 if (data !== null ) {
@@ -75,6 +78,8 @@ export class SignupComponent implements OnInit {
               (error) => {
                 this.log.log().next(null);
                 console.log("error");
+              }, () => {
+                this.load = false;
               });
 
         });

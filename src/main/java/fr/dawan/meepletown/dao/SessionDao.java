@@ -55,6 +55,40 @@ public class SessionDao {
 		return resultat;
 	}
 	
+	public void updateSession(Game game, long id) {	
+		if (game.getId() > 0) {
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+			EntityManager entityManager = factory.createEntityManager();
+			EntityTransaction transaction = entityManager.getTransaction();
+
+			try {
+				// début de la transaction
+				transaction.begin();
+				Session session = null;
+				TypedQuery<Session> query = entityManager.createQuery(
+						"select session from Session session where session.id = :id ", Session.class);
+
+				query.setParameter("id", id);
+				// on paramètre et on exécute la requête, et on récupère le résultat
+				session = query.getSingleResult();
+				// On met à jour la formation
+				session.getGamesListSession().add(game);
+				entityManager.merge(session);
+
+				// on commit tout ce qui s'est fait dans la transaction
+				transaction.commit();
+			} catch (Exception ex) {
+				// en cas d'erreur, on effectue un rollback
+				transaction.rollback();
+				ex.printStackTrace();
+			} finally {
+				entityManager.close();
+				factory.close();
+			}
+
+		}
+		
+	}
 	public SessionJson findById(long id) {
 		SessionJson resultat = null;
 
@@ -204,6 +238,43 @@ public class SessionDao {
 				session = query.getSingleResult();
 				// On met à jour la formation
 				session.getPlayersList().remove(u);
+				
+				entityManager.merge(session);
+
+				// on commit tout ce qui s'est fait dans la transaction
+				transaction.commit();
+			} catch (Exception ex) {
+				// en cas d'erreur, on effectue un rollback
+				transaction.rollback();
+				ex.printStackTrace();
+			} finally {
+				entityManager.close();
+				factory.close();
+			}
+
+		
+	}
+	
+	public void deleteGame(long idSession, long idGame) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("meepletown");
+		EntityManager entityManager = factory.createEntityManager();
+			EntityTransaction transaction = entityManager.getTransaction();
+
+			try {
+				System.out.println("ici");
+				Game g = entityManager.find(Game.class, idGame);
+				System.out.println(g);
+				// début de la transaction
+				transaction.begin();
+				Session session = null;
+				TypedQuery<Session> query = entityManager.createQuery(
+						"select session from Session session where session.id = :id ", Session.class);
+
+				query.setParameter("id", idSession);
+				// on paramètre et on exécute la requête, et on récupère le résultat
+				session = query.getSingleResult();
+				// On met à jour la formation
+				session.getGamesListSession().remove(g);
 				
 				entityManager.merge(session);
 

@@ -40,6 +40,7 @@ export class SigninComponent implements OnInit {
           (data) => {
             if (data !== null ) {
               this.service.log().next(data);
+              sessionStorage.setItem('currentUser', data.id.toString());
               this.error = false;
               this.router.navigateByUrl('/user');
 

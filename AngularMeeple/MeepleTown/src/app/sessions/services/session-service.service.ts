@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Session} from '../class/session';
 import {User} from '../../users/class/user';
+import {Game} from "../../games/class/game";
 
 //import {Game} from '../class/game';
 
@@ -59,5 +60,13 @@ export class SessionServiceService {
 
   public getAuthor(id: number): Observable<User> {
     return this.http.get<User>(this.url + 'getauthor/' + id);
+  }
+
+  public updateLisGame(game: Game, id : number) {
+    return this.http.put(this.url + 'game/' + id, game);
+  }
+
+  public deleteGame(session: Session, game: Game){
+    return this.http.delete(this.url + 'deletegame/' + session.id + '/' + game.id);
   }
 }

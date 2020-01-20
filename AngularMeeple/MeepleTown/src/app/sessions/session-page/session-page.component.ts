@@ -6,6 +6,8 @@ import {User} from '../../users/class/user';
 import {LoginService} from '../../login/services/login.service';
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Game} from "../../games/class/game";
+import {GamesServicesService} from "../../games/services/games-services.service";
 
 @Component({
   selector: 'app-session-page',
@@ -14,11 +16,13 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class SessionPageComponent implements OnInit {
   id: string;
+  games: Array<Game>;
+  indexGame: number;
   session: Session = new Session();
   user: User;
   isUserConnected = false;
   isFull = true;
-  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private route: ActivatedRoute, private logService: LoginService) { }
+  constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private route: ActivatedRoute, private logService: LoginService, private gamesService: GamesServicesService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe( (params: ParamMap) => {
@@ -31,6 +35,9 @@ export class SessionPageComponent implements OnInit {
       this.sessionService.getSessionById(Number.parseInt(this.id, 10)).subscribe((session) => {
         this.session = session;
         this.isFull = this.full();
+        this.gamesService.getGames().subscribe( (data) => {
+          this.games = this.verifeListGame(data, this.session);
+        });
       });
     }
 
@@ -102,5 +109,47 @@ export class SessionPageComponent implements OnInit {
     });
 
   }
+  addGame() {
+    if (this.indexGame !== undefined) {
+      this.sessionService.updateLisGame(this.games[this.indexGame], this.session.id).subscribe(() =>{
+        this.session.gamesListSession.push(this.games[this.indexGame]);
+        this.games = this.verifeListGame(this.games, this.session);
+      },(error) => {
+        console.log(error);
+      });
+    }
+  }
+  verifeListGame(games: Array<Game>, session: Session): Array<Game>{
+    games.forEach((value, index) => {
+      this.session.gamesListSession.forEach((value1, index1) => {
+        if ( value1.id === value.id) {
+          games.splice(index, 1);
+        }
+      });
+    });
+    return games;
 
+  }
+
+  supprGame(game: Game){
+    this.sessionService.deleteGame(this.session, game).subscribe( () => {
+      this.session.gamesListSession.forEach((value1, index1) => {
+        if ( value1.id === game.id) {
+          this.session.gamesListSession.splice(index1, 1);
+        }
+      });
+      this.session.playersList = this.session.playersList.filter(item => item.id !== this.user.id);
+    });
+  }
+
+  openDialogSuppressGame(game){
+    const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Suppression de jeu',
+        message: `Êtes-vous sûr de vouloir supprimer le jeu ${game.name} de votre partie ?`, close: true}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.supprGame(game);
+      }
+    });
+  }
 }

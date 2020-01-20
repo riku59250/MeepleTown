@@ -1,6 +1,7 @@
 import {GameType} from "./game-type";
 
 export class Game {
+    id: number;
     name: string;
     type: GameType;
     description: string;

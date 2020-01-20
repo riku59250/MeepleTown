@@ -10,20 +10,22 @@ import {CreategroupComponent} from './groups/creategroup/creategroup.component';
 import {UserPageComponent} from "./users/user-page/user-page.component";
 import {ListGroupComponent} from "./groups/list-group/list-group.component";
 import {PagegroupComponent} from "./groups/pagegroup/pagegroup.component";
+import {LoginService} from "./login/services/login.service";
+import {GuardService} from "./login/guard/guard.service";
 
 
 
 const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
-  {path: 'createSession', component: CreateSessionComponent},
+  {path: 'createSession', component: CreateSessionComponent, canActivate: [GuardService]},
   {path: 'listSessions', component: ListSessionComponent},
   {path: 'sessionPage/:id', component: SessionPageComponent},
   {path: 'listGame', component: ListGamesComponent},
-  {path: 'createGroup' , component: CreategroupComponent},
+  {path: 'createGroup' , component: CreategroupComponent, canActivate: [GuardService]},
   {path: 'pageGroup/:id', component: PagegroupComponent},
   {path: 'listGroup' , component: ListGroupComponent},
-  {path: 'user', component: UserPageComponent},
+  {path: 'user', component: UserPageComponent, canActivate: [GuardService]},
   {path: 'user/:id', component: UserPageComponent},
   {path: '', redirectTo: '/signup', pathMatch: 'full'}
 ];

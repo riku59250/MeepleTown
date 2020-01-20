@@ -3,13 +3,6 @@
     <div class="col-md-8 "> le {{session.startDate | date: 'EEEE dd MMMM yyy':'fr'}} de {{session.startDate | date: 'HH:mm'}} à {{session.endDate | date: 'HH:mm'}}</div>
 
     <div class="col-md-8 ">à {{session.place}}</div>
-
-    <div *ngIf="session.gamesListSession !== undefined">
-        <h1>Jeux proposés </h1>
-        <div class="form-row" *ngFor="let game of session.gamesListSession">
-            <div class="col-md-4 mb-3 alert alert-success text-center">  {{game.name}}</div>
-        </div>
-    </div>
     <div *ngIf="session.playersList !== undefined">
         <div *ngIf="!isUserConnected ; else connect ">
             <p>Vous n'etes pas connecté</p>
@@ -20,15 +13,30 @@
             </div>
             <ng-template #action>
                 <div *ngIf="isPlayer(); else rejoindre ">
-                    <input class="btn btn-outline-danger" (click)="skip()"  id="add" type="button" value="Quitter"/>
+                    <input class="btn btn-outline-danger" (click)="skip()"  id="add" type="button" value="Quitter la partie"/>
                 </div>
                 <ng-template #rejoindre>
-                    <input class="btn btn-outline-dark" (click)="addPlayer()"  id="add" type="button" value="Rejoindre"/>
+                    <input class="btn btn-outline-dark" (click)="addPlayer()"  id="add" type="button" value="Rejoindre la partie"/>
                 </ng-template>
             </ng-template>
 
         </ng-template>
 
+    </div>
+
+    <div *ngIf="session.gamesListSession !== undefined">
+        <h1>Jeux proposés </h1>
+        <div *ngIf=" isConnected() && isAuthor()">
+            Ajouter un jeu
+            <select class="form-control" id="departement"  [(ngModel)]="indexGame">
+                <option value="default">-- choix du jeu --</option>
+                <option *ngFor="let game of games; index as i" [value]="i">{{game.name}}</option>
+            </select>
+            <button class="btn btn-outline-primary" (click)="addGame()">Valider</button>
+        </div>
+        <div class="form-row" *ngFor="let game of session.gamesListSession">
+            <div class="col-md-4 mb-3 alert alert-success text-center">  {{game.name}} <button *ngIf="isConnected() && isAuthor()" class="btn btn-outline-danger" (click)="openDialogSuppressGame(game)">supprimer</button></div>
+        </div>
     </div>
 
     <hr />

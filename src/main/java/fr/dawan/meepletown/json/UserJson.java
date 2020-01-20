@@ -15,7 +15,6 @@ public class UserJson extends DbObject{
   //Attributs Initialisation
 	private String pseudo;
 	private String mail;
-	@JsonIgnore
 	private String password;
 	private int numDept;
 	private String city;

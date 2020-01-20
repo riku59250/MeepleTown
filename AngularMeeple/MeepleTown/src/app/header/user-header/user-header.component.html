@@ -3,6 +3,6 @@
     <button routerLink="/signin" class="btn btn-dark">Connexion</button>
 </div>
 <ng-template #connect>
-    <a routerLink="/user">{{user.pseudo}}</a>
+    <a *ngIf="user !== null" routerLink="/user">{{user.pseudo}}</a>
     <button class="btn btn-dark" (click)="openDialogDeco()">Déconnexion</button>
 </ng-template>

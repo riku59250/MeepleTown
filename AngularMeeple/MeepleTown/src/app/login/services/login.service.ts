@@ -24,7 +24,6 @@ export class LoginService {
   }
 
   update(user: User): Observable<User> {
-    console.log(user);
         return this.http.put<User>(this.url , user);
   }
 }

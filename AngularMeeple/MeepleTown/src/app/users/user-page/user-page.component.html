@@ -18,9 +18,10 @@
     <div *ngIf="user.listGroup !== null">
         <app-list-group [userPage]="true" [listGroup]="user.listGroup"></app-list-group>
     </div>
-    <div *ngIf="user.listGame !== null">
-        <app-list-games [listGames]="user.listGame "></app-list-games>
+    <div *ngIf="user.listGame !== null && user.listGame.size === 0 ">
+        <app-list-games [listGames]="user.listGame " [userPage]="true"></app-list-games>
     </div>
+
 
 
 </div>

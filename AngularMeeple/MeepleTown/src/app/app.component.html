@@ -1,7 +1,7 @@
 <main class="container-fluid">
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Meeple Town</a>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" *ngIf="user!== null ; else connect ">
    <ul class="navbar-nav">
     <li class="nav-item">
      <a class="nav-link" routerLink="/createSession" routerLinkActive="active">Créer une partie</a>
@@ -21,6 +21,23 @@
 
    </ul>
   </div>
+  <ng-template #connect>
+   <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+     <li class="nav-item">
+      <a class="nav-link" routerLink="/listSessions" routerLinkActive="active">Liste des parties</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" routerLink="/listGroup" routerLinkActive="active">Liste des groupes</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" routerLink="/listGame" routerLinkActive="active">Liste des Jeux</a>
+     </li>
+
+    </ul>
+   </div>
+
+  </ng-template>
   <app-user-header></app-user-header>
  </nav>
 

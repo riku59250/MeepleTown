@@ -20,7 +20,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Formations/angular" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -100,7 +100,9 @@
       <workItem from="1579082400377" duration="13660000" />
       <workItem from="1579162357548" duration="49000" />
       <workItem from="1579162530004" duration="21344000" />
-      <workItem from="1579248627788" duration="20617000" />
+      <workItem from="1579248627788" duration="32335000" />
+      <workItem from="1579523771239" duration="36000" />
+      <workItem from="1579523808753" duration="727000" />
     </task>
     <servers />
   </component>
@@ -125,10 +127,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579257915757" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1579266756236">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1579523805592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579266756236" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1579523805592" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1579162692949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

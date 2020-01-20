@@ -78,6 +78,10 @@ public class SessionController {
 		System.out.println(session.getGamesListSession());
 		return sessioDao.createWithAuthorAndGames(session, idUser);
 	}
+	@PutMapping("/game/{id}")
+	public void addGame (@PathVariable(value = "id")long id, @RequestBody Game game) {
+		sessioDao.updateSession(game, id);
+	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable(value = "id") long id) {
@@ -97,6 +101,11 @@ public class SessionController {
 	@DeleteMapping("/deleteuser/{idSession}/{idUser}")
 	public void deleteUser (@PathVariable(value = "idSession")long idSession, @PathVariable(value = "idUser")long idUser) {
 		sessioDao.deletePlayer(idSession, idUser);
+	}
+	
+	@DeleteMapping("/deletegame/{idSession}/{idGame}")
+	public void deleteGame (@PathVariable(value = "idSession")long idSession, @PathVariable(value = "idGame")long idGame) {
+		sessioDao.deleteGame(idSession, idGame);
 	}
 	
 //	@GetMapping("/getauthor/{id}")

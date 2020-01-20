@@ -5,6 +5,7 @@ import {LoginService} from "../../login/services/login.service";
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router, RouterModule} from "@angular/router";
+import {UserServicesService} from "../../users/services/user-services.service";
 
 @Component({
   selector: 'app-user-header',
@@ -13,12 +14,38 @@ import {Router, RouterModule} from "@angular/router";
 })
 export class UserHeaderComponent implements OnInit {
   user: User;
-  constructor(private dialog: MatDialog, private service: LoginService, private router: Router) { }
+  constructor(private dialog: MatDialog, private service: LoginService, private router: Router,private userServicesService: UserServicesService) { }
 
   ngOnInit() {
-     this.service.log().subscribe((data) => {
-      this.user = data;
-    });
+      this.service.log().subscribe((data) => {
+        if (data === null) {
+           let u = sessionStorage.getItem('currentUser');
+           console.log(u);
+           if ( u !== null) {
+             let id = parseInt(u);
+             if (id !== NaN) {
+               this.userServicesService.getUserById(id).subscribe(
+                   (value)  => {
+                     if (value !== null) {
+                       this.user = value;
+                       this.service.log().next(this.user);
+                     } else {
+                       this.user = null;
+                       this.service.log().next(null);
+                     }
+                   }
+               );
+             }
+           } else {
+               this.user = null;
+           }
+        } else {
+          this.user = data;
+
+        }
+
+      });
+
   }
 
   logout(): void {
@@ -31,7 +58,10 @@ export class UserHeaderComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.logout();
+
+        sessionStorage.removeItem('currentUser');
+        console.log("deco");
+          this.logout();
         this.router.navigateByUrl('/signin');
       }
     });
