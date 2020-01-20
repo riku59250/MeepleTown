@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5a9e5a9-5659-47d3-8ea8-7e27e8e3f05b" name="Default Changelist" comment="" />
+    <list default="true" id="e5a9e5a9-5659-47d3-8ea8-7e27e8e3f05b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.idea/MeepleTown.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/MeepleTown.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/groupserver.json" beforeDir="false" afterPath="$PROJECT_DIR$/groupserver.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/games/list-games/list-games.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/games/list-games/list-games.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/games/list-games/list-games.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/games/list-games/list-games.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/games/services/games-services.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/games/services/games-services.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/groups/list-group/list-group.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/groups/list-group/list-group.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/groups/list-group/list-group.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/groups/list-group/list-group.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/groups/services/group.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/groups/services/group.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sessions/list-session/list-session.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sessions/list-session/list-session.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sessions/list-session/list-session.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sessions/list-session/list-session.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sessions/services/session-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sessions/services/session-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/java/fr/dawan/meepletown/dao/GenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/main/java/fr/dawan/meepletown/dao/GenericDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +46,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="ts.external.directory.path" value="C:\Users\Admin stagiaire.DESKTOP-8967908\git\MeepleTown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Formations\meepletown\AngularMeeple\MeepleTown\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -100,9 +120,15 @@
       <workItem from="1579082400377" duration="13660000" />
       <workItem from="1579162357548" duration="49000" />
       <workItem from="1579162530004" duration="21344000" />
+<<<<<<< HEAD
       <workItem from="1579248627788" duration="32335000" />
       <workItem from="1579523771239" duration="36000" />
       <workItem from="1579523808753" duration="727000" />
+=======
+      <workItem from="1579248627788" duration="20617000" />
+      <workItem from="1579305690235" duration="488000" />
+      <workItem from="1579345270704" duration="16665000" />
+>>>>>>> db5d102887df9c443d4ea992ebe76d5ee85ce663
     </task>
     <servers />
   </component>

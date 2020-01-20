@@ -7,7 +7,9 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class GamesServicesService {
-   url = 'http://localhost:8080/meepletown/game/';
+    url = 'http://localhost:8080/meepletown/game/';
+
+  //  url = 'http://localhost:3000/Game';
   constructor(private http: HttpClient) {}
 
   public getGames(): Observable<Game[]> {

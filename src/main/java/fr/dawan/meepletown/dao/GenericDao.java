@@ -42,9 +42,12 @@ public class GenericDao<T extends DbObject> {
 				entityManager.close();
 				factory.close();
 			}
-			
+
+
 		}
-		
+
+
+	
 	}
 
 	public T findById(Class<T> clazz, long id) {
@@ -78,7 +81,6 @@ public class GenericDao<T extends DbObject> {
 				// On met à jour la formation
 				entityManager.merge(entity);
 
-				
 				// on commit tout ce qui s'est fait dans la transaction
 				transaction.commit();
 			} catch (Exception ex) {

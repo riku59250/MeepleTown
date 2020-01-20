@@ -7,6 +7,7 @@ import {ConfirmationComponent} from "../../popup/confirmation/confirmation.compo
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from '@angular/router';
 import {group} from "@angular/animations";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-list-session',
@@ -26,6 +27,7 @@ export class ListSessionComponent implements OnInit {
   begin = 0;
   end = 10;
    diff;
+   sortListSessions: Session[] = this.listSessions;
 
   // @ts-ignore
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private logService: LoginService, private router: Router) { }
@@ -65,6 +67,8 @@ export class ListSessionComponent implements OnInit {
     this.sessionService.getAllSessions().subscribe( (sessions) => {
       this.listSessions = sessions;
       this.listSessions.sort((a, b) => (a.startDate > b.startDate) ? 1 : -1);
+
+      this.sortListSessions = this.listSessions.slice();
     });
   }
 
@@ -73,6 +77,8 @@ export class ListSessionComponent implements OnInit {
       this.listSessions = sessions;
       this.listSessions.sort((a, b) => (a.startDate > b.startDate) ? 1 : -1);
       console.log(this.listSessions);
+
+      this.sortListSessions = this.listSessions.slice();
     });
   }
 
@@ -154,6 +160,32 @@ export class ListSessionComponent implements OnInit {
     }
     return false;
   }
+
+  // methode de rangement de tableau
+  sortSessionTable(sort: Sort) {
+    const session = this.listSessions.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortListSessions = session;
+      return;
+    }
+
+    this.sortListSessions = session.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'title': return compare(a.title, b.title, isAsc);
+        case 'place': return compare(a.place, b.place, isAsc);
+        case 'startDate': return compare(a.startDate.getDate(), b.startDate.getDate(), isAsc);
+        case 'nbMaxPlayers': return compare(a.nbMaxPlayers, b.nbMaxPlayers, isAsc);
+        case 'author': return compare(a.author.id, b.author.id, isAsc);
+        default: return 0;
+      }
+    });
+    // creation de fonction pour la comparaison des champs
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+  }
+
 
   public Previous(): void {
     if (this.begin >= this.diff) {

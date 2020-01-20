@@ -1,0 +1,164 @@
+{
+  "Game": [
+    {
+
+      "name": "Le club de SASA",
+      "type": "Association",
+      "description": "Nord" ,
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "4"
+    },
+    {
+      "name": "Les vétérans du jeu",
+      "type": "Particulier",
+      "description":  "Pas-De-Calais",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "3"
+    },
+    {
+
+      "name": "L'Otarie Club",
+      "type": "Association",
+      "description":  "Nord",
+      "nbrMinJoueur": "2",
+      "nbrMaxJoueur": "6"
+    },
+    {
+
+      "name": "Halo 343",
+      "type": "Particulier",
+      "description":  "Picardie",
+      "nbrMinJoueur": "3",
+      "nbrMaxJoueur": "7"
+    },
+    {
+
+      "name": "Les Orcs",
+      "type": "Particulier",
+      "description":  "Bouches-du-Rhône",
+      "nbrMinJoueur": "10",
+      "nbrMaxJoueur": "98"
+    },
+    {
+
+      "name": "Le club de Ragnar",
+      "type": "Association",
+      "description": "Nord" ,
+      "nbrMinJoueur": "2",
+      "nbrMaxJoueur": "4"
+    },
+    {
+
+      "name": "Les vétérans du jeu",
+      "type": "Particulier",
+      "description":  "Pas-De-Calais",
+      "nbrMinJoueur": "2",
+      "nbrMaxJoueur": "5"
+    },
+    {
+
+      "name": "L'Otarie Club",
+      "type": "Association",
+      "description":  "Nord",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "8"
+    },
+    {
+
+      "name": "Halo 2048",
+      "type": "Particulier",
+      "description":  "Picardie",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "9"
+    },
+    {
+
+      "name": "Les Eux",
+      "type": "Particulier",
+      "description":  "Bouches-du-Rhône",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "6"
+    },
+    {
+
+
+      "name": "Le club de LELE",
+      "type": "Association",
+      "description": "Nord" ,
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "9"
+    },
+    {
+
+      "name": "Les vétérans du jeu",
+      "type": "Particulier",
+      "description":  "Pas-De-Calais",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "3"
+    },
+    {
+
+      "name": "Les fantastiques du plateau",
+      "type": "Association",
+      "description":  "Nord",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "6"
+    },
+    {
+
+      "name": "Les joueurs du samedi soir",
+      "type": "Particulier",
+      "description":  "Normandie",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "6"
+    },
+    {
+
+      "name": "John Doe Tribute Club",
+      "type": "Association",
+      "description":  "Loire-Atlantique",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "5"
+    },
+    {
+
+      "name": "Le club de Charlie",
+      "type": "Association",
+      "description": "Nord" ,
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "8"
+    },
+    {
+
+      "name": "Les rôlistes du coin",
+      "type": "Particulier",
+      "description": "pas de description",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "4"
+    },
+    {
+
+      "name": "L'Opale Ludique",
+      "type": "Association",
+      "description":  "Pas-De-Calais",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "9"
+    },
+    {
+
+      "name": "Kikou Play",
+      "type": "Particulier",
+      "description":  "Nord",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "6"
+    },
+    {
+
+      "name": "Les Jacky du Game",
+      "type": "Particulier",
+      "description":  "Pas-De-Calais",
+      "nbrMinJoueur": "1",
+      "nbrMaxJoueur": "12"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import { map} from 'rxjs/operators';
 import {group} from '@angular/animations';
-import {User} from "../../users/class/user";
+import {User} from '../../users/class/user';
 
 
 
@@ -15,8 +15,8 @@ import {User} from "../../users/class/user";
 })
 export class GroupService {
 
-    private url = 'http://localhost:8080/meepletown/groupe/';
-
+   private url = 'http://localhost:8080/meepletown/groupe/';
+    // private url = 'http://localhost:3000/User';
     groupSubject = new Subject<Group[]>();
     private group: Group;
 

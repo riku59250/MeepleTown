@@ -8,6 +8,8 @@ import {ConfirmationComponent} from "../../popup/confirmation/confirmation.compo
 import {MatDialog} from "@angular/material/dialog";
 import {Game} from "../../games/class/game";
 import {GamesServicesService} from "../../games/services/games-services.service";
+import {Sort} from "@angular/material/sort";
+
 
 @Component({
   selector: 'app-session-page',
@@ -24,10 +26,16 @@ export class SessionPageComponent implements OnInit {
   isFull = true;
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private route: ActivatedRoute, private logService: LoginService, private gamesService: GamesServicesService) { }
 
+  sortSessionPlayersList: Array<User> = this.session.playersList;
+
+
   ngOnInit() {
+
+
     this.route.paramMap.subscribe( (params: ParamMap) => {
       if (params.has('id')) {
         this.id = params.get('id');
+
       }
     });
 
@@ -38,11 +46,13 @@ export class SessionPageComponent implements OnInit {
         this.gamesService.getGames().subscribe( (data) => {
           this.games = this.verifeListGame(data, this.session);
         });
+        this.sortSessionPlayersList = this.session.playersList.slice();
       });
     }
 
     this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
+
 
   }
 
@@ -71,11 +81,11 @@ export class SessionPageComponent implements OnInit {
       for(let u of this.session.playersList) {
         if (u.id === this.user.id) {
           return true;
+
         }
       }
     }
     return false;
-   
   }
 
   openDialogSuppress(user: User): void {
@@ -142,7 +152,8 @@ export class SessionPageComponent implements OnInit {
     });
   }
 
-  openDialogSuppressGame(game){
+
+  openDialogSuppressGame(game) {
     const dialogRef = this.dialog.open(ConfirmationComponent, { data: {title: 'Suppression de jeu',
         message: `Êtes-vous sûr de vouloir supprimer le jeu ${game.name} de votre partie ?`, close: true}
     });
@@ -151,5 +162,26 @@ export class SessionPageComponent implements OnInit {
         this.supprGame(game);
       }
     });
+  }
+
+  sortPlayerTable(sort: Sort) {
+    const user = this.session.playersList.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortSessionPlayersList = user;
+      return;
+    }
+
+    this.sortSessionPlayersList = user.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'pseudo': return compare(a.pseudo, b.pseudo, isAsc);
+        case 'mail': return compare(a.mail, b.mail, isAsc);
+        default: return 0;
+      }
+    });
+    // creation de fonction pour la comparaison des champs
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
   }
 }

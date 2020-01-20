@@ -6,18 +6,18 @@
     </form>
 </nav>
 
-<table class="table table-bordered" >
+<table class="table " id="groupTable" matSort (matSortChange)="sortTable($event)"  >
     <thead class="thead-light">
-    <tr>
-        <th scope="col">Nom de groupe</th>
-        <th scope="col">Type de groupe</th>
-        <th scope="col">Département</th>
-        <th scope="col">Ville</th>
+    <tr >
+        <th scope="col" mat-sort-header="name">Nom de groupe</th>
+        <th scope="col" mat-sort-header="type">Type de groupe</th>
+        <th scope="col" mat-sort-header="nameDept">Département</th>
+        <th scope="col" mat-sort-header="city">Ville</th>
         <th scope="col"></th>
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let group of listGroup |searchFilter:'name': searchText |slice:begin:end">
+    <tbody >
+    <tr   *ngFor="let group of  sortListGroup |searchFilter:'name': searchText |slice:begin:end  "  >
         <td>{{ group.name }}</td>
         <td>{{ group.type}}</td>
         <td>{{ group.nameDept}}</td>

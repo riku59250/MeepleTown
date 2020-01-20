@@ -13,6 +13,7 @@ import {Game} from "../../games/class/game";
 })
 export class SessionServiceService {
   private url = 'http://localhost:8080/meepletown/session/';
+  // private url = 'http://localhost:3000/Session';
   session: Session = new Session();
   sessions: Session[] = [];
 
