@@ -35,15 +35,15 @@
     <div *ngIf="session.playersList !== undefined">
         <h1>Liste des joueurs <small> {{session.playersList.length}} / {{session.nbMaxPlayers}} </small></h1>
         <table class="table">
-            <thead class="thead-light">
+            <thead class="thead-light" matSort (matSortChange)="sortPlayerTable($event)">
             <tr>
-                <th scope="col">Pseudo</th>
-                <th scope="col">Mail</th>
+                <th scope="col" mat-sort-header="pseudo">Pseudo</th>
+                <th scope="col" mat-sort-header="mail">Mail</th>
                 <th scope="col" *ngIf="isUserConnected">Actions possibles</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let user of session.playersList">
+            <tr *ngFor="let user of sortSessionPlayersList">
                 <td><a   [routerLink]="['/user', user.id]">{{user.pseudo}}</a></td>
                 <td><a  [routerLink]="['/user', user.id]">{{user.mail}}</a></td>
                 <td *ngIf="isUserConnected"><button class="btn btn-secondary" *ngIf="isAuthor() && isPlayer()" (click)="openDialogSuppress(user)"> Supprimer ce joueur</button></td>

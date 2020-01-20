@@ -23,13 +23,13 @@
         </div>
     <div>
         <h2>Liste des Membres</h2>
-        <table class="table table-bordered" >
-            <thead>
+        <table class="table "  >
+            <thead class="thead-light" matSort (matSortChange)="sortMembersTable($event)">
             <tr>
-                <th scope="col">Pseudo</th>
-                <th scope="col">Mail</th>
-                <th scope="col">Numero de département</th>
-                <th scope="col">Ville</th>
+                <th scope="col" mat-sort-header="pseudo">Pseudo</th>
+                <th scope="col" mat-sort-header="mail">Mail</th>
+                <th scope="col" mat-sort-header="numDept">Numero de département</th>
+                <th scope="col" mat-sort-header="city">Ville</th>
                 <th scope="col"></th>
             </tr>
             </thead>

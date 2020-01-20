@@ -6,6 +6,7 @@ import {logger} from "codelyzer/util/logger";
 import {LoginService} from '../../login/services/login.service';
 
 import {User} from "../../users/class/user";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-pagegroup',
@@ -15,7 +16,8 @@ import {User} from "../../users/class/user";
 export class PagegroupComponent implements OnInit {
 
 
-  constructor(private serviceGroup: GroupService, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {}
+  constructor(private serviceGroup: GroupService, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
+  }
   id: string;
   group: Group;
   addBtn;
@@ -23,11 +25,11 @@ export class PagegroupComponent implements OnInit {
   begin = 0;
   end = 10;
   diff;
+   //sortMemberlist: Array<User> = this.group.membersList;
 
   ngOnInit() {
 
     this.diff = 10;
-
     this.user = this.loginService.log().value;
     this.route.paramMap.subscribe( (params: ParamMap) => {
         if (params.has('id')) {
@@ -103,8 +105,30 @@ export class PagegroupComponent implements OnInit {
     this.begin = 0;
     this.end += this.diff;
   }
+/*
+  sortMembersTable(sort: Sort) {
+    const user = this.group.membersList.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortMemberlist = user;
+      return;
+    }
 
-
+    this.sortMemberlist = user.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'pseudo': return compare(a.pseudo, b.pseudo, isAsc);
+        case 'mail': return compare(a.mail, b.mail, isAsc);
+        case 'numDept': return compare(a.numDept, b.numDept, isAsc);
+        case 'city': return compare(a.city, b.city, isAsc);
+        default: return 0;
+      }
+    });
+    // creation de fonction pour la comparaison des champs
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+  }
+*/
 }
 
 

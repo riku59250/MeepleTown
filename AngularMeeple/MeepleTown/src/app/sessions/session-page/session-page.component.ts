@@ -6,6 +6,7 @@ import {User} from '../../users/class/user';
 import {LoginService} from '../../login/services/login.service';
 import {ConfirmationComponent} from "../../popup/confirmation/confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-session-page',
@@ -18,24 +19,31 @@ export class SessionPageComponent implements OnInit {
   user: User;
   isUserConnected = false;
   isFull = true;
+  sortSessionPlayersList: Array<User> = this.session.playersList;
+
   constructor(private dialog: MatDialog, private sessionService: SessionServiceService, private route: ActivatedRoute, private logService: LoginService) { }
 
   ngOnInit() {
+
+
     this.route.paramMap.subscribe( (params: ParamMap) => {
       if (params.has('id')) {
         this.id = params.get('id');
+
       }
     });
 
     if (this.id && this.id !== '') {
       this.sessionService.getSessionById(Number.parseInt(this.id, 10)).subscribe((session) => {
         this.session = session;
-        this.isFull = this.full();
+
+        this.sortSessionPlayersList = this.session.playersList.slice();
       });
     }
 
     this.user = this.logService.log().getValue();
     this.isUserConnected = this.isConnected();
+
 
   }
 
@@ -64,11 +72,11 @@ export class SessionPageComponent implements OnInit {
       for(let u of this.session.playersList) {
         if (u.id === this.user.id) {
           return true;
+
         }
       }
     }
     return false;
-   
   }
 
   openDialogSuppress(user: User): void {
@@ -101,6 +109,28 @@ export class SessionPageComponent implements OnInit {
       this.session = session;
     });
 
+  }
+
+
+  sortPlayerTable(sort: Sort) {
+    const user = this.session.playersList.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortSessionPlayersList = user;
+      return;
+    }
+
+    this.sortSessionPlayersList = user.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'pseudo': return compare(a.pseudo, b.pseudo, isAsc);
+        case 'mail': return compare(a.mail, b.mail, isAsc);
+        default: return 0;
+      }
+    });
+    // creation de fonction pour la comparaison des champs
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
   }
 
 }
